@@ -5,14 +5,13 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";   
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+        lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, chaotic, ... }: {
+  outputs = { self, nixpkgs, lanzaboote, ... }: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -21,7 +20,6 @@
           
           ./hardware-configuration.nix
           lanzaboote.nixosModules.lanzaboote
-          chaotic.nixosModules.default
           ({ config, pkgs, lib, ... }: {
              
               boot = {
@@ -47,7 +45,7 @@
                 systemd-boot.enable = lib.mkForce false;
                 efi.canTouchEfiVariables = true;
               };
-              kernelPackages = pkgs.linuxPackages_cachyos;
+              kernelPackages = pkgs.linuxPackages_lqx;
               initrd.systemd.enable = true;
               lanzaboote = {
                enable = true;
@@ -63,8 +61,8 @@
               
               programs = {
               java = { enable = true; package = pkgs.temurin-bin; };
-              #appimage.binfmt = true;
-              #appimage.enable = true;
+              appimage.binfmt = false;
+              appimage.enable = true;
               
               nautilus-open-any-terminal = {
                enable = true;
@@ -144,16 +142,13 @@
                 networkmanager = {
                   enable = true;
                   wifi.backend = "iwd";
-                  plugins = [];
                    };
                 wireless.iwd.enable = true;
                 firewall = { 
                   allowedTCPPorts = [ 57621 ];
                   allowedUDPPorts = [ 5353 ];
                   checkReversePath = "strict";
-                }; 
-                 nameservers = [ "1.1.1.1#cloudflare-dns.com" "9.9.9.9#dns.quad9.net" ];
-              
+                };               
               };
               time.timeZone = "Asia/Kolkata";
               i18n = { 
@@ -219,12 +214,7 @@
                 ];
                 resolved = {
                  enable = true;
-                 dnsovertls = "true";
-                 dnssec = "true";
-                 domains = [ "~." ];
-                 fallbackDns = [ "8.8.8.8" "1.0.0.1" ];
                 };
-                ananicy.enable = true;
                 fstrim.enable = true;
                 avahi.enable = false;
                 openssh.enable = false;
@@ -294,25 +284,24 @@
                users = { 
                  defaultUserShell = pkgs.zsh;
                  users = { 
-                 ved = {
+                 vedant = {
                  isNormalUser = true;
                  description = "Vedanta Singh";
                  extraGroups = [ "networkmanager" "wheel" "video" "audio" "input" ];
                  uid = 1000;
-                 home = "/home/ved";                  
+                 home = "/home/vedant";                  
                   };
                 };
-              };
-              virtualisation = {
-              };              
+              }; 
               environment = {
               sessionVariables = { 
                 NIXOS_OZONE_WL = "1";
                 LIBVA_DRIVER_NAME = "iHD";
               };
-              etc = { 
-                "resolv.conf".source = "/run/systemd/resolve/stub-resolv.conf";
-               };
+              etc."xdg/monitors.xml" = {
+                source = "/home/vedant/.config/monitors.xml";
+                mode = "0644";
+              };
               variables = {
                EDITOR = "nano";
                VISUAL = "nano";
@@ -344,23 +333,46 @@
                  gnome-software
                ];
               systemPackages = with pkgs; [
+                 terminus_font
+                 zsh-nix-shell
+                 zsh-history-substring-search
+                 grml-zsh-config
+                 intel-media-driver
+                 vpl-gpu-rt
+                 nvidia-vaapi-driver
+                 vulkan-loader
+                 vulkan-validation-layers
+                 vulkan-tools
+                 vulkan-headers
+                 vulkan-extension-layer
+                 noto-fonts
+                 noto-fonts-color-emoji
+                 noto-fonts-cjk-sans
+                 nerd-fonts.adwaita-mono
+                 adwaita-fonts
                  btop
                  showtime
                  papers
+                 bottles
                  spotify
                  sbctl
                  adw-gtk3
                  xdg-terminal-exec
-                 gnome-tweaks
                  git
                  lz4
                  tpm2-tss 
                  wl-clipboard
                  ffmpegthumbnailer
                  ghostty
-                 signal-desktop 
+                 telegram-desktop
                  apparmor-utils 
                  apparmor-profiles
+                 glib
+                 refine
+                 gearlever
+                 prismlauncher
+                 morewaita-icon-theme
+                 vscode-fhs
                  gnomeExtensions.appindicator
                  gnomeExtensions.accent-directories
                  gnomeExtensions.overview-background
@@ -368,7 +380,6 @@
                  gnomeExtensions.adw-gtk3-colorizer
                  gnomeExtensions.pip-on-top
                  (pkgs.uutils-coreutils.override { prefix = ""; })
-                 sbctl
               ];
               };
                
@@ -377,9 +388,6 @@
                  powertop.enable = true;
                  cpuFreqGovernor = "Ondemand";
                };
-                systemd.tmpfiles.rules = [
-                 ''f+ /run/gdm/.config/monitors.xml - gdm gdm - <monitors version="2"><configuration><layoutmode>logical</layoutmode><logicalmonitor><x>0</x><y>0</y><scale>1.5</scale><primary>yes</primary><monitor><monitorspec><connector>eDP-1</connector><vendor>AUO</vendor><product>0xd1ed</product><serial>0x00000000</serial></monitorspec><mode><width>1920</width><height>1080</height><rate>120.213</rate></mode></monitor></logicalmonitor></configuration></monitors>''
-                ];
                   
                system.fsPackages = [ pkgs.bindfs ];
                fileSystems = let
@@ -411,7 +419,7 @@
                fontDir.enable = true;
                packages = with pkgs; [
                noto-fonts
-               noto-fonts-emoji
+               noto-fonts-color-emoji
                noto-fonts-cjk-sans
                nerd-fonts.adwaita-mono
                adwaita-fonts
@@ -429,26 +437,13 @@
                 config = {
                  allowUnfree = true;
                  cudaSupport = true;
-                  permittedInsecurePackages = [
-                  "libsoup-2.74.3"
-                ];
                };
-                overlays = [
-                 (final: prev: {
-                gnome = prev.gnome.overrideScope (gfinal: gprev: {
-                   gvfs = gprev.gvfs.override {
-                    googleSupport = true;
-                    gnomeSupport = true;
-                   };
-                  });
-                })
-               ];
               };
               nix = { 
                settings = { 
                 experimental-features = [ "nix-command" "flakes" ];
                 auto-optimise-store = true;
-                trusted-users = [ "root" "ved" ];
+                trusted-users = [ "root" "vedant" ];
                 max-jobs = 2;
                 cores = 4;
               };
