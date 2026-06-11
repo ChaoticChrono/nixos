@@ -107,6 +107,11 @@ programs.git = {
 
   userName = "ChaoticChrono";
   userEmail = "ChaoticChrono@proton.me";
+  aliases = {
+    ac = "!f() { git add . && git commit -m \"$1\"; }; f";
+    acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f";
+    flup = "!git add . && git commit -m \"Flake Update\"";
+  };
 };
 xdg.portal.config = {
   common = {
