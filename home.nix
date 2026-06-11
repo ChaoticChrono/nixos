@@ -104,9 +104,10 @@ programs.firefox = {
   };
 programs.git = {
   enable = true;
-  settings = {
+
   userName = "ChaoticChrono";
   userEmail = "ChaoticChrono@proton.me";
+  settings = {
   aliases = {
     ac = "!f() { git add . && git commit -m \"$1\"; }; f";
     acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f";
