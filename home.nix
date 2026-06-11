@@ -104,15 +104,17 @@ programs.firefox = {
   };
 programs.git = {
   enable = true;
-
-  userName = "ChaoticChrono";
-  userEmail = "ChaoticChrono@proton.me";
   settings = {
+  user = {
+      name = "Vedanta Singh";
+      email = "ChaoticChrono@proton.me";
+    };
+  init.defaultBranch = "main";
+  };
   aliases = {
     ac = "!f() { git add . && git commit -m \"$1\"; }; f";
     acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f";
-    flup = "!git add . && git commit -m \"Flake Update\" && git push";
-  };
+    flup = "!git diff --quiet && git diff --cached --quiet || (git add . && git commit -m \"Flake Update\" && git push)";
  };
 };
 xdg.portal.config = {
