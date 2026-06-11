@@ -8,22 +8,15 @@
 
   # --- 1. BOOT, SECUREBOOT (LANZABOOTE) & PLYMOUTH ---
   boot.plymouth.enable = true;
-  boot.plymouth.theme = "nixos-bgrt";
-  boot.plymouth.themePackages = [ pkgs.nixos-bgrt-plymouth ];
   boot.kernelParams = [
     "quiet"
     "splash"
     "boot.shell_on_fail"
     "udev.log_priority=3"
     "rd.systemd.show_status=auto"
-  ]; 
-  boot = {
-  tmp.useTmpfs = true;
-  };
+  ];
   boot.loader.timeout = 0;
-  systemd.services.nix-daemon = {
-  environment.TMPDIR = "/var/tmp";
-  };
+  
   # Lanzaboote handles systemd-boot overrides nativly
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -64,6 +57,18 @@
 
   time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_IN";
+    LC_IDENTIFICATION = "en_IN";
+    LC_MEASUREMENT = "en_IN";
+    LC_MONETARY = "en_IN";
+    LC_NAME = "en_IN";
+    LC_NUMERIC = "en_IN";
+    LC_PAPER = "en_IN";
+    LC_TELEPHONE = "en_IN";
+    LC_TIME = "en_IN";
+  };
+
   
   console = {
     earlySetup = true;
@@ -166,7 +171,7 @@
     "com.discordapp.Discord" = {
    Context.sockets = [ "wayland" "x11" ];
    Environment = {
-    XCURSOR_SIZE = "48";
+    XCURSOR_SIZE = "32";
     XCURSOR_THEME = "Adwaita";
     };
   };
@@ -176,10 +181,11 @@
   # --- 6. USER ENVIRONMENT & SHELLS ---
   users.users.ved = {
     isNormalUser = true;
+    description = "Vedanta Singh"; 
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "rtkit" "adbusers" "networkmanager" "video" "audio" "gamemode"];
+    extraGroups = [ "wheel" "rtkit" "adbusers" "networkmanager" "video" "audio" "gamemode" "input" ];
   };
-
+  
   programs.fish = {
     enable = true;
     interactiveShellInit = "set -g fish_greeting";
@@ -189,7 +195,24 @@
     enable = true;
     settings.aws.disabled = true;
   };
- 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+    gtk3
+    atk
+    glib
+    pango
+    harfbuzz
+    cairo
+    gdk-pixbuf
+    zlib
+    libxcrypt-legacy
+    ];
+  };
+  
+  services.udev.extraRules = ''
+  KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
+  '';
   programs.git.enable = true;
   programs.appimage = { enable = true; binfmt = true; };
   virtualisation.waydroid.enable = true;
@@ -228,7 +251,7 @@
     sbctl
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
     adw-gtk3
-    morewaita-icon-theme 
+    morewaita-icon-theme
     xdg-terminal-exec
     wl-clipboard
     temurin-bin-25
@@ -250,24 +273,24 @@
     celeste
     libxcursor
     yt-dlp
+    btrfs-assistant
     # GNOME System Styling Tweaks
     gnomeExtensions.appindicator
     gnomeExtensions.rounded-corners
-    gnomeExtensions.blur-my-shell
+    gnomeExtensions.overview-background
     gnomeExtensions.adw-gtk3-colorizer
     gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.accent-directories
     gnomeExtensions.tailscale-status
-    gnomeExtensions.just-perfection
   ];
   programs.eden = {
     enable = true;
   };
   environment.pathsToLink = [
-    "/share/thumbnailers"
-    "/share/nautilus-python/extensions"
-    "/share/xdg-desktop-portal" 
-    "/share/applications"
+    "share/thumbnailers"
+    "share/nautilus-python/extensions"
+    "share/xdg-desktop-portal" 
+    "share/applications"
   ];
 
   environment.gnome.excludePackages = with pkgs; [
@@ -281,14 +304,14 @@
     NIXOS_OZONE_WL = "1"; # System-wide Wayland rendering enforcer
     LIBVA_DRIVER_NAME = "iHD";
   };
-
+  
   # --- 8. SECURITY & UTILITIES ---
   services.openssh.enable = false;
   services.tailscale.enable = true;
   networking.firewall = {
     enable = true;
-    allowedUDPPorts = [ 41641 25565 ];
-    allowedTCPPorts = [ 25565 ];
+    allowedUDPPorts = [ 41641 25565 46771 ];
+    allowedTCPPorts = [ 25565 46771 ];
     trustedInterfaces = [ "tailscale0" ];
   };
 
@@ -299,9 +322,22 @@
   };
   programs.steam = {
     enable = true;
+    package = pkgs.steam.override {
+    extraEnv = {
+      XCURSOR_SIZE = "32";
+      XCURSOR_THEME = "Adwaita";
+      GAMEMODERUN = "1";
+      VKD3D_CONFIG = "dxr,dxr11";
+      PROTON_LOCAL_SHADER_CACHE = "1";
+      MESA_SHADER_CACHE_MAX_SIZE = "4G";
+      WINE_VK_VULKAN_ONLY = "1";
+      MESA_GLSL_CACHE_MAX_SIZE = "4G";
+      WINEDLLOVERRIDES = "dinput8,dxgi,dsound=n,b";
+    };
+  };
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
-    extraPackages = with pkgs; [ adwaita-icon-theme ];
+    extraPackages = with pkgs; [ adwaita-icon-theme];
     extraCompatPackages = with pkgs; [ proton-ge-bin proton-cachyos_x86_64_v3 ];
   };
 
@@ -319,7 +355,8 @@
     trusted-public-keys = [
     "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
     ];
-    max-jobs = 1;
+    max-jobs = 2;
+    cores = 6;
   };
   nix.gc = {
     automatic = true;

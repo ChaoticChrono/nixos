@@ -10,15 +10,34 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "uinput" ];
   boot.extraModulePackages = [ ];
+
   fileSystems."/" =
-    { device = "/dev/mapper/root";
-      fsType = "xfs";
+    { device = "/dev/mapper/nixroot";
+      fsType = "btrfs";
     };
 
-  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/999caa15-ebc0-43ae-b634-051993653dfa";
-  boot.initrd.luks.devices."swap".device = "/dev/disk/by-uuid/d6785f70-bf12-4b48-81ca-6cd58a8ec5d1";
+  boot.initrd.luks.devices."nixroot".device = "/dev/disk/by-uuid/834b1928-5212-47d9-a4cb-962cb9909826";
+  boot.initrd.luks.devices."swap".device = "/dev/disk/by-uuid/815844a5-6811-443e-b1cb-b81d164cfb6f";
+
+  fileSystems."/home" =
+    { device = "/dev/mapper/nixroot";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/mapper/nixroot";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/4270-FC41";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
   swapDevices =
     [ { device = "/dev/mapper/swap"; }
