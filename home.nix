@@ -110,7 +110,7 @@ programs.git = {
   aliases = {
     ac = "!f() { git add . && git commit -m \"$1\"; }; f";
     acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f";
-    flup = "!git add . && git commit -m \"Flake Update\"";
+    flup = "!git add . && git commit -m \"Flake Update\" && git push";
   };
  };
 };
