@@ -102,6 +102,12 @@ programs.firefox = {
        theme = "Adwaita Dark";
     };
   };
+programs.git = {
+  enable = true;
+
+  userName = "ChaoticChrono";
+  userEmail = "ChaoticChrono@proton.me";
+};
 xdg.portal.config = {
   common = {
     default = [
