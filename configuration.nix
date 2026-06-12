@@ -16,7 +16,11 @@
     "rd.systemd.show_status=auto"
   ];
   boot.loader.timeout = 0;
-  
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options kvm_intel emulate_invalid_guest_state=0
+    options kvm ignore_msrs=1
+  '';  
   # Lanzaboote handles systemd-boot overrides nativly
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -183,7 +187,7 @@
     isNormalUser = true;
     description = "Vedanta Singh"; 
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "rtkit" "adbusers" "networkmanager" "video" "audio" "gamemode" "input" ];
+    extraGroups = [ "wheel" "rtkit" "adbusers" "networkmanager" "video" "audio" "gamemode" "input" "libvirtd" ];
   };
   
   programs.fish = {
@@ -195,28 +199,13 @@
     enable = true;
     settings.aws.disabled = true;
   };
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-    gtk3
-    atk
-    glib
-    pango
-    harfbuzz
-    cairo
-    gdk-pixbuf
-    zlib
-    libxcrypt-legacy
-    ];
-  };
   
-  services.udev.extraRules = ''
-  KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
-  '';
   programs.git.enable = true;
   programs.appimage = { enable = true; binfmt = true; };
   virtualisation.waydroid.enable = true;
   virtualisation.waydroid.package = pkgs.waydroid-nftables;
+  virtualisation.libvirtd.enable = true;
+  
   # Global Dconf Interface Defaults
   programs.dconf = {
     enable = true;
@@ -272,7 +261,6 @@
     libxcursor
     yt-dlp
     btrfs-assistant
-    glfw3-minecraft
     # GNOME System Styling Tweaks
     gnomeExtensions.appindicator
     gnomeExtensions.rounded-corners
