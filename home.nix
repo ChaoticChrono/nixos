@@ -77,23 +77,6 @@ programs.firefox = {
       '';
     };
   };
-  programs.brave = {
-    enable = true;
-    package = inputs.brave-origin.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    
-    extensions = [
-    { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
-    { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # SponsorBlock
-    { id = "kbmfpngjjgdllneeigpgjifpgocmfgmb"; } # RES
-    { id = "gphhapmejobijbbhgpjhcjognlahblep"; } # GNOME Shell
-    { id = "eljhjnnaalmhgcljnkanfjmnjjocdnhi"; } # Harper
-    { id = "lckanjgmijmafbedllaakclkaicjfmnk"; } # ClearURLs
-    { id = "mdjildafknihdffpkfmmpnpoiajfjnjd"; } # Consent-O-Matic
-    { id = "ponfpcnoihfmfllpaingbgckeeldkhle"; } # Enhancer for YouTube
-    { id = "oofmbpoabipiemhnmmdnpejfkljhehij"; } # YouTube NonStop
-    { id = "oladmjdebphlnjjcnomfhhbfdldiimaf"; } # LibRedirect
-  ];
-  };
   programs.gnome-shell = {
   enable = true;
   extensions = [ 

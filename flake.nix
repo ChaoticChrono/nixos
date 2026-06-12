@@ -11,7 +11,6 @@
       url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    brave-origin.url = "github:Daniel-42-z/brave-origin-flake";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,9 +20,8 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-   catppuccin.url = "github:catppuccin/nix/release-26.05";
   };
-  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, firefox-gnome-theme, chaotic, catppuccin, ... }: {
+  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, firefox-gnome-theme, chaotic, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -33,7 +31,6 @@
         chaotic.nixosModules.default
         lanzaboote.nixosModules.lanzaboote
         nix-flatpak.nixosModules.nix-flatpak
-        catppuccin.nixosModules.catppuccin
         ./configuration.nix
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
@@ -42,7 +39,6 @@
          home-manager.users.ved = {
             imports = [
               ./home.nix
-              inputs.catppuccin.homeModules.catppuccin
               ];
              };
           
