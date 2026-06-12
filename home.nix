@@ -78,8 +78,6 @@ programs.firefox = {
       '';
     };
   };
-  { inputs, pkgs, ... }:
-{
   programs.brave = {
     enable = true;
     package = inputs.brave-origin.packages.${pkgs.system}.default;
@@ -104,7 +102,6 @@ programs.firefox = {
      
     ];
   };
-}
   programs.gnome-shell = {
   enable = true;
   extensions = [ 
