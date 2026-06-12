@@ -82,6 +82,7 @@
   services.desktopManager.gnome = {
     enable = true;
   };
+  programs.hyprland.enable = true; # enable Hyprland
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
   services.printing.enable = false;
   services.thermald.enable = true;
