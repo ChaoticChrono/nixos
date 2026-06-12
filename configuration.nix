@@ -235,8 +235,6 @@
         "org/gnome/mutter" = {
           experimental-features = [
             "kms-modifiers"
-            "scale-monitor-framebuffer"
-            "xwayland-native-scaling"
             "autoclose-xwayland"
           ];
         };
