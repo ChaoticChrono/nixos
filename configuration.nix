@@ -55,7 +55,7 @@
     settings.Resolve.DNSSEC = "true";
     settings.Resolve.Domains = [ "~." ];
     settings.Resolve.DNSOverTLS = "true";
-    settings.Resolve.FallbackDNS = [ "1.1.1.1" "1.0.0.1" ];
+    settings.Resolve.FallbackDNS = [ "1.1.1.1#cloudflare-dns.com" "1.0.0.1#cloudflare-dns.com" ];
   
   };
 

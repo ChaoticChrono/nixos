@@ -1,5 +1,4 @@
 { config, pkgs, inputs, ... }:
-
 {
   home.username = "ved";
   home.homeDirectory = "/home/ved";
@@ -80,27 +79,20 @@ programs.firefox = {
   };
   programs.brave = {
     enable = true;
-    package = inputs.brave-origin.packages.${pkgs.system}.default;
+    package = inputs.brave-origin.packages.${pkgs.stdenv.hostPlatform.system}.default;
     
-    # Example: install extensions
     extensions = [
-    # Proton Pass
-    { id = "ghmbeldphafepmbegfdlkpapadhbakde"; }
-
-    # SponsorBlock for YouTube
-    { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; }
-
-    # Reddit Enhancement Suite (RES)
-    { id = "kbmfpngjjgdllneeigpgjifpgocmfgmb"; }
-
-    # GNOME Shell Integration
-    { id = "gphhapmejobijbbhgpjhcjognlahblep"; }
-    ];
-    
-    
-    commandLineArgs = [
-     
-    ];
+    { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
+    { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # SponsorBlock
+    { id = "kbmfpngjjgdllneeigpgjifpgocmfgmb"; } # RES
+    { id = "gphhapmejobijbbhgpjhcjognlahblep"; } # GNOME Shell
+    { id = "eljhjnnaalmhgcljnkanfjmnjjocdnhi"; } # Harper
+    { id = "lckanjgmijmafbedllaakclkaicjfmnk"; } # ClearURLs
+    { id = "mdjildafknihdffpkfmmpnpoiajfjnjd"; } # Consent-O-Matic
+    { id = "ponfpcnoihfmfllpaingbgckeeldkhle"; } # Enhancer for YouTube
+    { id = "oofmbpoabipiemhnmmdnpejfkljhehij"; } # YouTube NonStop
+    { id = "oladmjdebphlnjjcnomfhhbfdldiimaf"; } # LibRedirect
+  ];
   };
   programs.gnome-shell = {
   enable = true;
