@@ -272,6 +272,7 @@
     libxcursor
     yt-dlp
     btrfs-assistant
+    glfw3-minecraft
     # GNOME System Styling Tweaks
     gnomeExtensions.appindicator
     gnomeExtensions.rounded-corners
