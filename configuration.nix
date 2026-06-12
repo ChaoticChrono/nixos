@@ -327,7 +327,12 @@
     extraPackages = with pkgs; [ adwaita-icon-theme];
     extraCompatPackages = with pkgs; [ proton-ge-bin proton-cachyos_x86_64_v3 ];
   };
-
+  programs = {
+  gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+  };
   services.switcherooControl.enable = true;
   services.udev.packages = [ pkgs.switcheroo-control ];
 
