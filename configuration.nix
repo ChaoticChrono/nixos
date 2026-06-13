@@ -246,8 +246,8 @@
     # System Essentials
     sbctl
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
-    kdePackages.qtstyleplugin-kvantum
     kdePackages.breeze-gtk
+    klassy
     xdg-terminal-exec
     wl-clipboard
     temurin-bin-25
