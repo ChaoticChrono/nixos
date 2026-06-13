@@ -267,6 +267,7 @@
     celeste
     libxcursor
     yt-dlp
+    aha
     btrfs-assistant
     telegram-desktop
   ];
