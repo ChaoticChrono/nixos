@@ -245,7 +245,6 @@
     azahar
     tpm2-tss
     waydroid-helper
-    nautilus-python
     android-tools
     libreoffice
     ffmpeg-headless
@@ -267,7 +266,6 @@
   };
   environment.pathsToLink = [
     "share/thumbnailers"
-    "share/nautilus-python/extensions"
     "share/xdg-desktop-portal" 
     "share/applications"
   ];
@@ -275,7 +273,6 @@
   environment.sessionVariables = {
     JAVA_HOME = "${pkgs.temurin-bin-25}";
     NIXOS_OZONE_WL = "1"; # System-wide Wayland rendering enforcer
-    LIBVA_DRIVER_NAME = "iHD";
   };
   
   # --- 8. SECURITY & UTILITIES ---
