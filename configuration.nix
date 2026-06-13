@@ -246,6 +246,7 @@
     # System Essentials
     sbctl
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default
     kdePackages.breeze-gtk
     xdg-terminal-exec
     wl-clipboard
