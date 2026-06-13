@@ -5,7 +5,6 @@
     elyprismlauncher.url = "github:ElyPrismLauncher/Launcher";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    firefox-gnome-theme = { url = "github:rafaelmardojai/firefox-gnome-theme"; flake = false; };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.0.0";
@@ -20,8 +19,13 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
-  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, firefox-gnome-theme, chaotic, ... }: {
+  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 

@@ -1,5 +1,8 @@
 { config, pkgs, inputs, ... }:
 {
+  imports = [
+    inputs.plasma-manager.homeManagerModules.plasma-manager
+  ];
   home.username = "ved";
   home.homeDirectory = "/home/ved";
   home.stateVersion = "26.05";
@@ -58,6 +61,12 @@ programs.firefox = {
        background-opacity = 0.95;
        window-show-tab-bar = always
        theme = "Adwaita Dark";
+       font-family = "Intel One Mono";
+       font-family-fallback = [
+       "Symbols Nerd Font Mono"
+       "Twitter Color Emoji"
+         ];
+       font-size = 12;
     };
   };
 programs.git = {
@@ -77,7 +86,44 @@ programs.git = {
 };
 programs.plasma = {
   enable = true;
+  
+   workspace = {
+    wallpaper = ./wallpaper.webp;
+   };
+   
+  fonts = {
+    general = {
+      family = "Inter";
+      pointSize = 11;
+    };
 
+    fixedWidth = {
+      family = "Intel One Mono";
+      pointSize = 12;
+    };
+
+    small = {
+      family = "Inter";
+      pointSize = 10;
+    };
+
+    toolbar = {
+      family = "Inter";
+      pointSize = 11;
+    };
+
+    menu = {
+      family = "Inter";
+      pointSize = 11;
+    };
+
+    windowTitle = {
+      family = "Clear Sans";
+      pointSize = 11;
+      weight = "bold";
+    };
+  };
+   
   configFile = {
 
     kwinrc.Plugins.blurEnabled = true;
