@@ -200,6 +200,7 @@
       "io.github.giantpinkrobots.varia"
       "com.usebottles.bottles"
       "com.discordapp.Discord"
+      "moe.launcher.an-anime-game-launcher"
     ];
      overrides = {
       global = {
