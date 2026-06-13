@@ -7,45 +7,44 @@
    GAMEMODERUNEXEC="env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only";
    };
   # Universal cursor settings
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    size = 32;
-    name = "Adwaita";
-    package = pkgs.adwaita-icon-theme;
+  #home.pointerCursor = {
+  #  gtk.enable = true;
+  #  x11.enable = true;
+  #  size = 32;
+  #  name = "Adwaita";
+  #  package = pkgs.adwaita-icon-theme;
 
-  };
-  # Main GTK Configuration with Teal Accents
+  #};
   gtk = {
   enable = true;
-  font.name = "Adwaita Sans";
-  font.package = pkgs.adwaita-fonts;
-   theme = {
-    name = "adw-gtk3-dark";
-    package = pkgs.adw-gtk3;
-  };
+  #font.name = "Adwaita Sans";
+  #font.package = pkgs.adwaita-fonts;
+  # theme = {
+  #  name = "adw-gtk3-dark";
+  #  package = pkgs.adw-gtk3;
+  #};
   gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; }; 
   };
   qt = {
     enable = true;
   };
   # Set dconf properties to enforce the Teal scheme for GNOME Shell & Flatpaks
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      accent-color = "teal";
-    };
-    "org/gnome/desktop/background" = {
+ # dconf.settings = {
+ #   "org/gnome/desktop/interface" = {
+ #     color-scheme = "prefer-dark";
+ #     accent-color = "teal";
+ #   };
+ #   "org/gnome/desktop/background" = {
       # Nix will automatically convert these paths to file:// absolute URIs in the store
-      picture-uri = "file://${./wallpaper.webp}";
-      picture-uri-dark = "file://${./wallpaper.webp}";
-      picture-options = "zoom";
-    };
-    "org/gnome/desktop/screensaver" = {
-      picture-uri = "file://${./wallpaper.webp}";
-      picture-options = "zoom";
-    };
-  };
+ #     picture-uri = "file://${./wallpaper.webp}";
+ #     picture-uri-dark = "file://${./wallpaper.webp}";
+ #     picture-options = "zoom";
+ #   };
+ #   "org/gnome/desktop/screensaver" = {
+ #     picture-uri = "file://${./wallpaper.webp}";
+ #     picture-options = "zoom";
+ #   };
+ # };
 home.file.".config/mozilla/firefox/ved/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;
 programs.firefox = {
     enable = true;
@@ -77,18 +76,18 @@ programs.firefox = {
       '';
     };
   };
-  programs.gnome-shell = {
-  enable = true;
-  extensions = [ 
-  { package = pkgs.gnomeExtensions.appindicator; }
-  { package = pkgs.gnomeExtensions.rounded-corners; }
-  { package = pkgs.gnomeExtensions.overview-background; }
-  { package = pkgs.gnomeExtensions.adw-gtk3-colorizer; } 
-  { package = pkgs.gnomeExtensions.rounded-window-corners-reborn; }
-  { package = pkgs.gnomeExtensions.accent-directories; }
-  { package = pkgs.gnomeExtensions.tailscale-status; }
-   ];
-  };
+  #programs.gnome-shell = {
+  #enable = true;
+  #extensions = [ 
+  #{ package = pkgs.gnomeExtensions.appindicator; }
+  #{ package = pkgs.gnomeExtensions.rounded-corners; }
+  #{ package = pkgs.gnomeExtensions.overview-background; }
+  #{ package = pkgs.gnomeExtensions.adw-gtk3-colorizer; } 
+  #{ package = pkgs.gnomeExtensions.rounded-window-corners-reborn; }
+  #{ package = pkgs.gnomeExtensions.accent-directories; }
+  #{ package = pkgs.gnomeExtensions.tailscale-status; }
+  # ];
+  #};
    programs.fish.enable = true;
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
@@ -116,16 +115,16 @@ programs.git = {
     };
   };
 };
-xdg.portal.config = {
-  common = {
-    default = [
-      "gnome"
-      "gtk"
-    ];
-  };
-"org.freedesktop.impl.portal.Secret" = [
-      "gnome-keyring"
-    ];
-};
+#xdg.portal.config = {
+#  common = {
+#    default = [
+#      "gnome"
+#      "gtk"
+#    ];
+#  };
+#"org.freedesktop.impl.portal.Secret" = [
+#      "gnome-keyring"
+#    ];
+#};
 fonts.fontconfig.enable = true;
 }

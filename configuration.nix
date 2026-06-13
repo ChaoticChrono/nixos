@@ -94,9 +94,16 @@
   };
 
   # Graphical Desktop Rules (Pure GNOME / Wayland)
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome = {
-    enable = true;
+  #services.displayManager.gdm.enable = true;
+  #services.desktopManager.gnome = {
+  #  enable = true;
+  #};
+  # Kde
+  services = {
+    desktopManager.plasma6.enable = true;
+
+  # Default display manager for Plasma
+    displayManager.plasma-login-manager.enable = true;
   };
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
   services.printing.enable = false;
@@ -274,13 +281,13 @@
     btrfs-assistant
     telegram-desktop
     # GNOME System Styling Tweaks
-    gnomeExtensions.appindicator
-    gnomeExtensions.rounded-corners
-    gnomeExtensions.overview-background
-    gnomeExtensions.adw-gtk3-colorizer
-    gnomeExtensions.rounded-window-corners-reborn
-    gnomeExtensions.accent-directories
-    gnomeExtensions.tailscale-status
+    #gnomeExtensions.appindicator
+    #gnomeExtensions.rounded-corners
+    #gnomeExtensions.overview-background
+    #gnomeExtensions.adw-gtk3-colorizer
+    #gnomeExtensions.rounded-window-corners-reborn
+    #gnomeExtensions.accent-directories
+    #gnomeExtensions.tailscale-status
   ];
   programs.eden = {
     enable = true;
