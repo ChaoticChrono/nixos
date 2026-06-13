@@ -114,6 +114,15 @@
   # Default display manager for Plasma
     displayManager.plasma-login-manager.enable = true;
   };
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  konsole
+  kmahjongg
+  kmines
+  kpat
+  ksudoku
+  konversation
+  ktorrent
+  ];
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
   services.printing.enable = false;
   services.thermald.enable = true;
