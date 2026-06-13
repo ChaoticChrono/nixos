@@ -187,7 +187,7 @@
     isNormalUser = true;
     description = "Vedanta Singh"; 
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "rtkit" "adbusers" "networkmanager" "video" "audio" "gamemode" "input" "libvirtd" ];
+    extraGroups = [ "wheel" "rtkit" "adbusers" "networkmanager" "video" "audio" "gamemode" "input" ];
   };
   
   programs.fish = {
@@ -204,7 +204,6 @@
   programs.appimage = { enable = true; binfmt = true; };
   virtualisation.waydroid.enable = true;
   virtualisation.waydroid.package = pkgs.waydroid-nftables;
-  virtualisation.libvirtd.enable = true;
   
   # Global Dconf Interface Defaults
   programs.dconf = {
