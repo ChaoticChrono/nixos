@@ -281,7 +281,6 @@
   fonts.packages = with pkgs; [
   inter
   intel-one-mono
-  clear-sans
   nerd-fonts.symbols-only
   twitter-color-emoji
   ];
