@@ -16,11 +16,6 @@
     "rd.systemd.show_status=auto"
   ];
   boot.loader.timeout = 0;
-  boot.extraModprobeConfig = ''
-    options kvm_intel nested=1
-    options kvm_intel emulate_invalid_guest_state=0
-    options kvm ignore_msrs=1
-  '';
   # Lanzaboote handles systemd-boot overrides nativly
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -37,14 +32,31 @@
     enable = true;
     scheduler = "scx_rusty"; 
   };
+  boot.kernel.sysctl = {
+  # ArchWiki-recommended range for zram-backed systems
+  "vm.swappiness" = 133;
 
+  # Better interaction with zram
+  "vm.page-cluster" = 0;
+
+  # Keep filesystem metadata cached longer
+  "vm.vfs_cache_pressure" = 50;
+
+  # Helps Proton, Wine, Java apps, emulators
+  "vm.max_map_count" = 2147483642;
+
+  # Prevent inotify exhaustion
+  "fs.inotify.max_user_watches" = 1048576;
+  "fs.inotify.max_user_instances" = 1024;
+  };
   # Fast compressed RAM swap allocation
   zramSwap = {
     enable = true;
     algorithm = "lz4";
     memoryPercent = 100;
+    priority = 100;
   };
-
+  
   # --- 3. NETWORKING & SYSTEM INTERFACES ---
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
