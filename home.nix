@@ -59,7 +59,6 @@ programs.firefox = {
        background-opacity = 0.95;
        theme = "Adwaita Dark";
        font-family = "Intel One Mono";
-       font-size = 12;
     };
   };
 programs.git = {
