@@ -57,7 +57,6 @@ programs.firefox = {
     settings = {
       "bold-is-bright" = true;
        background-opacity = 0.95;
-       window-show-tab-bar = "always";
        theme = "Adwaita Dark";
        font-family = "Intel One Mono";
        font-size = 12;
