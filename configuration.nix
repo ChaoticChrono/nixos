@@ -107,15 +107,10 @@
     keyMap = "us";
   };
 
-  # Graphical Desktop Rules (Pure GNOME / Wayland)
-  #services.displayManager.gdm.enable = true;
-  #services.desktopManager.gnome = {
-  #  enable = true;
-  #};
+  # Graphical Desktop Rules (Pure Kde / Wayland)
   # Kde
   services = {
     desktopManager.plasma6.enable = true;
-
   # Default display manager for Plasma
     displayManager.plasma-login-manager.enable = true;
   };
@@ -209,8 +204,6 @@
     "com.discordapp.Discord" = {
    Context.sockets = [ "wayland" "x11" ];
    Environment = {
-    XCURSOR_SIZE = "32";
-    XCURSOR_THEME = "Adwaita";
     };
   };
     };
@@ -238,40 +231,13 @@
   programs.appimage = { enable = true; binfmt = true; };
   virtualisation.waydroid.enable = true;
   virtualisation.waydroid.package = pkgs.waydroid-nftables;
-  
-  # Global Dconf Interface Defaults
-  programs.dconf = {
-    enable = true;
-    profiles.gdm.databases = [{
-      settings = with lib.gvariant; {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-          gtk-theme = "adw-gtk3-dark";
-          accent-color = "teal";
-        };
-      };
-    }];
-    profiles.user.databases = [
-     {
-      settings = {
-        "org/gnome/mutter" = {
-          experimental-features = [
-            "kms-modifiers"
-            "autoclose-xwayland"
-          ];
-        };
-      };
-    }
-   ];
-  };
 
   # --- 7. CORE PACKAGES MANAGEMENT ---
   environment.systemPackages = with pkgs; [
     # System Essentials
     sbctl
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
-    adw-gtk3
-    morewaita-icon-theme
+    kdePackages.breeze-gtk
     xdg-terminal-exec
     wl-clipboard
     temurin-bin-25
@@ -295,14 +261,6 @@
     yt-dlp
     btrfs-assistant
     telegram-desktop
-    # GNOME System Styling Tweaks
-    #gnomeExtensions.appindicator
-    #gnomeExtensions.rounded-corners
-    #gnomeExtensions.overview-background
-    #gnomeExtensions.adw-gtk3-colorizer
-    #gnomeExtensions.rounded-window-corners-reborn
-    #gnomeExtensions.accent-directories
-    #gnomeExtensions.tailscale-status
   ];
   programs.eden = {
     enable = true;
@@ -312,12 +270,6 @@
     "share/nautilus-python/extensions"
     "share/xdg-desktop-portal" 
     "share/applications"
-  ];
-
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-connections gnome-tour gnome-music gnome-maps gnome-system-monitor
-    gnome-contacts epiphany geary gnome-calculator yelp gnome-software
-    simple-scan cheese gnome-font-viewer gnome-console
   ];
 
   environment.sessionVariables = {
@@ -331,8 +283,8 @@
   services.tailscale.enable = true;
   networking.firewall = {
     enable = true;
-    allowedUDPPorts = [ 41641 25565 46771 ];
-    allowedTCPPorts = [ 25565 46771 ];
+    allowedUDPPorts = [ 41641 25565 ];
+    allowedTCPPorts = [ 25565 ];
     trustedInterfaces = [ "tailscale0" ];
   };
 
@@ -345,8 +297,6 @@
     enable = true;
     package = pkgs.steam.override {
     extraEnv = {
-      XCURSOR_SIZE = "32";
-      XCURSOR_THEME = "Adwaita";
       GAMEMODERUN = "1";
       VKD3D_CONFIG = "dxr,dxr11";
       PROTON_LOCAL_SHADER_CACHE = "1";
@@ -358,7 +308,7 @@
   };
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
-    extraPackages = with pkgs; [ adwaita-icon-theme];
+    extraPackages = with pkgs; [ kdePackages.breeze kdePackages.breeze-icons ];
     extraCompatPackages = with pkgs; [ proton-ge-bin proton-cachyos_x86_64_v3 ];
   };
   services.switcherooControl.enable = true;
