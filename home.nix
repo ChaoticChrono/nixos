@@ -60,10 +60,6 @@ programs.firefox = {
        window-show-tab-bar = "always";
        theme = "Adwaita Dark";
        font-family = "Intel One Mono";
-       font-family-fallback = [
-       "Symbols Nerd Font Mono"
-       "Twitter Color Emoji"
-         ];
        font-size = 12;
     };
   };
@@ -92,7 +88,7 @@ programs.plasma = {
   fonts = {
     general = {
       family = "Inter";
-      pointSize = 11;
+      pointSize = 12;
     };
 
     fixedWidth = {
@@ -102,22 +98,22 @@ programs.plasma = {
 
     small = {
       family = "Inter";
-      pointSize = 10;
+      pointSize = 11;
     };
 
     toolbar = {
       family = "Inter";
-      pointSize = 11;
+      pointSize = 12;
     };
 
     menu = {
       family = "Inter";
-      pointSize = 11;
+      pointSize = 12;
     };
 
     windowTitle = {
       family = "Inter";
-      pointSize = 11;
+      pointSize = 12;
       weight = "bold";
     };
   };
