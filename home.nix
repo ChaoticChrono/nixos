@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
-    inputs.plasma-manager.homeManagerModules.plasma-manager
+      inputs.plasma-manager.homeModules.plasma-manager
   ];
   home.username = "ved";
   home.homeDirectory = "/home/ved";
@@ -35,9 +35,6 @@ programs.firefox = {
     nativeMessagingHosts = with pkgs; [
     kdePackages.plasma-browser-integration
     ];
-    preferences = {
-    "widget.use-xdg-desktop-portal.file-picker" = 1;
-    };
     profiles.ved = { # Creates a Firefox profile named 'ved'
       name = "ved";
       isDefault = true;
@@ -47,6 +44,7 @@ programs.firefox = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true; # Allow userChrome.css
         "browser.newtabpage.activity-stream.logowordmark.alwaysVisible" = false;
         "browser.newtabpage.activity-stream.nova.enabled" = false;
+         "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
     };
   };
