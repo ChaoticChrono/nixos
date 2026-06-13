@@ -164,7 +164,8 @@
   };
 
   services.libinput.enable = true;
-
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
   # Hybrid NVIDIA Graphics Configurations
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
   hardware.nvidia = {
