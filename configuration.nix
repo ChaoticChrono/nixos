@@ -272,6 +272,7 @@
     libxcursor
     yt-dlp
     btrfs-assistant
+    telegram-desktop
     # GNOME System Styling Tweaks
     gnomeExtensions.appindicator
     gnomeExtensions.rounded-corners
