@@ -116,7 +116,7 @@ programs.plasma = {
     };
 
     windowTitle = {
-      family = "Clear Sans";
+      family = "Inter";
       pointSize = 11;
       weight = "bold";
     };
