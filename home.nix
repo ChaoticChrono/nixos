@@ -75,7 +75,30 @@ programs.git = {
     };
   };
 };
+programs.plasma = {
+  enable = true;
 
+  configFile = {
+
+    kwinrc.Plugins.blurEnabled = true;
+    kwinrc.Plugins.translucencyEnabled = true;
+    kwinrc.Plugins.wobblywindowsEnabled = true;
+
+    kwinrc.Plugins.dynamic_workspacesEnabled = true;
+
+    kdeglobals.General.accentColorFromWallpaper = true;
+    kdeglobals.KDE.contrast = 4;
+    kdeglobals.KDE.frameContrast = 0.2;
+
+    kwinrc.Windows.ElectricBorderDelay = 0;
+
+    kwinrc.Xwayland.Scale = 1.25;
+
+    kwinrc."org.kde.kdecoration2".ButtonsOnLeft = "X";
+    kwinrc."org.kde.kdecoration2".ButtonsOnRight = "";
+
+  };
+};
 
 fonts.fontconfig.enable = true;
 }
