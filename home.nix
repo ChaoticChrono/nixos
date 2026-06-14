@@ -60,6 +60,7 @@ programs.firefox = {
        background-opacity = 0.95;
        theme = "Adwaita Dark";
        font-family = "Intel One Mono";
+       background-blur = true;
     };
   };
 programs.git = {
