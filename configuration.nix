@@ -248,6 +248,8 @@
     sbctl
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
     kdePackages.breeze-gtk
+    plasma-panel-colorizer
+    crystal-dock
     xdg-terminal-exec
     wl-clipboard
     temurin-bin-25
