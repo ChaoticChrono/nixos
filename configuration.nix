@@ -13,15 +13,17 @@
   themePackages = with pkgs; [
   nixos-bgrt-plymouth     
   ];
-  # Enable "Silent boot"
-  consoleLogLevel = 3;
-  initrd.verbose = false;
   };
   boot.kernelParams = [
     "quiet"
     "rd.udev.log_level=3"
     "rd.systemd.show_status=auto"
   ];
+  boot = {
+  # Enable "Silent boot"
+  consoleLogLevel = 3;
+  initrd.verbose = false;
+  };
   boot.loader.timeout = 0;
   # Lanzaboote handles systemd-boot overrides nativly
   boot.loader.systemd-boot.enable = lib.mkForce false;
