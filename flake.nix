@@ -39,6 +39,7 @@
         chaotic.nixosModules.default
         lanzaboote.nixosModules.lanzaboote
         nix-flatpak.nixosModules.nix-flatpak
+        nur.modules.nixos.default
         ./configuration.nix
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
