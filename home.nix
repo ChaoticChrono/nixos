@@ -59,6 +59,7 @@ programs.firefox = {
       "bold-is-bright" = true;
        background-opacity = 0.95;
        theme = "Adwaita Dark";
+       gtk-single-instance = false;
        font-family = "Intel One Mono";
     };
   };
@@ -128,9 +129,10 @@ programs.plasma = {
     kdeglobals.General.accentColorFromWallpaper = true;
     kdeglobals.KDE.contrast = 4;
     kdeglobals.KDE.frameContrast = 0.2;
-
+    kdeglobals.General.TerminalApplication = "${pkgs.ghostty}/bin/ghostty";
+    kdeglobals.General.TerminalService = "com.mitchellh.ghostty.desktop";
     kwinrc.Windows.ElectricBorderDelay = 0;
-
+    
     kwinrc.Xwayland.Scale = 1.25;
 
     kwinrc."org.kde.kdecoration2".ButtonsOnLeft = "X";
