@@ -280,6 +280,7 @@
     aha
     btrfs-assistant
     telegram-desktop
+    nur.repos.milahu.spotify-adblock
   ];
   programs.eden = {
     enable = true;
