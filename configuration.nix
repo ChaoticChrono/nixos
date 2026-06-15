@@ -124,7 +124,6 @@
     displayManager.plasma-login-manager.enable = true;
   };
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
-  konsole
   kmahjongg
   kmines
   kpat

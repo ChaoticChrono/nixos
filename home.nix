@@ -8,7 +8,6 @@
   home.stateVersion = "26.05";
   home.sessionVariables = {
    GAMEMODERUNEXEC="env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only";
-   TERMINAL = "ghostty";
    };
   # Universal cursor settings
   home.pointerCursor = {
@@ -53,16 +52,7 @@ programs.firefox = {
    programs.fish.enable = true;
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
-   programs.ghostty = {
-    enable = true;
-    settings = {
-      "bold-is-bright" = true;
-       background-opacity = 0.95;
-       theme = "Adwaita Dark";
-       gtk-single-instance = false;
-       font-family = "Intel One Mono";
-    };
-  };
+   programs.konsole.enable = true;
 programs.git = {
   enable = true;
   settings = {
@@ -129,8 +119,6 @@ programs.plasma = {
     kdeglobals.General.accentColorFromWallpaper = true;
     kdeglobals.KDE.contrast = 4;
     kdeglobals.KDE.frameContrast = 0.2;
-    kdeglobals.General.TerminalApplication = "${pkgs.ghostty}/bin/ghostty";
-    kdeglobals.General.TerminalService = "com.mitchellh.ghostty.desktop";
     kwinrc.Windows.ElectricBorderDelay = 0;
     
     kwinrc.Xwayland.Scale = 1.25;
