@@ -184,6 +184,24 @@
         "url": "https://flakehub.com/f/DeterminateSystems/flake-schemas/%3D0.1.5.tar.gz"
       }
     },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -481,11 +499,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781506769,
-        "narHash": "sha256-Yp9qtAMeVdE4g+cdETYKudhACZENjeHhrXgnoyoh8Rw=",
+        "lastModified": 1781508183,
+        "narHash": "sha256-sPcj6sFlwZOyKE18g3JU132eHqFIYKjNg4OopFXNlcw=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "adfcdad2c471f1cb89d6a6c2a0ec936289e88eb0",
+        "rev": "0793f22882f8a67ee4d2d484565553a3a6d983de",
         "type": "github"
       },
       "original": {
@@ -545,6 +563,7 @@
         "chaotic": "chaotic",
         "eden": "eden",
         "elyprismlauncher": "elyprismlauncher",
+        "flake-utils": "flake-utils",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
         "nix-flatpak": "nix-flatpak",
@@ -619,6 +638,21 @@
         "owner": "Daaboulex",
         "ref": "v2.5.0",
         "repo": "nix-packaging-standard",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     }
