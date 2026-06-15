@@ -29,7 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, ... }: {
+  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
