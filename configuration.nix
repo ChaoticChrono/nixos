@@ -7,12 +7,17 @@
   ];
 
   # --- 1. BOOT, SECUREBOOT (LANZABOOTE) & PLYMOUTH ---
-  boot.plymouth.enable = true;
+  boot.plymouth = { 
+  enable = true; 
+  theme = "nixos-bgrt-plymouth";
+  themePackages = with pkgs; [
+  nixos-bgrt-plymouth     
+  ];
+
+  };
   boot.kernelParams = [
     "quiet"
-    "splash"
-    "boot.shell_on_fail"
-    "udev.log_priority=3"
+    "rd.udev.log_level=3"
     "rd.systemd.show_status=auto"
   ];
   boot.loader.timeout = 0;
@@ -249,7 +254,6 @@
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
     kdePackages.breeze-gtk
     plasma-panel-colorizer
-    crystal-dock
     xdg-terminal-exec
     wl-clipboard
     temurin-bin-25
