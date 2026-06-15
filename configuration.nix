@@ -256,6 +256,7 @@
     sbctl
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
     kdePackages.breeze-gtk
+    kde-rounded-corners
     plasma-panel-colorizer
     xdg-terminal-exec
     wl-clipboard
