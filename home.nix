@@ -57,6 +57,12 @@ programs.firefox = {
   };
    home.packages = with pkgs; [
    kdePackages.qtstyleplugin-kvantum
+   overskride
+   glib
+   gsettings-desktop-schemas
+   hyprpaper
+   hyprpolkitagent
+   wofi
    ];
    programs.fish = { 
    enable = true;

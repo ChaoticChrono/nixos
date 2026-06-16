@@ -256,9 +256,6 @@
     btrfs-assistant
     telegram-desktop
     nur.repos.milahu.spotify-adblock
-    hyprpaper
-    wofi
-    hyprpolkitagent
   ];
   programs.eden = {
     enable = true;
