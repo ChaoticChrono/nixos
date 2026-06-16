@@ -45,7 +45,7 @@ end, { locked = true })
 local terminal    = "kitty"
 local emoji =     "wofi-emoji"
 local menu        = "wofi"
-
+local clipboard = "cursor-clip"
 
 -------------------
 ---- AUTOSTART ----
@@ -279,7 +279,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(emoji))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(cursor-clip))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(clipboard))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
