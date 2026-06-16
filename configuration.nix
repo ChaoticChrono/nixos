@@ -261,6 +261,7 @@
     # System Essentials
     sbctl
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
+        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     #kdePackages.breeze-gtk
     #kde-rounded-corners
     #plasma-panel-colorizer
