@@ -53,7 +53,6 @@ programs.firefox = {
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
    programs.kitty.enable = true;
-   programs.hypridle.enable = true;
    
 programs.git = {
   enable = true;
