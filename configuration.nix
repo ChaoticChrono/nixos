@@ -127,7 +127,7 @@
      };
   powerManagement.enable = true;
   services.fwupd.enable = true;
-  services.polkit.enable = true;
+  security.polkit.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
