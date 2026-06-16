@@ -329,6 +329,7 @@ hl.window_rule({
 
     float = true,
     center = true,
+    size = "50% 40%",
 })
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
