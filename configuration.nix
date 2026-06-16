@@ -197,7 +197,7 @@
       Environment = {
         # Fix un-themed cursor in some Wayland apps
         XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
-        WLR_NO_HARDWARE_CURSORS=1
+        WLR_NO_HARDWARE_CURSORS=1;
       };
     };
     "com.discordapp.Discord" = {
