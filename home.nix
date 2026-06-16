@@ -53,7 +53,6 @@ programs.firefox = {
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
    programs.kitty.enable = true; # required for the default Hyprland config
-   wayland.windowManager.hyprland.systemd.enable = false; # for uwsm
    
 programs.git = {
   enable = true;

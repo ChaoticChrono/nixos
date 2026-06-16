@@ -125,7 +125,7 @@
  # };
   programs.hyprland = {
   enable = true;
-  withUWSM = true;
+  withUWSM = false;
   xwayland.enable = true;
   };
   systemd.services."getty@tty1" = {
