@@ -19,11 +19,6 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
    flake-utils.url = "github:numtide/flake-utils";
    nur = {
       url = "github:nix-community/NUR";

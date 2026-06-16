@@ -1,7 +1,6 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
-      inputs.plasma-manager.homeModules.plasma-manager
   ];
   home.username = "ved";
   home.homeDirectory = "/home/ved";
@@ -9,22 +8,6 @@
   home.sessionVariables = {
    GAMEMODERUNEXEC="env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only";
    };
-  # Universal cursor settings
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    size = 32;
-    name = "Adwaita";
-    package = pkgs.adwaita-icon-theme;
-  };
-  gtk = {
-  theme = {
-  enable = true;
-  package = pkgs.adw-gtk3;
-  name = "Adw-gtk3-dark";
-  };
-  gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; }; 
-  };
   qt = {
     enable = true;
   };
@@ -51,18 +34,6 @@ programs.firefox = {
    };
     programs.btop.enable = true;
     programs.fastfetch.enable = true;
-    programs.alacritty.enable = true; # Super+T in the default setting (terminal)
-    programs.fuzzel.enable = true; # Super+D in the default setting (app launcher)
-    programs.swaylock.enable = true; # Super+Alt+L in the default setting (screen locker)
-    programs.waybar.enable = true; # launch on startup in the default setting (bar)
-    services.mako.enable = true; # notification daemon
-    services.swayidle.enable = true; # idle management daemon
-    services.polkit-gnome.enable = true; # polkit
-    home.packages = with pkgs; [
-    swaybg # wallpaper
-    xwayland-satellite # xwayland support
-    nautilus
-    ];
    
 programs.git = {
   enable = true;

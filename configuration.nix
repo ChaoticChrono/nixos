@@ -102,20 +102,6 @@
     packages = with pkgs; [ terminus_font ];
     keyMap = "us";
   };
-
- 
-  programs.niri = {
-  enable = true;
-  };
-  services.greetd = {
-  enable = true;
-  settings = {
-    default_session = {
-      command = "${config.programs.niri.package}/bin/niri-session";
-      user = "ved";
-    };
-    };
-  };
   systemd.user.services.niri.enableDefaultPath = false;
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
   services.printing.enable = false;
@@ -231,6 +217,9 @@
     settings.aws.disabled = true;
   };
   
+  services.desktopManager.pantheon.enable = true;
+  
+
   programs.git.enable = true;
   programs.appimage = { enable = true; binfmt = true; };
   virtualisation.waydroid.enable = true;
