@@ -153,7 +153,7 @@
   # Hybrid NVIDIA Graphics Configurations
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
   hardware.nvidia = {
-    open = false;
+    open = true;
     modesetting.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = true;
@@ -168,7 +168,8 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [ intel-media-driver ];
+    extraPackages = with pkgs; [ intel-media-driver nvidia-vaapi-driver
+    libva-utils ];
   };
   programs.hyprland = {
   enable = true;
