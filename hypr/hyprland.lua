@@ -333,13 +333,14 @@ hl.window_rule({
     center = true,
     size = {"monitor_w * 0.5", "monitor_h * 0.5"},
 })
-hl.window_rule({
-    name = "waydroid-fullscreen",
-    match = {
-        class = "Waydroid"
-    },
-    fullscreen = true,
-})
+-- Waydroid full-UI
+hl.window_rule({match = {class = "^(Waydroid)$" }, tile = true})
+-- Multi-window app
+hl.window_rule({match = {class = "^(waydroid\\..*)$" }, tile = true})
+-- disable blur
+hl.window_rule({match = {class = "^(Waydroid|waydroid\\..*)$" }, no_blur = true})
+hl.window_rule({match = {class = "^(Waydroid|waydroid\\..*)$" }, no_shadow = true})
+hl.window_rule({match = {class = "^(Waydroid|waydroid\\..*)$" }, immediate = true})
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
