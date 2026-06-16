@@ -266,6 +266,7 @@
     swaynotificationcenter 
     swayosd
     hyprpolkitagent
+    hyprpaper
   ];
   programs.eden = {
     enable = true;

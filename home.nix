@@ -49,7 +49,14 @@ programs.firefox = {
     };
   };
 
-   programs.fish.enable = true;
+   programs.fish = { 
+   enable = true;
+   loginShellInit = ''
+      if test (tty) = "/dev/tty1"
+        exec start-hyprland
+      end
+    '';
+   };
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
    programs.kitty.enable = true;
