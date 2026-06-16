@@ -43,7 +43,7 @@ end, { locked = true })
 
 -- Set programs that you use
 local terminal    = "kitty"
-local fileManager = "dolphin"
+local emoji =     "wofi-emoji"
 local menu        = "wofi"
 
 

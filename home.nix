@@ -114,6 +114,7 @@
    telegram-desktop
    nur.repos.milahu.spotify-adblock
    libnotify
+   wofi-emoji
    ];
    programs.fish = { 
    enable = true;
