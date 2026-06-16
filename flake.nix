@@ -14,6 +14,7 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+      nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
   eden = {
     url = "github:Daaboulex/eden-nix";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
+  outputs = inputs@{ self, nixpkgs-wayland, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -37,6 +38,9 @@
         nix-flatpak.nixosModules.nix-flatpak
         nur.modules.nixos.default
         ./configuration.nix
+        ({ pkgs, ... }: {
+        nixpkgs.config.overlays = [ nixpkgs-wayland.overlays.default ];
+        })
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
