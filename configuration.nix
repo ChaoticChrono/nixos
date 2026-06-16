@@ -188,7 +188,6 @@
       "io.github.giantpinkrobots.varia"
       "com.usebottles.bottles"
       "com.discordapp.Discord"
-      "moe.launcher.an-anime-game-launcher"
     ];
      overrides = {
       global = {
@@ -197,7 +196,6 @@
       Environment = {
         # Fix un-themed cursor in some Wayland apps
         XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
-        WLR_NO_HARDWARE_CURSORS="1";
       };
     };
     "com.discordapp.Discord" = {
@@ -234,31 +232,11 @@
   environment.systemPackages = with pkgs; [
     # System Essentials
     sbctl
-    inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
     adw-gtk3
-    xdg-terminal-exec
-    wl-clipboard
     temurin-bin-25
-    aria2
-    azahar
     tpm2-tss
-    waydroid-helper
     android-tools
-    libreoffice
-    ffmpeg-headless
     ffmpegthumbnailer
-    gdk-pixbuf
-    libheif.bin
-    libheif.out
-    libavif
-    libjxl
-    webp-pixbuf-loader
-    celeste
-    libxcursor
-    yt-dlp
-    btrfs-assistant
-    telegram-desktop
-    nur.repos.milahu.spotify-adblock
   ];
   programs.eden = {
     enable = true;

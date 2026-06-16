@@ -67,6 +67,19 @@
    adwaita-icon-theme
    playerctl
    networkmanagerapplet
+   inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
+   xdg-terminal-exec
+   wl-clipboard
+   yt-dlp
+   aria2
+   azahar
+   waydroid-helper
+   libreoffice
+   celeste
+   btrfs-assistant
+   btrfs-assistant
+   telegram-desktop
+   nur.repos.milahu.spotify-adblock
    ];
    programs.fish = { 
    enable = true;
