@@ -180,7 +180,7 @@
       "api.alsa.headroom" = 8192;
     };
   };
-
+  services.upower.enable = true;
   services.libinput.enable = true;
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
@@ -289,7 +289,6 @@
     btrfs-assistant
     telegram-desktop
     nur.repos.milahu.spotify-adblock
-    ashell
   ];
   programs.eden = {
     enable = true;
