@@ -101,7 +101,7 @@
     packages = with pkgs; [ terminus_font ];
     keyMap = "us";
   };
-  systemd.user.services.niri.enableDefaultPath = false;
+
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
   services.printing.enable = false;
   services.thermald.enable = true;
@@ -177,6 +177,7 @@
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
   programs.uwsm.enable = true;
+  programs.dconf.enable = true;
   # --- 5. DECLARATIVE FLATPAK PACKAGES ---
   services.flatpak = {
     enable = true;
