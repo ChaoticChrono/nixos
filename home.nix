@@ -41,6 +41,34 @@
   };
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
+  services.mako = {
+  enable = true;
+
+  settings = {
+    anchor = "top-right";
+    default-timeout = 5000;
+
+    font = "Inter 10";
+
+    width = 350;
+    height = 150;
+
+    margin = "20";
+    padding = "12";
+
+    border-size = 2;
+    border-radius = 12;
+
+    background-color = "#1e1e2e";
+    text-color = "#cdd6f4";
+    border-color = "#89b4fa";
+
+    icons = true;
+    max-icon-size = 48;
+
+    layer = "overlay";
+   };
+ };
   programs.firefox = {
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
@@ -80,6 +108,7 @@
    btrfs-assistant
    telegram-desktop
    nur.repos.milahu.spotify-adblock
+   libnotify
    ];
    programs.fish = { 
    enable = true;
