@@ -118,6 +118,7 @@
    nur.repos.milahu.spotify-adblock
    libnotify
    wofi-emoji
+   cursor-clip
    ];
    programs.fish = { 
    enable = true;

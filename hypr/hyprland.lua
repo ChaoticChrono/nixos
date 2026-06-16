@@ -58,9 +58,10 @@ local menu        = "wofi"
 --
  hl.on("hyprland.start", function ()
    hl.exec_cmd("systemctl --user start hyprpolkitagent")
-   hl.exec_cmd("hyprpaper")
-   hl.exec_cmd("waybar")
-   hl.exec_cmd("mako")
+   hl.exec_cmd("systemctl --user start hyprpaper")
+   hl.exec_cmd("systemctl --user start waybar")
+   hl.exec_cmd("systemctl --user start mako")
+   hl.exec_cmd("cursor-clip --daemon")
  end)
 
 
@@ -278,7 +279,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(emoji))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(cursor-clip))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
