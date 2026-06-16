@@ -80,11 +80,6 @@ programs.firefox = {
    programs.fastfetch.enable = true;
    programs.kitty.enable = true;
    wayland.windowManager.hyprland.systemd.enable = false;
-   home.packages = with pkgs; [
-  playerctl
-  pwvucontrol
-  networkmanagerapplet
-];
 
 programs.waybar = {
   enable = true;
