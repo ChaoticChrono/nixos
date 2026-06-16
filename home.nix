@@ -63,6 +63,8 @@ programs.firefox = {
    hyprpolkitagent
    morewaita-icon-theme
    adwaita-icon-theme
+   playerctl
+   networkmanagerapplet
    ];
    programs.fish = { 
    enable = true;
@@ -78,10 +80,16 @@ programs.firefox = {
    programs.fastfetch.enable = true;
    programs.kitty.enable = true;
    wayland.windowManager.hyprland.systemd.enable = false;
-   programs.waybar = {
-   enable = true;
+   home.packages = with pkgs; [
+  playerctl
+  pwvucontrol
+  networkmanagerapplet
+];
 
-   settings.mainBar = {
+programs.waybar = {
+  enable = true;
+
+  settings.mainBar = {
     layer = "top";
     position = "top";
     height = 34;
@@ -92,37 +100,58 @@ programs.firefox = {
     ];
 
     modules-center = [
+      "mpris"
       "hyprland/window"
     ];
 
     modules-right = [
       "pulseaudio"
       "network"
+      "power-profiles-daemon"
       "battery"
       "clock"
       "tray"
     ];
+
+    "hyprland/workspaces" = {
+      disable-scroll = false;
+      all-outputs = true;
+      on-click = "activate";
+
+      persistent-workspaces = {
+        "*" = 10;
+      };
+    };
 
     "hyprland/window" = {
       max-length = 60;
       separate-outputs = true;
     };
 
-    clock = {
-      format = "󰃰 {:%a %d %b  %H:%M}";
-      tooltip-format = "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>";
-    };
+    mpris = {
+      format = "{player_icon} {dynamic}";
+      format-paused = "󰏤 {dynamic}";
 
-    network = {
-      format-wifi = "󰖩 ";
-      format-ethernet = "󰈀 ";
-      format-disconnected = "󰖪 ";
-      tooltip-format = "{essid}";
+      dynamic-len = 40;
+      dynamic-order = [ "title" "artist" ];
+
+      player-icons = {
+        default = "󰎈";
+        spotify = "󰓇 ";
+        firefox = "󰈹 ";
+      };
+
+      tooltip-format = "{player}\n{title} - {artist}";
+
+      on-click = "playerctl play-pause";
+      on-scroll-up = "playerctl next";
+      on-scroll-down = "playerctl previous";
     };
 
     pulseaudio = {
       format = "{icon} {volume}%";
       format-muted = "󰝟 ";
+
       on-click = "pwvucontrol";
 
       format-icons = {
@@ -130,10 +159,40 @@ programs.firefox = {
       };
     };
 
+    network = {
+      format-wifi = "󰖩 ";
+      format-ethernet = "󰈀 ";
+      format-disconnected = "󰖪 ";
+
+      tooltip-format-wifi = "{essid}";
+      tooltip-format-ethernet = "Ethernet";
+
+      on-click = "nm-connection-editor";
+    };
+
+    power-profiles-daemon = {
+      format = "{icon}";
+
+      format-icons = {
+        performance = "󰓅 ";
+        balanced = "󰾅 ";
+        power-saver = "󰌪 ";
+      };
+
+      on-click = "powerprofilesctl set balanced";
+      on-click-right = "powerprofilesctl set performance";
+      on-click-middle = "powerprofilesctl set power-saver";
+    };
+
     battery = {
       format = "󰁹 {capacity}%";
       format-charging = "󰂄 {capacity}%";
       format-full = "󰁹 100%";
+    };
+
+    clock = {
+      format = "󰃰 {:%a %d %b %H:%M}";
+      tooltip-format = "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>";
     };
 
     tray = {
@@ -145,9 +204,9 @@ programs.firefox = {
     * {
       border: none;
       border-radius: 0;
+      min-height: 0;
       font-family: Inter, "Symbols Nerd Font Mono";
       font-size: 13px;
-      min-height: 0;
     }
 
     window#waybar {
@@ -163,8 +222,12 @@ programs.firefox = {
       padding: 0 10px;
       margin: 4px 2px;
       border-radius: 8px;
-      color: #cdd6f4;
       background: transparent;
+      color: #cdd6f4;
+    }
+
+    #workspaces button:hover {
+      background: rgba(255,255,255,0.08);
     }
 
     #workspaces button.active {
@@ -172,21 +235,19 @@ programs.firefox = {
       color: white;
     }
 
-    #workspaces button:hover {
-      background: rgba(255,255,255,0.08);
-    }
-
     #window {
       color: #d8dee9;
     }
 
-    #clock,
-    #battery,
-    #network,
+    #mpris,
     #pulseaudio,
+    #network,
+    #power-profiles-daemon,
+    #battery,
+    #clock,
     #tray {
       padding: 0 12px;
-      margin: 4px 4px;
+      margin: 4px;
       border-radius: 8px;
       background: rgba(255,255,255,0.05);
     }
@@ -194,9 +255,10 @@ programs.firefox = {
     tooltip {
       background: #1e1e1e;
       border-radius: 10px;
-      }
-    '';
-  };
+    }
+  '';
+};
+
    programs.git = {
      enable = true;
      settings = {
