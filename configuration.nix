@@ -110,7 +110,6 @@
   xwayland.enable = true;
   };
   security.polkit.enable = true;
-  services.hyprpolkitagent.enable = true;
   systemd.services."getty@tty1" = {
   overrideStrategy = "asDropin";
   serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin ved --noclear --keep-baud %I 115200,38400,9600 $TERM"];
@@ -266,7 +265,7 @@
     nur.repos.milahu.spotify-adblock
     swaynotificationcenter 
     swayosd
-    
+    hyprpolkitagent
   ];
   programs.eden = {
     enable = true;
