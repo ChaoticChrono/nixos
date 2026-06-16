@@ -128,7 +128,10 @@
   withUWSM = true;
   xwayland.enable = true;
   };
-  programs.regreet.enable = true;
+  systemd.services."getty@tty1" = {
+  overrideStrategy = "asDropin";
+  serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin ved --noclear --keep-baud %I 115200,38400,9600 $TERM"];
+  };
   #environment.plasma6.excludePackages = with pkgs.kdePackages; [
   #kmahjongg
   #kmines
@@ -261,10 +264,6 @@
     # System Essentials
     sbctl
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
-    noctalia-shell
-    #kdePackages.breeze-gtk
-    #kde-rounded-corners
-    #plasma-panel-colorizer
     adw-gtk3
     xdg-terminal-exec
     wl-clipboard
@@ -286,10 +285,10 @@
     celeste
     libxcursor
     yt-dlp
-    #aha
     btrfs-assistant
     telegram-desktop
     nur.repos.milahu.spotify-adblock
+    
   ];
   programs.eden = {
     enable = true;
