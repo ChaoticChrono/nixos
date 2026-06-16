@@ -41,6 +41,11 @@
   };
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
+  xdg.configFile = {
+  "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
+  "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
+  "hypr/hyprpaper.conf".source = ./hypr/hyprpaper.conf;
+  };
   services.mako = {
   enable = true;
 
