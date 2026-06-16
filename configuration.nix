@@ -65,8 +65,7 @@
     algorithm = "lz4";
     memoryPercent = 100;
     priority = 100;
-  };
-  
+  };  
   # --- 3. NETWORKING & SYSTEM INTERFACES ---
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -128,7 +127,7 @@
      };
   powerManagement.enable = true;
   services.fwupd.enable = true;
-  
+  services.polkit.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -216,9 +215,6 @@
     enable = true;
     settings.aws.disabled = true;
   };
-  services.xserver.enable = true;
-  services.desktopManager.pantheon.enable = true;
-
   programs.git.enable = true;
   programs.appimage = { enable = true; binfmt = true; };
   virtualisation.waydroid.enable = true;

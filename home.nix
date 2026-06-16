@@ -11,7 +11,10 @@
   qt = {
     enable = true;
   };
-
+  wayland.windowManager.sway = {
+  enable = true;
+  wrapperFeatures.gtk = true;
+  };
 programs.firefox = {
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
