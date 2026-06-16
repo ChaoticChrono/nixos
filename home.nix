@@ -52,7 +52,8 @@ programs.firefox = {
    programs.fish.enable = true;
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
-   programs.kitty.enable = true; # required for the default Hyprland config
+   programs.kitty.enable = true;
+   programs.hypridle.enable = true;
    
 programs.git = {
   enable = true;

@@ -116,13 +116,7 @@
     keyMap = "us";
   };
 
-  # Graphical Desktop Rules (Pure Kde / Wayland)
-  # Kde
-  #services = {
-  #  desktopManager.plasma6.enable = true;
-  # Default display manager for Plasma
- #   displayManager.plasma-login-manager.enable = true;
- # };
+ 
   programs.hyprland = {
   enable = true;
   withUWSM = false;
@@ -132,14 +126,7 @@
   overrideStrategy = "asDropin";
   serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin ved --noclear --keep-baud %I 115200,38400,9600 $TERM"];
   };
-  #environment.plasma6.excludePackages = with pkgs.kdePackages; [
-  #kmahjongg
-  #kmines
-  #kpat
-  #ksudoku
-  #konversation
-  #ktorrent
-  #];
+  
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
   services.printing.enable = false;
   services.thermald.enable = true;
@@ -287,8 +274,7 @@
     yt-dlp
     btrfs-assistant
     telegram-desktop
-    nur.repos.milahu.spotify-adblock
-    
+    nur.repos.milahu.spotify-adblock 
   ];
   programs.eden = {
     enable = true;
