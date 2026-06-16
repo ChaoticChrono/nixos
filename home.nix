@@ -20,8 +20,8 @@
   gtk = {
   theme = {
   enable = true;
-  package = pkgs.kdePackages.breeze-gtk;
-  name = "Breeze";
+  package = pkgs.adw-gtk3;
+  name = "Adw-gtk3-dark";
   };
   gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; }; 
   };
@@ -52,9 +52,9 @@ programs.firefox = {
    programs.fish.enable = true;
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
-   programs.konsole.enable = true;
    programs.kitty.enable = true; # required for the default Hyprland config
-   wayland.windowManager.hyprland.enable = true; # enable Hyprland
+   wayland.windowManager.hyprland.systemd.enable = false; # for uwsm
+   
 programs.git = {
   enable = true;
   settings = {
@@ -68,66 +68,6 @@ programs.git = {
       acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f";
       flup = "!git diff --quiet && git diff --cached --quiet || (git add . && git commit -m \"Flake Update\" && git push)";
     };
-  };
-};
-programs.plasma = {
-  enable = true;
-  
-   workspace = {
-    wallpaper = ./wallpaper.webp;
-   };
-   
-  fonts = {
-    general = {
-      family = "Inter";
-      pointSize = 12;
-    };
-
-    fixedWidth = {
-      family = "Intel One Mono";
-      pointSize = 12;
-    };
-
-    small = {
-      family = "Inter";
-      pointSize = 11;
-    };
-
-    toolbar = {
-      family = "Inter";
-      pointSize = 12;
-    };
-
-    menu = {
-      family = "Inter";
-      pointSize = 12;
-    };
-
-    windowTitle = {
-      family = "Inter";
-      pointSize = 12;
-      weight = "bold";
-    };
-  };
-   
-  configFile = {
-
-    kwinrc.Plugins.blurEnabled = true;
-    kwinrc.Plugins.translucencyEnabled = true;
-    kwinrc.Plugins.wobblywindowsEnabled = true;
-
-    kwinrc.Plugins.dynamic_workspacesEnabled = true;
-
-    kdeglobals.General.accentColorFromWallpaper = true;
-    kdeglobals.KDE.contrast = 4;
-    kdeglobals.KDE.frameContrast = 0.2;
-    kwinrc.Windows.ElectricBorderDelay = 0;
-    
-    kwinrc.Xwayland.Scale = 1.25;
-
-    kwinrc."org.kde.kdecoration2".ButtonsOnLeft = "X";
-    kwinrc."org.kde.kdecoration2".ButtonsOnRight = "";
-
   };
 };
 

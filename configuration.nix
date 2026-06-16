@@ -34,19 +34,19 @@
   };
   boot.initrd.systemd.enable = true;
   #Unlock Kde plasma wallet with luks
-  systemd.services.plasmalogin.serviceConfig.KeyringMode = "inherit";
-  security.pam.services.plasmalogin-autologin.rules.auth = {
-    systemd_loadkey = {
-      order = 0;
-      control = "optional";
-      modulePath = "${pkgs.systemd}/lib/security/pam_systemd_loadkey.so";
-    };
-    plasmalogin = {
-      order = 1;
-      control = "include";
-      modulePath = "plasmalogin";
-    };
-  };
+  #systemd.services.plasmalogin.serviceConfig.KeyringMode = "inherit";
+  #security.pam.services.plasmalogin-autologin.rules.auth = {
+  #  systemd_loadkey = {
+  #    order = 0;
+  #    control = "optional";
+  #    modulePath = "${pkgs.systemd}/lib/security/pam_systemd_loadkey.so";
+  #  };
+  #  plasmalogin = {
+  #    order = 1;
+  #    control = "include";
+  #    modulePath = "plasmalogin";
+  #  };
+  #};
   # --- 2. KERNEL & PERFORMANCE OPTIMIZATIONS ---
   boot.kernelPackages =  pkgs.linuxPackages_cachyos;
    
@@ -118,20 +118,25 @@
 
   # Graphical Desktop Rules (Pure Kde / Wayland)
   # Kde
-  services = {
-    desktopManager.plasma6.enable = true;
+  #services = {
+  #  desktopManager.plasma6.enable = true;
   # Default display manager for Plasma
-    displayManager.plasma-login-manager.enable = true;
+ #   displayManager.plasma-login-manager.enable = true;
+ # };
+  programs.hyprland = {
+  enable = true;
+  withUWSM = true;
+  xwayland.enable = true;
   };
-  programs.hyprland.enable = true; # enable Hyprland
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-  kmahjongg
-  kmines
-  kpat
-  ksudoku
-  konversation
-  ktorrent
-  ];
+  programs.regreet.enable = true;
+  #environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #kmahjongg
+  #kmines
+  #kpat
+  #ksudoku
+  #konversation
+  #ktorrent
+  #];
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
   services.printing.enable = false;
   services.thermald.enable = true;
@@ -256,9 +261,10 @@
     # System Essentials
     sbctl
     inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
-    kdePackages.breeze-gtk
-    kde-rounded-corners
-    plasma-panel-colorizer
+    #kdePackages.breeze-gtk
+    #kde-rounded-corners
+    #plasma-panel-colorizer
+    adw-gtk3
     xdg-terminal-exec
     wl-clipboard
     temurin-bin-25
@@ -279,7 +285,7 @@
     celeste
     libxcursor
     yt-dlp
-    aha
+    #aha
     btrfs-assistant
     telegram-desktop
     nur.repos.milahu.spotify-adblock
