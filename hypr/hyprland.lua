@@ -329,7 +329,7 @@ hl.window_rule({
 
     float = true,
     center = true,
-    size = "50% 40%",
+    size = {"monitor_w * 0.5", "monitor_h * 0.5"},
 })
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
