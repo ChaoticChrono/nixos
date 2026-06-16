@@ -312,7 +312,7 @@
   };
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
-    extraPackages = with pkgs; [ ];
+    extraPackages = with pkgs; [ adwaita-icon-theme ];
     extraCompatPackages = with pkgs; [ proton-ge-bin proton-cachyos_x86_64_v3 ];
   };
   services.switcherooControl.enable = true;
