@@ -267,6 +267,7 @@
     swayosd
     hyprpolkitagent
     hyprpaper
+    hyprlauncher
   ];
   programs.eden = {
     enable = true;
