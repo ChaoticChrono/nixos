@@ -169,10 +169,7 @@
     enable32Bit = true;
     extraPackages = with pkgs; [ intel-media-driver ];
   };
-  xdg.portal = {
-  enable = true;
-  wlr.enable = true;
-  };
+  programs.hyprland.enable = true;
   # --- 5. DECLARATIVE FLATPAK PACKAGES ---
   services.flatpak = {
     enable = true;
