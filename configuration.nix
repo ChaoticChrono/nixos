@@ -174,7 +174,9 @@
   withUWSM = true;
   xwayland.enable = true;
   };
-   
+  programs.hyprlock.enable = true;
+  services.hypridle.enable = true;
+  programs.uwsm.enable = true;
   # --- 5. DECLARATIVE FLATPAK PACKAGES ---
   services.flatpak = {
     enable = true;
