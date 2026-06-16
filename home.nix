@@ -39,7 +39,9 @@
     name = "kvantum";
     };
   };
-programs.firefox = {
+  programs.hyprlock.enable = true;
+  services.hypridle.enable = true;
+  programs.firefox = {
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.ved = { # Creates a Firefox profile named 'ved'
