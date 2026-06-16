@@ -216,9 +216,8 @@
     enable = true;
     settings.aws.disabled = true;
   };
-  
-  services.desktopManager.pantheon.enable = true;
   services.xserver.enable = true;
+  services.desktopManager.pantheon.enable = true;
 
   programs.git.enable = true;
   programs.appimage = { enable = true; binfmt = true; };
