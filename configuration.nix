@@ -218,7 +218,7 @@
   };
   
   services.desktopManager.pantheon.enable = true;
-  
+  services.xserver.enable = true;
 
   programs.git.enable = true;
   programs.appimage = { enable = true; binfmt = true; };
