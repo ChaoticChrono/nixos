@@ -110,6 +110,8 @@ programs.waybar = {
 
     "hyprland/workspaces" = {
       format = "{icon}";
+        "on-scroll-up": "hyprctl eval 'hl.dispatch(hl.dsp.focus({ workspace = \"-1\" }))'",
+        "on-scroll-down": "hyprctl eval 'hl.dispatch(hl.dsp.focus({ workspace = \"+1\" }))'",
     };
 
     "hyprland/window" = {
