@@ -58,8 +58,7 @@ programs.firefox = {
    home.packages = with pkgs; [
    kdePackages.qtstyleplugin-kvantum
    overskride
-   glib
-   gsettings-desktop-schemas
+   pwvucontrol
    hyprpaper
    hyprpolkitagent
    morewaita-icon-theme
@@ -79,6 +78,125 @@ programs.firefox = {
    programs.fastfetch.enable = true;
    programs.kitty.enable = true;
    wayland.windowManager.hyprland.systemd.enable = false;
+   programs.waybar = {
+   enable = true;
+
+   settings.mainBar = {
+    layer = "top";
+    position = "top";
+    height = 34;
+    spacing = 4;
+
+    modules-left = [
+      "hyprland/workspaces"
+    ];
+
+    modules-center = [
+      "hyprland/window"
+    ];
+
+    modules-right = [
+      "pulseaudio"
+      "network"
+      "battery"
+      "clock"
+      "tray"
+    ];
+
+    "hyprland/window" = {
+      max-length = 60;
+      separate-outputs = true;
+    };
+
+    clock = {
+      format = "󰃰 {:%a %d %b  %H:%M}";
+      tooltip-format = "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>";
+    };
+
+    network = {
+      format-wifi = "󰖩 ";
+      format-ethernet = "󰈀 ";
+      format-disconnected = "󰖪 ";
+      tooltip-format = "{essid}";
+    };
+
+    pulseaudio = {
+      format = "{icon} {volume}%";
+      format-muted = "󰝟 ";
+      on-click = "pwvucontrol";
+
+      format-icons = {
+        default = [ "󰕿" "󰖀" "󰕾 " ];
+      };
+    };
+
+    battery = {
+      format = "󰁹 {capacity}%";
+      format-charging = "󰂄 {capacity}%";
+      format-full = "󰁹 100%";
+    };
+
+    tray = {
+      spacing = 10;
+    };
+  };
+
+  style = ''
+    * {
+      border: none;
+      border-radius: 0;
+      font-family: Inter, "Symbols Nerd Font Mono";
+      font-size: 13px;
+      min-height: 0;
+    }
+
+    window#waybar {
+      background: rgba(30, 30, 30, 0.92);
+      color: #ffffff;
+    }
+
+    #workspaces {
+      margin: 0 8px;
+    }
+
+    #workspaces button {
+      padding: 0 10px;
+      margin: 4px 2px;
+      border-radius: 8px;
+      color: #cdd6f4;
+      background: transparent;
+    }
+
+    #workspaces button.active {
+      background: #3584e4;
+      color: white;
+    }
+
+    #workspaces button:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    #window {
+      color: #d8dee9;
+    }
+
+    #clock,
+    #battery,
+    #network,
+    #pulseaudio,
+    #tray {
+      padding: 0 12px;
+      margin: 4px 4px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    tooltip {
+      background: #1e1e1e;
+      border-radius: 10px;
+      }
+    '';
+  };
    programs.git = {
      enable = true;
      settings = {
