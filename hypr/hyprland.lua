@@ -331,6 +331,13 @@ hl.window_rule({
     center = true,
     size = {"monitor_w * 0.5", "monitor_h * 0.5"},
 })
+hl.window_rule({
+    name = "waydroid-fullscreen",
+    match = {
+        class = "Waydroid"
+    },
+    fullscreen = true,
+})
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
