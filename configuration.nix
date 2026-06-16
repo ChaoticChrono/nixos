@@ -123,6 +123,7 @@
   # Default display manager for Plasma
     displayManager.plasma-login-manager.enable = true;
   };
+  programs.hyprland.enable = true; # enable Hyprland
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
   kmahjongg
   kmines
