@@ -35,6 +35,9 @@
    };
   qt = {
     enable = true;
+    style = {
+    name = "kvantum";
+    };
   };
 programs.firefox = {
     enable = true;
@@ -52,7 +55,9 @@ programs.firefox = {
       };
     };
   };
-
+   home.packages = with pkgs; [
+   kdePackages.qtstyleplugin-kvantum
+   ];
    programs.fish = { 
    enable = true;
    };
