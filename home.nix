@@ -35,7 +35,6 @@
    };
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
   };
 programs.firefox = {
     enable = true;
