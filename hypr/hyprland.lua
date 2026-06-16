@@ -321,12 +321,14 @@ hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 -- Enable screenshots
 hl.bind("Print", hl.dsp.exec_cmd('grim - | satty -f - --copy-command wl-copy -o "~/Pictures/Screenshots/%Y%m%d_%H%M%S.png"'))
-hl.rule.window("float", {
-    class = "com.gabm.satty"
-})
+hl.window_rule({
+    name = "satty-float",
+    match = {
+        class = "com.gabm.satty",
+    },
 
-hl.rule.window("center", {
-    class = "com.gabm.satty"
+    float = true,
+    center = true,
 })
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
