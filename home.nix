@@ -85,7 +85,16 @@
    };
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
-   programs.kitty.enable = true;
+   programs.kitty = {
+   enable = true;
+   font = {
+    name = "Intel One Mono";
+    size = 12;
+  };
+   settings = {
+    background_opacity = "0.85";
+    };
+  };
    wayland.windowManager.hyprland.systemd.enable = false;
 
 programs.waybar = {
