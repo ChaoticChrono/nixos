@@ -62,12 +62,18 @@ programs.firefox = {
    gsettings-desktop-schemas
    hyprpaper
    hyprpolkitagent
-   wofi
    morewaita-icon-theme
    adwaita-icon-theme
    ];
    programs.fish = { 
    enable = true;
+   };
+   programs.wofi = {
+   enable = true;
+     settings = {
+     allow_images = true;
+     show = "drun";
+    };
    };
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
