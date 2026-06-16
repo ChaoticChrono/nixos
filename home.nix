@@ -92,6 +92,9 @@
   };
    home.packages = with pkgs; [
    kdePackages.qtstyleplugin-kvantum
+   grim 
+   slurp
+   satty
    overskride
    pwvucontrol
    hyprpaper
