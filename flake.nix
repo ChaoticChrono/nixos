@@ -29,10 +29,6 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-   noctalia = {
-      url = "github:noctalia-dev/noctalia/legacy-v4";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
