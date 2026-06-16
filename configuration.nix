@@ -169,7 +169,12 @@
     enable32Bit = true;
     extraPackages = with pkgs; [ intel-media-driver ];
   };
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+  enable = true;
+  withUWSM = true;
+  xwayland.enable = true;
+  };
+   
   # --- 5. DECLARATIVE FLATPAK PACKAGES ---
   services.flatpak = {
     enable = true;
@@ -249,6 +254,9 @@
     btrfs-assistant
     telegram-desktop
     nur.repos.milahu.spotify-adblock
+    hyprpaper
+    wofi
+    hyprpolkitagent
   ];
   programs.eden = {
     enable = true;

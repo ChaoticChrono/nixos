@@ -35,9 +35,10 @@ programs.firefox = {
    programs.fish = { 
    enable = true;
    };
-    programs.btop.enable = true;
-    programs.fastfetch.enable = true;
-   
+   programs.btop.enable = true;
+   programs.fastfetch.enable = true;
+   programs.kitty.enable = true;
+   wayland.windowManager.hyprland.systemd.enable = false;
 programs.git = {
   enable = true;
   settings = {
