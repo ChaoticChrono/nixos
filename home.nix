@@ -109,13 +109,9 @@ programs.waybar = {
     ];
 
     "hyprland/workspaces" = {
-      disable-scroll = false;
-      all-outputs = true;
-      on-click = "activate";
-
-      persistent-workspaces = {
-        "*" = 10;
-      };
+      format = "{icon}";
+     on-scroll-up =  "hyprctl dispatch workspace e+1";
+     on-scroll-down = "hyprctl dispatch workspace e-1";
     };
 
     "hyprland/window" = {
