@@ -99,6 +99,7 @@
    morewaita-icon-theme
    adwaita-icon-theme
    playerctl
+   hyprshutdown
    networkmanagerapplet
    inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
    xdg-terminal-exec
@@ -109,7 +110,6 @@
    waydroid-helper
    libreoffice
    celeste
-   btrfs-assistant
    btrfs-assistant
    telegram-desktop
    nur.repos.milahu.spotify-adblock
