@@ -267,15 +267,23 @@
     "share/xdg-desktop-portal" 
     "share/applications"
   ];
-  fonts.packages = with pkgs; [
-  inter
-  intel-one-mono
-  nerd-fonts.symbols-only
-  twitter-color-emoji
+  fonts = {
+  packages = with pkgs; [
+    inter
+    intel-one-mono
+    nerd-fonts.symbols-only
+    twitter-color-emoji
   ];
-  fonts.fontconfig.defaultFonts = {
-  emoji = [ "Twitter Color Emoji" ];
-  };
+
+  fontconfig = {
+    defaultFonts = {
+      sansSerif = [ "Inter" ];
+      serif = [ "Inter" ];
+      monospace = [ "Intel One Mono" ];
+      emoji = [ "Twitter Color Emoji" ];
+     };
+   };
+ };
   environment.sessionVariables = {
     JAVA_HOME = "${pkgs.temurin-bin-25}";
     NIXOS_OZONE_WL = "1"; # System-wide Wayland rendering enforcer
