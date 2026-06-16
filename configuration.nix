@@ -104,17 +104,19 @@
   };
 
  
-  programs.hyprland = {
+  programs.niri = {
   enable = true;
-  withUWSM = false;
-  xwayland.enable = true;
   };
-  security.polkit.enable = true;
-  systemd.services."getty@tty1" = {
-  overrideStrategy = "asDropin";
-  serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin ved --noclear --keep-baud %I 115200,38400,9600 $TERM"];
+  services.greetd = {
+  enable = true;
+  settings = {
+    default_session = {
+      command = "${config.programs.niri.package}/bin/niri-session";
+      user = "ved";
+    };
+    };
   };
-  
+  systemd.user.services.niri.enableDefaultPath = false;
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
   services.printing.enable = false;
   services.thermald.enable = true;
@@ -263,11 +265,6 @@
     btrfs-assistant
     telegram-desktop
     nur.repos.milahu.spotify-adblock
-    swaynotificationcenter 
-    swayosd
-    hyprpolkitagent
-    hyprpaper
-    hyprlauncher
   ];
   programs.eden = {
     enable = true;

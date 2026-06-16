@@ -14,8 +14,8 @@
     gtk.enable = true;
     x11.enable = true;
     size = 32;
-    name = "breeze_cursors";
-    package = pkgs.kdePackages.breeze;
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
   };
   gtk = {
   theme = {
@@ -32,9 +32,6 @@
 programs.firefox = {
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
-    nativeMessagingHosts = with pkgs; [
-    kdePackages.plasma-browser-integration
-    ];
     profiles.ved = { # Creates a Firefox profile named 'ved'
       name = "ved";
       isDefault = true;
@@ -51,15 +48,21 @@ programs.firefox = {
 
    programs.fish = { 
    enable = true;
-   loginShellInit = ''
-      if test (tty) = "/dev/tty1"
-        exec start-hyprland
-      end
-    '';
    };
-   programs.btop.enable = true;
-   programs.fastfetch.enable = true;
-   programs.kitty.enable = true;
+    programs.btop.enable = true;
+    programs.fastfetch.enable = true;
+    programs.alacritty.enable = true; # Super+T in the default setting (terminal)
+    programs.fuzzel.enable = true; # Super+D in the default setting (app launcher)
+    programs.swaylock.enable = true; # Super+Alt+L in the default setting (screen locker)
+    programs.waybar.enable = true; # launch on startup in the default setting (bar)
+    services.mako.enable = true; # notification daemon
+    services.swayidle.enable = true; # idle management daemon
+    services.polkit-gnome.enable = true; # polkit
+    home.packages = with pkgs; [
+    swaybg # wallpaper
+    xwayland-satellite # xwayland support
+    nautilus
+    ];
    
 programs.git = {
   enable = true;
