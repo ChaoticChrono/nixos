@@ -262,7 +262,7 @@
     btrfs-assistant
     telegram-desktop
     nur.repos.milahu.spotify-adblock
-    swaync
+    swaynotificationcenter 
     sway-osd
   ];
   programs.eden = {
