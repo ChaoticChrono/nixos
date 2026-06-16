@@ -307,7 +307,7 @@
   };
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
-    extraPackages = with pkgs; [ kdePackages.breeze kdePackages.breeze-icons ];
+    extraPackages = with pkgs; [ ];
     extraCompatPackages = with pkgs; [ proton-ge-bin proton-cachyos_x86_64_v3 ];
   };
   services.switcherooControl.enable = true;
