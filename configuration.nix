@@ -128,6 +128,7 @@
   powerManagement.enable = true;
   services.fwupd.enable = true;
   security.polkit.enable = true;
+  security.pam.services.hyprlock = {};
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
