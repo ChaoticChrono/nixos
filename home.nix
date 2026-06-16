@@ -63,6 +63,8 @@ programs.firefox = {
    hyprpaper
    hyprpolkitagent
    wofi
+   morewaita-icon-theme
+   adwaita-icon-theme
    ];
    programs.fish = { 
    enable = true;
