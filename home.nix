@@ -148,7 +148,12 @@
     };
   };
    wayland.windowManager.hyprland.systemd.enable = false;
+  services.wayle = {
+    enable = true;
 
+    # We provide the config ourselves below.
+    settings = { };
+  };
 
   xdg.configFile."wayle/config.toml".text = ''
     imports = []
@@ -159,12 +164,13 @@
     tearing-mode = false
 
     [bar]
-    scale = 1.0
+    scale = 0.80
+    height = 24
     inset-edge = 0.0
     inset-ends = 0.0
-    padding = 0.35
-    padding-ends = 0.5
-    module-gap = 0.5
+    padding = 0.10
+    padding-ends = 0.25
+    module-gap = 0.20
     location = "top"
     exclusive = true
     layer = "top"
@@ -175,27 +181,34 @@
     border-color = "border-accent"
     rounding = "sm"
     shadow = "none"
+
     button-variant = "block-prefix"
+
     button-opacity = 100
     button-bg-opacity = 100
-    button-icon-size = 1.0
-    button-icon-padding = 1.0
-    button-label-size = 1.0
-    button-label-weight = "semibold"
-    button-label-padding = 1.0
+
+    button-icon-size = 0.80
+    button-label-size = 0.80
+
+    button-icon-padding = 0.40
+    button-label-padding = 0.40
+
+    button-gap = 0.25
+
     button-rounding = "sm"
-    button-gap = 1.0
-    button-icon-position = "start"
+
     button-border-location = "all"
     button-border-width = 1
+
     button-group-border-location = "none"
     button-group-border-width = 1
     button-group-padding = 0.0
-    button-group-module-gap = 0.25
+    button-group-module-gap = 0.15
     button-group-background = "bg-elevated"
     button-group-opacity = 100
     button-group-border-color = "border-accent"
     button-group-rounding = "sm"
+
     dropdown-shadow = true
     dropdown-opacity = 100
     dropdown-autohide = true
@@ -204,8 +217,15 @@
     [[bar.layout]]
     monitor = "*"
     show = true
-    left = ["hyprland-workspaces"]
-    center = ["window-title"]
+
+    left = [
+      "hyprland-workspaces"
+    ]
+
+    center = [
+      "window-title"
+    ]
+
     right = [
       "media",
       "notifications",
@@ -219,24 +239,9 @@
     ]
 
     [styling]
-    scale = 1.01
+    scale = 0.80
     rounding = "sm"
     theme-provider = "wayle"
-    theming-monitor = ""
-    matugen-scheme = "tonal-spot"
-    matugen-contrast = 0.0
-    matugen-source-color = 0
-    matugen-light = false
-    wallust-palette = "dark16"
-    wallust-saturation = 0
-    wallust-check-contrast = true
-    wallust-backend = "fastresize"
-    wallust-colorspace = "labmixed"
-    wallust-apply-globally = true
-    pywal-saturation = 0.05
-    pywal-contrast = 3.0
-    pywal-light = false
-    pywal-apply-globally = true
 
     [styling.palette]
     bg = "#141420"
@@ -249,295 +254,7 @@
     yellow = "#e0b870"
     green = "#68c898"
     blue = "#78a0e0"
-
-    [modules]
-    custom = []
-
-    [modules.hyprland-workspaces]
-    min-workspace-count = 0
-    monitor-specific = true
-    show-special = true
-    urgent-show = true
-    urgent-mode = "workspace"
-    display-mode = "label"
-    label-use-name = false
-    numbering = "absolute"
-    divider = " "
-    app-icons-show = false
-    app-icons-dedupe = true
-    app-icons-fallback = "ld-app-window-symbolic"
-    app-icons-empty = "tb-minus-symbolic"
-    icon-gap = 0.3
-    workspace-padding = 0.5
-    icon-size = 1.0
-    label-size = 1.0
-    workspace-ignore = []
-    active-indicator = "background"
-    active-color = "accent"
-    occupied-color = "fg-muted"
-    empty-color = "fg-subtle"
-    container-bg-color = "bg-surface-elevated"
-    border-show = false
-    border-color = "border-default"
-    left-click = ""
-    middle-click = ""
-    right-click = ""
-    scroll-up = ""
-    scroll-down = ""
-
-    [modules.window-title]
-    format = "{{ title }}"
-    icon-name = "ld-app-window-symbolic"
-    border-show = false
-    border-color = "blue"
-    icon-show = true
-    icon-color = "auto"
-    icon-bg-color = "blue"
-    label-show = true
-    label-color = "blue"
-    label-max-length = 50
-    button-bg-color = "bg-surface-elevated"
-    left-click = ""
-    right-click = ""
-    middle-click = ""
-    scroll-up = ""
-    scroll-down = ""
-
-    [modules.media]
-    icon-type = "application-mapped"
-    players-ignored = []
-    player-priority = []
-    format = "{{ title }} - {{ artist }}"
-    icon-name = "ld-music-symbolic"
-    spinning-disc-icon = "ld-disc-3-symbolic"
-    border-show = false
-    border-color = "blue"
-    icon-show = true
-    icon-color = "auto"
-    icon-bg-color = "blue"
-    label-show = true
-    label-color = "blue"
-    label-max-length = 35
-    button-bg-color = "bg-surface-elevated"
-    left-click = "dropdown:media"
-    right-click = ""
-    middle-click = ""
-    scroll-up = ""
-    scroll-down = ""
-
-    [modules.notifications]
-    icon-name = "ld-bell-symbolic"
-    icon-unread = "ld-bell-dot-symbolic"
-    icon-dnd = "ld-bell-off-symbolic"
-    border-show = false
-    border-color = "green"
-    icon-show = true
-    icon-color = "auto"
-    icon-bg-color = "green"
-    label-show = true
-    label-color = "green"
-    label-max-length = 0
-    button-bg-color = "bg-surface-elevated"
-    left-click = "dropdown:notification"
-    right-click = "wayle notify dnd"
-    middle-click = ""
-    scroll-up = ""
-    scroll-down = ""
-    blocklist = []
-    icon-source = "automatic"
-    popup-position = "top-right"
-    popup-max-visible = 5
-    popup-stacking-order = "newest-first"
-    popup-duration = 5000
-    popup-hover-pause = true
-    popup-margin-x = 0.0
-    popup-margin-y = 0.0
-    popup-gap = 8.0
-    popup-monitor = "primary"
-    popup-layer = "overlay"
-    popup-close-behavior = "dismiss"
-    popup-shadow = true
-    popup-urgency-bar = "low"
-    thresholds = []
-
-    [modules.systray]
-    icon-scale = 1.0
-    item-gap = 0.25
-    internal-padding = 0.5
-    blacklist = []
-    overrides = []
-    border-show = false
-    border-color = "border-accent"
-    button-bg-color = "bg-surface-elevated"
-
-    [modules.network]
-    wifi-disabled-icon = "cm-wireless-disabled-symbolic"
-    wifi-acquiring-icon = "cm-wireless-acquiring-symbolic"
-    wifi-offline-icon = "cm-wireless-offline-symbolic"
-    wifi-connected-icon = "cm-wireless-connected-symbolic"
-    wifi-signal-icons = [
-      "cm-wireless-signal-weak-symbolic",
-      "cm-wireless-signal-ok-symbolic",
-      "cm-wireless-signal-good-symbolic",
-      "cm-wireless-signal-excellent-symbolic",
-    ]
-    wired-connected-icon = "cm-wired-symbolic"
-    wired-acquiring-icon = "cm-wired-acquiring-symbolic"
-    wired-disconnected-icon = "cm-wired-disconnected-symbolic"
-    border-show = false
-    border-color = "accent"
-    icon-show = true
-    icon-color = "auto"
-    icon-bg-color = "accent"
-    label-show = true
-    label-color = "accent"
-    label-max-length = 15
-    button-bg-color = "bg-surface-elevated"
-    left-click = "dropdown:network"
-    right-click = ""
-    middle-click = ""
-    scroll-up = ""
-    scroll-down = ""
-
-    [modules.bluetooth]
-    disabled-icon = "ld-bluetooth-off-symbolic"
-    disconnected-icon = "ld-bluetooth-symbolic"
-    connected-icon = "ld-bluetooth-connected-symbolic"
-    searching-icon = "ld-bluetooth-searching-symbolic"
-    border-show = false
-    border-color = "blue"
-    icon-show = true
-    icon-color = "auto"
-    icon-bg-color = "blue"
-    label-show = true
-    label-color = "blue"
-    label-max-length = 15
-    button-bg-color = "bg-surface-elevated"
-    left-click = "dropdown:bluetooth"
-    right-click = ""
-    middle-click = ""
-    scroll-up = ""
-    scroll-down = ""
-
-    [modules.brightness]
-    level-icons = [
-      "ld-sun-dim-symbolic",
-      "ld-sun-medium-symbolic",
-      "ld-sun-symbolic",
-    ]
-    border-show = false
-    border-color = "yellow"
-    icon-show = true
-    icon-color = "auto"
-    icon-bg-color = "yellow"
-    label-show = true
-    label-color = "yellow"
-    format = "{{ percent }}%"
-    label-max-length = 0
-    button-bg-color = "bg-surface-elevated"
-    left-click = "dropdown:brightness"
-    right-click = ""
-    middle-click = ""
-    scroll-up = ""
-    scroll-down = ""
-    thresholds = []
-
-    [modules.volume]
-    level-icons = [
-      "ld-volume-symbolic",
-      "ld-volume-1-symbolic",
-      "ld-volume-2-symbolic",
-    ]
-    icon-muted = "ld-volume-x-symbolic"
-    border-show = false
-    border-color = "red"
-    icon-show = true
-    icon-color = "auto"
-    icon-bg-color = "red"
-    label-show = true
-    label-color = "red"
-    format = "{{ percent }}%"
-    label-max-length = 0
-    button-bg-color = "bg-surface-elevated"
-    left-click = "dropdown:audio"
-    right-click = ""
-    middle-click = "wayle audio output-mute"
-    scroll-up = ""
-    scroll-down = ""
-    dropdown-app-icons = "mapped"
-    thresholds = []
-
-    [modules.battery]
-    level-icons = [
-      "md-battery_android_0-symbolic",
-      "md-battery_android_frame_1-symbolic",
-      "md-battery_android_frame_2-symbolic",
-      "md-battery_android_frame_3-symbolic",
-      "md-battery_android_frame_4-symbolic",
-      "md-battery_android_frame_5-symbolic",
-      "md-battery_android_frame_6-symbolic",
-      "md-battery_android_frame_full-symbolic",
-    ]
-      charging-icon = "md-battery_android_frame_bolt-symbolic"
-      alert-icon = "md-battery_android_alert-symbolic"
-      border-show = false
-      border-color = "yellow"
-      icon-show = true
-      icon-color = "auto"
-      icon-bg-color = "yellow"
-      label-show = true
-      label-color = "yellow"
-      format = "{{ percent }}%"
-      label-max-length = 0
-      button-bg-color = "bg-surface-elevated"
-      left-click = "dropdown:battery"
-      right-click = ""
-      middle-click = ""
-      scroll-up = ""
-      scroll-down = ""
-      thresholds = []
-
-      [modules.clock]
-      format = "%a %b %d %I:%M %p"
-      icon-name = "tb-calendar-time-symbolic"
-      border-show = false
-      border-color = "border-accent"
-      icon-show = true
-      icon-color = "auto"
-      icon-bg-color = "accent"
-      label-show = true
-      label-color = "accent"
-      label-max-length = 0
-      button-bg-color = "bg-surface-elevated"
-      left-click = "dropdown:calendar"
-      right-click = "dropdown:weather"
-      middle-click = ""
-      scroll-up = ""
-      scroll-down = ""
-      dropdown-show-seconds = false
-
-      [osd]
-      enabled = true
-      position = "bottom"
-      duration = 2500
-      monitor = "primary"
-      margin = 150.0
-      border = true
-      layer = "overlay"
-
-      [wallpaper]
-      engine-enabled = true
-      transition-type = "simple"
-      transition-duration = 0.7
-      transition-fps = 60
-      cycling-enabled = false
-      cycling-directory = ""
-      cycling-mode = "sequential"
-      cycling-interval-mins = 15
-      cycling-same-image = false
-      monitors = []
-    '';
-
+  '';
    programs.git = {
      enable = true;
      settings = {
