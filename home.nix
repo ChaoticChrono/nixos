@@ -12,8 +12,8 @@
     gtk.enable = true;
     x11.enable = true;
 
-     package = pkgs.vimix-cursors;
-     name = "Vimix-cursors";        # or "Vimix-white-cursors"
+     package = pkgs.adwaita-icon-theme;
+     name = "Adwaita";
      size = 32;
   };
    dconf.settings = {
@@ -101,7 +101,6 @@
    hyprpolkitagent
    morewaita-icon-theme
    adwaita-icon-theme
-   vimix-cursors
    playerctl
    hyprshutdown
    inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
