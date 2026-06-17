@@ -277,10 +277,10 @@ label-max-length = 28
 label-show = true
 
 [modules.network]
-label-show = true
+label-show = false
 
 [modules.bluetooth]
-label-show = true
+label-show = false
 
 [modules.brightness]
 label-show = false
