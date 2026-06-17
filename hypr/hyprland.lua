@@ -59,9 +59,9 @@ local clipboard = "cursor-clip"
  hl.on("hyprland.start", function ()
    hl.exec_cmd("systemctl --user start hyprpolkitagent")
    hl.exec_cmd("systemctl --user start hyprpaper")
---   hl.exec_cmd("systemctl --user start waybar")
    hl.exec_cmd("systemctl --user start mako")
    hl.exec_cmd("cursor-clip --daemon")
+   hl.exec_cmd("hyprlock")
  end)
 
 
