@@ -267,26 +267,26 @@ right = [
 format = "{{ title }}"
 icon-show = false
 label-show = true
-label-max-length = 30
+label-max-length = 48
 
 [modules.media]
 format = "{{ title }}"
-label-max-length = 20
+label-max-length = 28
 
 [modules.notifications]
-label-show = false
+label-show = true
 
 [modules.network]
-label-show = false
+label-show = true
 
 [modules.bluetooth]
-label-show = false
+label-show = true
 
 [modules.brightness]
 label-show = false
 
 [modules.volume]
-label-show = false
+label-show = true
 
 [modules.battery]
 format = "{{ percent }}%"
