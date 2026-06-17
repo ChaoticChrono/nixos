@@ -126,6 +126,10 @@
    libnotify
    wofi-emoji
    cursor-clip
+   snapshot
+   nautilus
+   sushi
+   loupe
    ];
    programs.fish = { 
    enable = true;
