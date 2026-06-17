@@ -22,9 +22,9 @@
       accent-color = "blue";
       gtk-theme = "Adw-gtk3-dark";
       icon-theme = "Morewaita";
-      font-name = "Inter 11";
-      document-font-name = "Inter 11";
-      monospace-font-name = "Intel One Mono 11";
+      font-name = "Inter 12";
+      document-font-name = "Inter 12";
+      monospace-font-name = "Intel One Mono 12";
     };
   };
    gtk = {
@@ -40,6 +40,7 @@
     font = {
       name = "Inter";
       size = 12;
+     };
    };
   qt = {
     enable = true;
