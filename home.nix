@@ -148,9 +148,8 @@
     };
   };
    wayland.windowManager.hyprland.systemd.enable = false;
-   { config, pkgs, ... }:
 
-{
+
   xdg.configFile."wayle/config.toml".text = ''
     imports = []
 
@@ -538,7 +537,7 @@
       cycling-same-image = false
       monitors = []
     '';
-  }   
+
    programs.git = {
      enable = true;
      settings = {
