@@ -149,7 +149,18 @@
   services.upower.enable = true;
   services.libinput.enable = true;
   # Enable Bluetooth
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        ControllerMode = "bredr"; # Fix frequent Bluetooth audio dropouts
+        Experimental = true;
+        FastConnectable = true;
+      };
+      Policy = {
+        AutoEnable = true;
+      };
   # Hybrid NVIDIA Graphics Configurations
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
   hardware.nvidia = {

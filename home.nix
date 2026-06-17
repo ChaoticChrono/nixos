@@ -148,176 +148,218 @@
     };
   };
    wayland.windowManager.hyprland.systemd.enable = false;
-
-programs.waybar = {
+   services.wayle = {
   enable = true;
 
-  settings.mainBar = {
-    layer = "top";
-    position = "top";
-    height = 34;
-    spacing = 4;
+  settings = {
+    imports = [ ];
 
-    modules-left = [
-      "hyprland/workspaces"
-    ];
-
-    modules-center = [
-      "mpris"
-      "hyprland/window"
-    ];
-
-    modules-right = [
-      "pulseaudio"
-      "network"
-      "power-profiles-daemon"
-      "battery"
-      "clock"
-      "tray"
-    ];
-
-    "hyprland/workspaces" = {
-      format = "{icon}";
-        on-scroll-up =  "hyprctl eval 'hl.dispatch(hl.dsp.focus({ workspace = \"-1\" }))'";
-        on-scroll-down = "hyprctl eval 'hl.dispatch(hl.dsp.focus({ workspace = \"+1\" }))'";
+    general = {
+      font-sans = "Inter";
+      font-mono = "Intel One Mono";
+      tearing-mode = false;
     };
 
-    "hyprland/window" = {
-      max-length = 60;
-      separate-outputs = true;
+    bar = {
+      scale = 1.0;
+
+      location = "top";
+      exclusive = true;
+      layer = "top";
+
+      inset-edge = 0.0;
+      inset-ends = 0.0;
+
+      height = 34;
+
+      padding = 0.35;
+      padding-ends = 0.75;
+
+      module-gap = 0.5;
+
+      rounding = "full";
+
+      background-opacity = 95;
+      bg = "bg-surface";
+
+      border-location = "none";
+      border-width = 1;
+      border-color = "border-accent";
+
+      shadow = "lg";
+
+      button-variant = "block-prefix";
+
+      button-opacity = 100;
+      button-bg-opacity = 100;
+
+      button-rounding = "full";
+
+      button-gap = 0.75;
+
+      button-icon-size = 1.0;
+      button-label-size = 1.0;
+      button-label-weight = "semibold";
+
+      button-icon-padding = 1.0;
+      button-label-padding = 1.0;
+
+      button-group-rounding = "full";
+      button-group-padding = 0.15;
+      button-group-module-gap = 0.25;
+
+      button-group-background = "bg-elevated";
+      button-group-opacity = 100;
+      button-group-border-location = "none";
+      button-group-border-width = 1;
+      button-group-border-color = "border-accent";
+
+      dropdown-shadow = true;
+      dropdown-opacity = 100;
+      dropdown-autohide = true;
+      dropdown-freeze-label = true;
+
+      layout = [
+        {
+          monitor = "*";
+          show = true;
+
+          left = [
+            "dashboard"
+            "hyprland-workspaces"
+          ];
+
+          center = [
+            "window-title"
+          ];
+
+          right = [
+            "media"
+            "notifications"
+            "systray"
+            "network"
+            "bluetooth"
+            "brightness"
+            "volume"
+            "battery"
+            "clock"
+          ];
+        }
+      ];
     };
 
-    mpris = {
-      format = "{player_icon} {dynamic}";
-      format-paused = "󰏤 {dynamic}";
+    styling = {
+      scale = 1.0;
+      rounding = "full";
 
-      dynamic-len = 40;
-      dynamic-order = [ "title" "artist" ];
+      # If you use Stylix/GTK, change this to "gtk"
+      theme-provider = "wayle";
 
-      player-icons = {
-        default = "󰎈";
-        spotify = "󰓇 ";
-        firefox = "󰈹 ";
+      palette = {
+        bg = "#1e1e2e";
+        surface = "#313244";
+        elevated = "#45475a";
+
+        fg = "#cdd6f4";
+        fg-muted = "#9399b2";
+
+        primary = "#89b4fa";
+
+        red = "#f38ba8";
+        yellow = "#f9e2af";
+        green = "#a6e3a1";
+        blue = "#89b4fa";
+      };
+    };
+
+    modules = {
+
+      hyprland-workspaces = {
+        monitor-specific = true;
+        show-special = true;
+
+        display-mode = "label";
+
+        active-indicator = "background";
+
+        workspace-padding = 0.6;
+
+        divider = " ";
+
+        app-icons-show = false;
+
+        border-show = false;
       };
 
-      tooltip-format = "{player}\n{title} - {artist}";
+      window-title = {
+        format = "{{ title }}";
+        label-max-length = 60;
+      };
 
-      on-click = "playerctl play-pause";
-      on-scroll-up = "playerctl next";
-      on-scroll-down = "playerctl previous";
-    };
+      media = {
+        format = "{{ title }} • {{ artist }}";
+        label-max-length = 30;
+        left-click = "dropdown:media";
+      };
 
-    pulseaudio = {
-      format = "{icon} {volume}%";
-      format-muted = "󰝟 ";
+      notifications = {
+        popup-position = "top-right";
+        popup-max-visible = 5;
+        popup-duration = 6000;
 
-      on-click = "pwvucontrol";
+        left-click = "dropdown:notification";
+        right-click = "wayle notify dnd";
+      };
 
-      format-icons = {
-        default = [ "󰕿" "󰖀" "󰕾 " ];
+      network = {
+        left-click = "dropdown:network";
+      };
+
+      bluetooth = {
+        left-click = "dropdown:bluetooth";
+      };
+
+      brightness = {
+        format = "{{ percent }}%";
+        left-click = "dropdown:brightness";
+      };
+
+      volume = {
+        format = "{{ percent }}%";
+        left-click = "dropdown:audio";
+        middle-click = "wayle audio output-mute";
+      };
+
+      battery = {
+        format = "{{ percent }}%";
+        left-click = "dropdown:battery";
+      };
+
+      clock = {
+        format = "%a %d %b  %H:%M";
+
+        left-click = "dropdown:calendar";
+        right-click = "dropdown:weather";
+      };
+
+      systray = {
+        icon-scale = 1.0;
+        item-gap = 0.25;
+        internal-padding = 0.5;
       };
     };
 
-    network = {
-      format-wifi = "󰖩 ";
-      format-ethernet = "󰈀 ";
-      format-disconnected = "󰖪 ";
-
-      tooltip-format-wifi = "{essid}";
-      tooltip-format-ethernet = "Ethernet";
-
-      on-click = "nm-connection-editor";
-    };
-
-    power-profiles-daemon = {
-      format = "{icon}";
-
-      format-icons = {
-        performance = "󰓅 ";
-        balanced = "󰾅 ";
-        power-saver = "󰌪 ";
-      };
-
-      on-click = "powerprofilesctl set balanced";
-      on-click-right = "powerprofilesctl set performance";
-      on-click-middle = "powerprofilesctl set power-saver";
-    };
-
-    battery = {
-      format = "󰁹 {capacity}%";
-      format-charging = "󰂄 {capacity}%";
-      format-full = "󰁹 100%";
-    };
-
-    clock = {
-      format = "󰃰 {:%a %d %b %H:%M}";
-      tooltip-format = "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>";
-    };
-
-    tray = {
-      spacing = 10;
+    osd = {
+      enabled = true;
+      position = "bottom";
+      duration = 1800;
+      monitor = "primary";
+      margin = 120.0;
+      border = false;
+      layer = "overlay";
     };
   };
-
-  style = ''
-    * {
-      border: none;
-      border-radius: 0;
-      min-height: 0;
-      font-family: Inter, "Symbols Nerd Font Mono";
-      font-size: 13px;
-    }
-
-    window#waybar {
-      background: rgba(30, 30, 30, 0.92);
-      color: #ffffff;
-    }
-
-    #workspaces {
-      margin: 0 8px;
-    }
-
-    #workspaces button {
-      padding: 0 10px;
-      margin: 4px 2px;
-      border-radius: 8px;
-      background: transparent;
-      color: #cdd6f4;
-    }
-
-    #workspaces button:hover {
-      background: rgba(255,255,255,0.08);
-    }
-
-    #workspaces button.active {
-      background: #3584e4;
-      color: white;
-    }
-
-    #window {
-      color: #d8dee9;
-    }
-
-    #mpris,
-    #pulseaudio,
-    #network,
-    #power-profiles-daemon,
-    #battery,
-    #clock,
-    #tray {
-      padding: 0 12px;
-      margin: 4px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-    }
-
-    tooltip {
-      background: #1e1e1e;
-      border-radius: 10px;
-    }
-  '';
 };
-
    programs.git = {
      enable = true;
      settings = {
