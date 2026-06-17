@@ -265,7 +265,7 @@
     twitter-color-emoji
   ];
   fontconfig.allowBitmaps = false;
-  }
+  };
   environment.sessionVariables = {
     JAVA_HOME = "${pkgs.temurin-bin-25}";
     NIXOS_OZONE_WL = "1"; # System-wide Wayland rendering enforcer
