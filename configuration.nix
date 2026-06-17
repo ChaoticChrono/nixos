@@ -266,6 +266,8 @@
   ];
 
   fontconfig = {
+    enable = true;
+    allowBitmaps = false;
     defaultFonts = {
       sansSerif = [ "Inter" ];
       serif = [ "Inter" ];

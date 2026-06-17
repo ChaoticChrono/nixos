@@ -315,5 +315,14 @@ format = "%a %H:%M"
   };
 };
 xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh"; 
-fonts.fontconfig.enable = true;
+fonts.fontconfig = {
+  enable = true;
+  allowBitmaps = false;
+  defaultFonts = {
+    serif = [ "Inter" ];
+    sansSerif = [ "Inter" ];
+    monospace = [ "Intel One Mono" ];
+    emoji = [ "Twitter Color Emoji" ];
+  };
+};
 }
