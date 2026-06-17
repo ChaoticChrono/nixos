@@ -103,8 +103,8 @@ hl.env("WLR_NO_HARDWARE_CURSORS", "1")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 5,
-        gaps_out = 20,
+        gaps_in  = 3,
+        gaps_out = 6,
 
         border_size = 2,
 
