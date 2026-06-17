@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.hyprlock = {
@@ -22,121 +22,152 @@
         vibrancy_darkness = 0.2;
       }];
 
-      label = [
-       {
-          monitor = "";
-          text = "󰤄";
-          color = "rgb(53,132,228)";
-          font_size = 28;
-          onclick = "systemctl suspend";
-          position = "-90,100";
-          halign = "center";
-          valign = "bottom";
-        }
+      shape = [
         {
           monitor = "";
-          text = "󰜉";
-          color = "rgb(53,132,228)";
-          font_size = 28;
-          onclick = "reboot";
-          position = "0,100";
-          halign = "center";
-          valign = "bottom";
-        }
-        {
-          monitor = "";
-          text = "󰐥";
-          color = "rgb(53,132,228)";
-          font_size = 28;
-          onclick = "poweroff";
-          position = "90,100";
-          halign = "center";
-          valign = "bottom";
-        }
-        {
-          monitor = "";
-          text = "$TIME";
-          color = "rgba(255,255,255,1.0)";
-          font_size = 96;
-          font_family = "Inter";
-          position = "0,260";
+          size = "84,84";
+          rounding = -1;
+          color = "rgba(49,50,68,0.45)";
+          border_size = 1;
+          border_color = "rgba(53,132,228,0.30)";
+          position = "0,30";
           halign = "center";
           valign = "center";
         }
+
+        {
+          monitor = "";
+          size = "360,60";
+          rounding = -1;
+          color = "rgba(49,50,68,0.55)";
+          border_size = 1;
+          border_color = "rgba(255,255,255,0.08)";
+          position = "0,-165";
+          halign = "center";
+          valign = "center";
+        }
+
+        {
+          monitor = "";
+          size = "64,64";
+          rounding = -1;
+          color = "rgba(49,50,68,0.55)";
+          border_size = 1;
+          border_color = "rgba(53,132,228,0.35)";
+          position = "-120,90";
+          halign = "center";
+          valign = "bottom";
+        }
+
+        {
+          monitor = "";
+          size = "64,64";
+          rounding = -1;
+          color = "rgba(49,50,68,0.55)";
+          border_size = 1;
+          border_color = "rgba(53,132,228,0.35)";
+          position = "0,90";
+          halign = "center";
+          valign = "bottom";
+        }
+
+        {
+          monitor = "";
+          size = "64,64";
+          rounding = -1;
+          color = "rgba(49,50,68,0.55)";
+          border_size = 1;
+          border_color = "rgba(53,132,228,0.35)";
+          position = "120,90";
+          halign = "center";
+          valign = "bottom";
+        }
+      ];
+
+      label = [
+        {
+          monitor = "";
+          text = "$TIME";
+          color = "rgba(255,255,255,1)";
+          font_family = "Inter";
+          font_size = 96;
+          position = "0,280";
+          halign = "center";
+          valign = "center";
+        }
+
         {
           monitor = "";
           text = "cmd[update:1000] echo \"$(date +'%A')\"";
           color = "rgba(186,194,222,0.95)";
-          font_size = 26;
           font_family = "Inter";
-          position = "0,180";
+          font_size = 24;
+          position = "0,200";
           halign = "center";
           valign = "center";
         }
+
         {
           monitor = "";
           text = "cmd[update:1000] echo \"$(date +'%d %B %Y')\"";
           color = "rgba(186,194,222,0.75)";
-          font_size = 18;
           font_family = "Inter";
-          position = "0,145";
+          font_size = 18;
+          position = "0,168";
           halign = "center";
           valign = "center";
         }
+
+        {
+          monitor = "";
+          text = "";
+          color = "rgb(53,132,228)";
+          font_size = 42;
+          position = "0,30";
+          halign = "center";
+          valign = "center";
+        }
+
         {
           monitor = "";
           text = "$USER";
-          color = "rgba(255,255,255,0.95)";
-          font_size = 18;
+          color = "rgba(255,255,255,0.96)";
           font_family = "Inter";
-          position = "0,-70";
+          font_size = 18;
+          position = "0,-165";
           halign = "center";
           valign = "center";
         }
-      ];
 
-      shape = [
         {
           monitor = "";
-          size = "340,54";
-          color = "rgba(49,50,68,0.55)";
-          rounding = -1;
-          border_size = 1;
-          border_color = "rgba(255,255,255,0.08)";
-          position = "0,-70";
-          halign = "center";
-          valign = "center";
-        }
-        {
-          monitor = "";
-          size = "58,58";
-          rounding = -1;
-          color = "rgba(49,50,68,0.55)";
-          border_size = 1;
-          border_color = "rgba(53,132,228,0.35)";
-          position = "-90,100";
+          text = "󰤄";
+          color = "rgb(53,132,228)";
+          font_size = 30;
+          onclick = "systemctl suspend";
+          position = "-120,105";
           halign = "center";
           valign = "bottom";
         }
+
         {
           monitor = "";
-          size = "58,58";
-          rounding = -1;
-          color = "rgba(49,50,68,0.55)";
-          border_size = 1;
-          border_color = "rgba(53,132,228,0.35)";
-          position = "0,100";
+          text = "󰜉";
+          color = "rgb(53,132,228)";
+          font_size = 30;
+          onclick = "reboot";
+          position = "0,105";
           halign = "center";
           valign = "bottom";
         }
+
         {
           monitor = "";
-          size = "58,58";
-          rounding = -1;
-          color = "rgba(49,50,68,0.55)";
-          border_size = 1;
-          border_color = "rgba(53,132,228,0.35)";
-          position = "90,100";
+          text = "󰐥";
+          color = "rgb(53,132,228)";
+          font_size = 30;
+          onclick = "poweroff";
+          position = "120,105";
           halign = "center";
           valign = "bottom";
         }
@@ -144,7 +175,7 @@
 
       input-field = [{
         monitor = "";
-        size = "340,60";
+        size = "360,60";
         outline_thickness = 2;
         outer_color = "rgb(53,132,228)";
         inner_color = "rgba(49,50,68,0.60)";
@@ -155,11 +186,10 @@
         dots_spacing = 0.28;
         fade_on_empty = false;
         font_family = "Inter";
-        position = "0,-145";
+        position = "0,-245";
         halign = "center";
         valign = "center";
       }];
-
     };
   };
 }
