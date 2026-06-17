@@ -245,11 +245,11 @@ show = true
 
 left = [
     "hyprland-workspaces",
-    "window-title",
+    "media",
 ]
 
 center = [
-    "media",
+    "window-title",
 ]
 
 right = [
