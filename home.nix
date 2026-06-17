@@ -101,6 +101,7 @@
    hyprpolkitagent
    morewaita-icon-theme
    adwaita-icon-theme
+   vimix-cursors
    playerctl
    hyprshutdown
    inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
