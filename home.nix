@@ -316,12 +316,6 @@ format = "%a %H:%M"
 };
 xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh"; 
 fonts = {
-  packages = with pkgs; [
-    inter
-    intel-one-mono
-    nerd-fonts.symbols-only
-    twitter-color-emoji
-  ];
 fontconfig = {
   enable = true;
   defaultFonts = {
