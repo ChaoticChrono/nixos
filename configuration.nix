@@ -161,6 +161,9 @@
       Policy = {
         AutoEnable = true;
       };
+   };
+ };
+  services.blueman.enable = true;
   # Hybrid NVIDIA Graphics Configurations
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
   hardware.nvidia = {

@@ -148,218 +148,397 @@
     };
   };
    wayland.windowManager.hyprland.systemd.enable = false;
-   services.wayle = {
-  enable = true;
+   { config, pkgs, ... }:
 
-  settings = {
-    imports = [ ];
+{
+  xdg.configFile."wayle/config.toml".text = ''
+    imports = []
 
-    general = {
-      font-sans = "Inter";
-      font-mono = "Intel One Mono";
-      tearing-mode = false;
-    };
+    [general]
+    font-sans = "Inter"
+    font-mono = "Intel One Mono"
+    tearing-mode = false
 
-    bar = {
-      scale = 1.0;
+    [bar]
+    scale = 1.0
+    inset-edge = 0.0
+    inset-ends = 0.0
+    padding = 0.35
+    padding-ends = 0.5
+    module-gap = 0.5
+    location = "top"
+    exclusive = true
+    layer = "top"
+    bg = "bg-surface"
+    background-opacity = 100
+    border-location = "none"
+    border-width = 1
+    border-color = "border-accent"
+    rounding = "sm"
+    shadow = "none"
+    button-variant = "block-prefix"
+    button-opacity = 100
+    button-bg-opacity = 100
+    button-icon-size = 1.0
+    button-icon-padding = 1.0
+    button-label-size = 1.0
+    button-label-weight = "semibold"
+    button-label-padding = 1.0
+    button-rounding = "sm"
+    button-gap = 1.0
+    button-icon-position = "start"
+    button-border-location = "all"
+    button-border-width = 1
+    button-group-border-location = "none"
+    button-group-border-width = 1
+    button-group-padding = 0.0
+    button-group-module-gap = 0.25
+    button-group-background = "bg-elevated"
+    button-group-opacity = 100
+    button-group-border-color = "border-accent"
+    button-group-rounding = "sm"
+    dropdown-shadow = true
+    dropdown-opacity = 100
+    dropdown-autohide = true
+    dropdown-freeze-label = true
 
-      location = "top";
-      exclusive = true;
-      layer = "top";
+    [[bar.layout]]
+    monitor = "*"
+    show = true
+    left = ["hyprland-workspaces"]
+    center = ["window-title"]
+    right = [
+      "media",
+      "notifications",
+      "systray",
+      "network",
+      "bluetooth",
+      "brightness",
+      "volume",
+      "battery",
+      "clock",
+    ]
 
-      inset-edge = 0.0;
-      inset-ends = 0.0;
+    [styling]
+    scale = 1.01
+    rounding = "sm"
+    theme-provider = "wayle"
+    theming-monitor = ""
+    matugen-scheme = "tonal-spot"
+    matugen-contrast = 0.0
+    matugen-source-color = 0
+    matugen-light = false
+    wallust-palette = "dark16"
+    wallust-saturation = 0
+    wallust-check-contrast = true
+    wallust-backend = "fastresize"
+    wallust-colorspace = "labmixed"
+    wallust-apply-globally = true
+    pywal-saturation = 0.05
+    pywal-contrast = 3.0
+    pywal-light = false
+    pywal-apply-globally = true
 
-      height = 34;
+    [styling.palette]
+    bg = "#141420"
+    surface = "#1c1c2c"
+    elevated = "#262638"
+    fg = "#d4d6e8"
+    fg-muted = "#8a8ca4"
+    primary = "#e0947a"
+    red = "#e46870"
+    yellow = "#e0b870"
+    green = "#68c898"
+    blue = "#78a0e0"
 
-      padding = 0.35;
-      padding-ends = 0.75;
+    [modules]
+    custom = []
 
-      module-gap = 0.5;
+    [modules.hyprland-workspaces]
+    min-workspace-count = 0
+    monitor-specific = true
+    show-special = true
+    urgent-show = true
+    urgent-mode = "workspace"
+    display-mode = "label"
+    label-use-name = false
+    numbering = "absolute"
+    divider = " "
+    app-icons-show = false
+    app-icons-dedupe = true
+    app-icons-fallback = "ld-app-window-symbolic"
+    app-icons-empty = "tb-minus-symbolic"
+    icon-gap = 0.3
+    workspace-padding = 0.5
+    icon-size = 1.0
+    label-size = 1.0
+    workspace-ignore = []
+    active-indicator = "background"
+    active-color = "accent"
+    occupied-color = "fg-muted"
+    empty-color = "fg-subtle"
+    container-bg-color = "bg-surface-elevated"
+    border-show = false
+    border-color = "border-default"
+    left-click = ""
+    middle-click = ""
+    right-click = ""
+    scroll-up = ""
+    scroll-down = ""
 
-      rounding = "full";
+    [modules.window-title]
+    format = "{{ title }}"
+    icon-name = "ld-app-window-symbolic"
+    border-show = false
+    border-color = "blue"
+    icon-show = true
+    icon-color = "auto"
+    icon-bg-color = "blue"
+    label-show = true
+    label-color = "blue"
+    label-max-length = 50
+    button-bg-color = "bg-surface-elevated"
+    left-click = ""
+    right-click = ""
+    middle-click = ""
+    scroll-up = ""
+    scroll-down = ""
 
-      background-opacity = 95;
-      bg = "bg-surface";
+    [modules.media]
+    icon-type = "application-mapped"
+    players-ignored = []
+    player-priority = []
+    format = "{{ title }} - {{ artist }}"
+    icon-name = "ld-music-symbolic"
+    spinning-disc-icon = "ld-disc-3-symbolic"
+    border-show = false
+    border-color = "blue"
+    icon-show = true
+    icon-color = "auto"
+    icon-bg-color = "blue"
+    label-show = true
+    label-color = "blue"
+    label-max-length = 35
+    button-bg-color = "bg-surface-elevated"
+    left-click = "dropdown:media"
+    right-click = ""
+    middle-click = ""
+    scroll-up = ""
+    scroll-down = ""
 
-      border-location = "none";
-      border-width = 1;
-      border-color = "border-accent";
+    [modules.notifications]
+    icon-name = "ld-bell-symbolic"
+    icon-unread = "ld-bell-dot-symbolic"
+    icon-dnd = "ld-bell-off-symbolic"
+    border-show = false
+    border-color = "green"
+    icon-show = true
+    icon-color = "auto"
+    icon-bg-color = "green"
+    label-show = true
+    label-color = "green"
+    label-max-length = 0
+    button-bg-color = "bg-surface-elevated"
+    left-click = "dropdown:notification"
+    right-click = "wayle notify dnd"
+    middle-click = ""
+    scroll-up = ""
+    scroll-down = ""
+    blocklist = []
+    icon-source = "automatic"
+    popup-position = "top-right"
+    popup-max-visible = 5
+    popup-stacking-order = "newest-first"
+    popup-duration = 5000
+    popup-hover-pause = true
+    popup-margin-x = 0.0
+    popup-margin-y = 0.0
+    popup-gap = 8.0
+    popup-monitor = "primary"
+    popup-layer = "overlay"
+    popup-close-behavior = "dismiss"
+    popup-shadow = true
+    popup-urgency-bar = "low"
+    thresholds = []
 
-      shadow = "lg";
+    [modules.systray]
+    icon-scale = 1.0
+    item-gap = 0.25
+    internal-padding = 0.5
+    blacklist = []
+    overrides = []
+    border-show = false
+    border-color = "border-accent"
+    button-bg-color = "bg-surface-elevated"
 
-      button-variant = "block-prefix";
+    [modules.network]
+    wifi-disabled-icon = "cm-wireless-disabled-symbolic"
+    wifi-acquiring-icon = "cm-wireless-acquiring-symbolic"
+    wifi-offline-icon = "cm-wireless-offline-symbolic"
+    wifi-connected-icon = "cm-wireless-connected-symbolic"
+    wifi-signal-icons = [
+      "cm-wireless-signal-weak-symbolic",
+      "cm-wireless-signal-ok-symbolic",
+      "cm-wireless-signal-good-symbolic",
+      "cm-wireless-signal-excellent-symbolic",
+    ]
+    wired-connected-icon = "cm-wired-symbolic"
+    wired-acquiring-icon = "cm-wired-acquiring-symbolic"
+    wired-disconnected-icon = "cm-wired-disconnected-symbolic"
+    border-show = false
+    border-color = "accent"
+    icon-show = true
+    icon-color = "auto"
+    icon-bg-color = "accent"
+    label-show = true
+    label-color = "accent"
+    label-max-length = 15
+    button-bg-color = "bg-surface-elevated"
+    left-click = "dropdown:network"
+    right-click = ""
+    middle-click = ""
+    scroll-up = ""
+    scroll-down = ""
 
-      button-opacity = 100;
-      button-bg-opacity = 100;
+    [modules.bluetooth]
+    disabled-icon = "ld-bluetooth-off-symbolic"
+    disconnected-icon = "ld-bluetooth-symbolic"
+    connected-icon = "ld-bluetooth-connected-symbolic"
+    searching-icon = "ld-bluetooth-searching-symbolic"
+    border-show = false
+    border-color = "blue"
+    icon-show = true
+    icon-color = "auto"
+    icon-bg-color = "blue"
+    label-show = true
+    label-color = "blue"
+    label-max-length = 15
+    button-bg-color = "bg-surface-elevated"
+    left-click = "dropdown:bluetooth"
+    right-click = ""
+    middle-click = ""
+    scroll-up = ""
+    scroll-down = ""
 
-      button-rounding = "full";
+    [modules.brightness]
+    level-icons = [
+      "ld-sun-dim-symbolic",
+      "ld-sun-medium-symbolic",
+      "ld-sun-symbolic",
+    ]
+    border-show = false
+    border-color = "yellow"
+    icon-show = true
+    icon-color = "auto"
+    icon-bg-color = "yellow"
+    label-show = true
+    label-color = "yellow"
+    format = "{{ percent }}%"
+    label-max-length = 0
+    button-bg-color = "bg-surface-elevated"
+    left-click = "dropdown:brightness"
+    right-click = ""
+    middle-click = ""
+    scroll-up = ""
+    scroll-down = ""
+    thresholds = []
 
-      button-gap = 0.75;
+    [modules.volume]
+    level-icons = [
+      "ld-volume-symbolic",
+      "ld-volume-1-symbolic",
+      "ld-volume-2-symbolic",
+    ]
+    icon-muted = "ld-volume-x-symbolic"
+    border-show = false
+    border-color = "red"
+    icon-show = true
+    icon-color = "auto"
+    icon-bg-color = "red"
+    label-show = true
+    label-color = "red"
+    format = "{{ percent }}%"
+    label-max-length = 0
+    button-bg-color = "bg-surface-elevated"
+    left-click = "dropdown:audio"
+    right-click = ""
+    middle-click = "wayle audio output-mute"
+    scroll-up = ""
+    scroll-down = ""
+    dropdown-app-icons = "mapped"
+    thresholds = []
 
-      button-icon-size = 1.0;
-      button-label-size = 1.0;
-      button-label-weight = "semibold";
+    [modules.battery]
+    level-icons = [
+      "md-battery_android_0-symbolic",
+      "md-battery_android_frame_1-symbolic",
+      "md-battery_android_frame_2-symbolic",
+      "md-battery_android_frame_3-symbolic",
+      "md-battery_android_frame_4-symbolic",
+      "md-battery_android_frame_5-symbolic",
+      "md-battery_android_frame_6-symbolic",
+      "md-battery_android_frame_full-symbolic",
+    ]
+      charging-icon = "md-battery_android_frame_bolt-symbolic"
+      alert-icon = "md-battery_android_alert-symbolic"
+      border-show = false
+      border-color = "yellow"
+      icon-show = true
+      icon-color = "auto"
+      icon-bg-color = "yellow"
+      label-show = true
+      label-color = "yellow"
+      format = "{{ percent }}%"
+      label-max-length = 0
+      button-bg-color = "bg-surface-elevated"
+      left-click = "dropdown:battery"
+      right-click = ""
+      middle-click = ""
+      scroll-up = ""
+      scroll-down = ""
+      thresholds = []
 
-      button-icon-padding = 1.0;
-      button-label-padding = 1.0;
+      [modules.clock]
+      format = "%a %b %d %I:%M %p"
+      icon-name = "tb-calendar-time-symbolic"
+      border-show = false
+      border-color = "border-accent"
+      icon-show = true
+      icon-color = "auto"
+      icon-bg-color = "accent"
+      label-show = true
+      label-color = "accent"
+      label-max-length = 0
+      button-bg-color = "bg-surface-elevated"
+      left-click = "dropdown:calendar"
+      right-click = "dropdown:weather"
+      middle-click = ""
+      scroll-up = ""
+      scroll-down = ""
+      dropdown-show-seconds = false
 
-      button-group-rounding = "full";
-      button-group-padding = 0.15;
-      button-group-module-gap = 0.25;
+      [osd]
+      enabled = true
+      position = "bottom"
+      duration = 2500
+      monitor = "primary"
+      margin = 150.0
+      border = true
+      layer = "overlay"
 
-      button-group-background = "bg-elevated";
-      button-group-opacity = 100;
-      button-group-border-location = "none";
-      button-group-border-width = 1;
-      button-group-border-color = "border-accent";
-
-      dropdown-shadow = true;
-      dropdown-opacity = 100;
-      dropdown-autohide = true;
-      dropdown-freeze-label = true;
-
-      layout = [
-        {
-          monitor = "*";
-          show = true;
-
-          left = [
-            "dashboard"
-            "hyprland-workspaces"
-          ];
-
-          center = [
-            "window-title"
-          ];
-
-          right = [
-            "media"
-            "notifications"
-            "systray"
-            "network"
-            "bluetooth"
-            "brightness"
-            "volume"
-            "battery"
-            "clock"
-          ];
-        }
-      ];
-    };
-
-    styling = {
-      scale = 1.0;
-      rounding = "full";
-
-      # If you use Stylix/GTK, change this to "gtk"
-      theme-provider = "wayle";
-
-      palette = {
-        bg = "#1e1e2e";
-        surface = "#313244";
-        elevated = "#45475a";
-
-        fg = "#cdd6f4";
-        fg-muted = "#9399b2";
-
-        primary = "#89b4fa";
-
-        red = "#f38ba8";
-        yellow = "#f9e2af";
-        green = "#a6e3a1";
-        blue = "#89b4fa";
-      };
-    };
-
-    modules = {
-
-      hyprland-workspaces = {
-        monitor-specific = true;
-        show-special = true;
-
-        display-mode = "label";
-
-        active-indicator = "background";
-
-        workspace-padding = 0.6;
-
-        divider = " ";
-
-        app-icons-show = false;
-
-        border-show = false;
-      };
-
-      window-title = {
-        format = "{{ title }}";
-        label-max-length = 60;
-      };
-
-      media = {
-        format = "{{ title }} • {{ artist }}";
-        label-max-length = 30;
-        left-click = "dropdown:media";
-      };
-
-      notifications = {
-        popup-position = "top-right";
-        popup-max-visible = 5;
-        popup-duration = 6000;
-
-        left-click = "dropdown:notification";
-        right-click = "wayle notify dnd";
-      };
-
-      network = {
-        left-click = "dropdown:network";
-      };
-
-      bluetooth = {
-        left-click = "dropdown:bluetooth";
-      };
-
-      brightness = {
-        format = "{{ percent }}%";
-        left-click = "dropdown:brightness";
-      };
-
-      volume = {
-        format = "{{ percent }}%";
-        left-click = "dropdown:audio";
-        middle-click = "wayle audio output-mute";
-      };
-
-      battery = {
-        format = "{{ percent }}%";
-        left-click = "dropdown:battery";
-      };
-
-      clock = {
-        format = "%a %d %b  %H:%M";
-
-        left-click = "dropdown:calendar";
-        right-click = "dropdown:weather";
-      };
-
-      systray = {
-        icon-scale = 1.0;
-        item-gap = 0.25;
-        internal-padding = 0.5;
-      };
-    };
-
-    osd = {
-      enabled = true;
-      position = "bottom";
-      duration = 1800;
-      monitor = "primary";
-      margin = 120.0;
-      border = false;
-      layer = "overlay";
-    };
-  };
-};
+      [wallpaper]
+      engine-enabled = true
+      transition-type = "simple"
+      transition-duration = 0.7
+      transition-fps = 60
+      cycling-enabled = false
+      cycling-directory = ""
+      cycling-mode = "sequential"
+      cycling-interval-mins = 15
+      cycling-same-image = false
+      monitors = []
+    '';
+  }   
    programs.git = {
      enable = true;
      settings = {
