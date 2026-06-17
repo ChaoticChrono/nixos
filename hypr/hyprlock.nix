@@ -23,6 +23,36 @@
       }];
 
       label = [
+       {
+          monitor = "";
+          text = "󰤄";
+          color = "rgb(53,132,228)";
+          font_size = 28;
+          onclick = "systemctl suspend";
+          position = "-90,100";
+          halign = "center";
+          valign = "bottom";
+        }
+        {
+          monitor = "";
+          text = "󰜉";
+          color = "rgb(53,132,228)";
+          font_size = 28;
+          onclick = "reboot";
+          position = "0,100";
+          halign = "center";
+          valign = "bottom";
+        }
+        {
+          monitor = "";
+          text = "󰐥";
+          color = "rgb(53,132,228)";
+          font_size = 28;
+          onclick = "poweroff";
+          position = "90,100";
+          halign = "center";
+          valign = "bottom";
+        }
         {
           monitor = "";
           text = "$TIME";
@@ -130,38 +160,6 @@
         valign = "center";
       }];
 
-      label = [
-        {
-          monitor = "";
-          text = "󰤄";
-          color = "rgb(53,132,228)";
-          font_size = 28;
-          onclick = "systemctl suspend";
-          position = "-90,100";
-          halign = "center";
-          valign = "bottom";
-        }
-        {
-          monitor = "";
-          text = "󰜉";
-          color = "rgb(53,132,228)";
-          font_size = 28;
-          onclick = "reboot";
-          position = "0,100";
-          halign = "center";
-          valign = "bottom";
-        }
-        {
-          monitor = "";
-          text = "󰐥";
-          color = "rgb(53,132,228)";
-          font_size = 28;
-          onclick = "poweroff";
-          position = "90,100";
-          halign = "center";
-          valign = "bottom";
-        }
-      ];
     };
   };
 }
