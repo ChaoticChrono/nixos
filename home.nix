@@ -21,7 +21,6 @@
       color-scheme = "prefer-dark";
       accent-color = "blue";
       gtk-theme = "adw-gtk3-dark";
-      icon-theme = "Morewaita";
       font-name = "Inter 12";
       document-font-name = "Inter 12";
       monospace-font-name = "Intel One Mono 12";
