@@ -168,6 +168,7 @@ rounding = "sm"
 theme-provider = "gtk"
 
 [bar]
+scale = 0.80
 height = 24
 
 inset-edge = 0.0
