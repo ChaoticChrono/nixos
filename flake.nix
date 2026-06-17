@@ -1,7 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-
+    
+    helium-flake.url = "github:oxcl/nix-flake-helium-browser";
+    helium-flake.inputs.nixpkgs.follows = "nixpkgs";
+    
     elyprismlauncher.url = "github:ElyPrismLauncher/Launcher";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -14,7 +17,6 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-      nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
   eden = {
     url = "github:Daaboulex/eden-nix";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +28,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs-wayland, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
+  outputs = inputs@{ self, helium-flake, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -38,9 +40,6 @@
         nix-flatpak.nixosModules.nix-flatpak
         nur.modules.nixos.default
         ./configuration.nix
-        ({ pkgs, ... }: {
-        nixpkgs.config.overlays = [ nixpkgs-wayland.overlays.default ];
-        })
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

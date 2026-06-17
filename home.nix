@@ -2,6 +2,7 @@
 {
   imports = [
   ./hypr/hyprlock.nix
+  inputs.helium-flake.homeModules.default
   ];
   home.username = "ved";
   home.homeDirectory = "/home/ved";
@@ -102,6 +103,8 @@
       };
     };
   };
+   
+   programs.helium.enable = true;
    home.packages = with pkgs; [
    kdePackages.qtstyleplugin-kvantum
    grim 
