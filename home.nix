@@ -103,7 +103,6 @@
    adwaita-icon-theme
    playerctl
    hyprshutdown
-   networkmanagerapplet
    inputs.elyprismlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
    xdg-terminal-exec
    wl-clipboard
@@ -158,102 +157,142 @@
   xdg.configFile."wayle/config.toml".text = ''
     imports = []
 
-    [general]
-    font-sans = "Inter"
-    font-mono = "Intel One Mono"
-    tearing-mode = false
+[general]
+font-sans = "Inter"
+font-mono = "Intel One Mono"
+tearing-mode = false
 
-    [bar]
-    scale = 0.80
-    height = 24
-    inset-edge = 0.0
-    inset-ends = 0.0
-    padding = 0.10
-    padding-ends = 0.25
-    module-gap = 0.20
-    location = "top"
-    exclusive = true
-    layer = "top"
-    bg = "bg-surface"
-    background-opacity = 100
-    border-location = "none"
-    border-width = 1
-    border-color = "border-accent"
-    rounding = "sm"
-    shadow = "none"
+[bar]
+scale = 0.90
+height = 24
 
-    button-variant = "block-prefix"
+inset-edge = 0.0
+inset-ends = 0.0
 
-    button-opacity = 100
-    button-bg-opacity = 100
+padding = 0.10
+padding-ends = 0.25
+module-gap = 0.20
 
-    button-icon-size = 0.80
-    button-label-size = 0.80
+location = "top"
+exclusive = true
+layer = "top"
 
-    button-icon-padding = 0.40
-    button-label-padding = 0.40
+bg = "bg-surface"
+background-opacity = 80
 
-    button-gap = 0.25
+border-location = "none"
+border-width = 1
+border-color = "border-accent"
 
-    button-rounding = "sm"
+rounding = "none"
+shadow = "none"
 
-    button-border-location = "all"
-    button-border-width = 1
+button-variant = "block-prefix"
 
-    button-group-border-location = "none"
-    button-group-border-width = 1
-    button-group-padding = 0.0
-    button-group-module-gap = 0.15
-    button-group-background = "bg-elevated"
-    button-group-opacity = 100
-    button-group-border-color = "border-accent"
-    button-group-rounding = "sm"
+button-opacity = 100
+button-bg-opacity = 100
 
-    dropdown-shadow = true
-    dropdown-opacity = 100
-    dropdown-autohide = true
-    dropdown-freeze-label = true
+button-icon-size = 0.80
+button-label-size = 0.80
 
-    [[bar.layout]]
-    monitor = "*"
-    show = true
+button-icon-padding = 0.40
+button-label-padding = 0.40
 
-    left = [
-      "hyprland-workspaces"
-    ]
+button-label-weight = "semibold"
 
-    center = [
-      "window-title"
-    ]
+button-gap = 0.25
+button-rounding = "sm"
 
-    right = [
-      "media",
-      "notifications",
-      "systray",
-      "network",
-      "bluetooth",
-      "brightness",
-      "volume",
-      "battery",
-      "clock",
-    ]
+button-border-location = "all"
+button-border-width = 1
 
-    [styling]
-    scale = 0.80
-    rounding = "sm"
-    theme-provider = "wayle"
+button-group-padding = 0.0
+button-group-module-gap = 0.15
+button-group-rounding = "sm"
 
-    [styling.palette]
-    bg = "#141420"
-    surface = "#1c1c2c"
-    elevated = "#262638"
-    fg = "#d4d6e8"
-    fg-muted = "#8a8ca4"
-    primary = "#e0947a"
-    red = "#e46870"
-    yellow = "#e0b870"
-    green = "#68c898"
-    blue = "#78a0e0"
+dropdown-shadow = true
+dropdown-opacity = 100
+dropdown-autohide = true
+dropdown-freeze-label = true
+
+[[bar.layout]]
+monitor = "eDP-1"
+show = true
+
+left = [
+    "hyprland-workspaces",
+    "window-title",
+]
+
+center = [
+    "media",
+]
+
+right = [
+    "notifications",
+    "systray",
+    "network",
+    "bluetooth",
+    "brightness",
+    "volume",
+    "battery",
+    "clock",
+]
+
+[[bar.layout]]
+monitor = "HDMI-A-1"
+show = true
+
+left = [
+    "hyprland-workspaces",
+    "window-title",
+]
+
+center = [
+    "media",
+]
+
+right = [
+    "notifications",
+    "systray",
+    "network",
+    "bluetooth",
+    "brightness",
+    "volume",
+    "battery",
+    "clock",
+]
+
+[modules.window-title]
+format = "{{ title }}"
+icon-show = false
+label-show = true
+label-max-length = 30
+
+[modules.media]
+format = "{{ title }}"
+label-max-length = 20
+
+[modules.notifications]
+label-show = false
+
+[modules.network]
+label-show = false
+
+[modules.bluetooth]
+label-show = false
+
+[modules.brightness]
+label-show = false
+
+[modules.volume]
+label-show = false
+
+[modules.battery]
+format = "{{ percent }}%"
+label-show = false
+[modules.clock]
+format = "%a %H:%M"
   '';
    programs.git = {
      enable = true;
