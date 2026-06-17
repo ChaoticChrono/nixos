@@ -2,9 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     
-    helium-flake.url = "github:oxcl/nix-flake-helium-browser";
-    helium-flake.inputs.nixpkgs.follows = "nixpkgs";
-    
     elyprismlauncher.url = "github:ElyPrismLauncher/Launcher";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -28,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, helium-flake, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
+  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
