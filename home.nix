@@ -104,7 +104,14 @@
     };
   };
    
-   programs.helium.enable = true;
+   programs.helium = {
+   enable = true;
+   flags = [
+     "--disable-gpu"
+     "--ozone-platform-hint=auto"
+     "--start-maximized"
+     ];
+   };
    home.packages = with pkgs; [
    kdePackages.qtstyleplugin-kvantum
    grim 
