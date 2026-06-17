@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
+  ./hypr/hyprlock.nix
   ];
   home.username = "ved";
   home.homeDirectory = "/home/ved";
@@ -47,7 +48,6 @@
     name = "kvantum";
     };
   };
-  programs.hyprlock.enable = true;
   services.hypridle.enable = true;
   xdg.configFile = {
   "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
