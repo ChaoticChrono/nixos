@@ -20,7 +20,7 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       accent-color = "blue";
-      gtk-theme = "Adw-gtk3-dark";
+      gtk-theme = "adw-gtk3-dark";
       icon-theme = "Morewaita";
       font-name = "Inter 12";
       document-font-name = "Inter 12";
