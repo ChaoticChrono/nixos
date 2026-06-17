@@ -221,11 +221,11 @@ show = true
 
 left = [
     "hyprland-workspaces",
-    "window-title",
+    "media",
 ]
 
 center = [
-    "media",
+    "window-title",
 ]
 
 right = [
@@ -280,7 +280,7 @@ label-show = true
 label-show = false
 
 [modules.bluetooth]
-label-show = false
+label-show = true
 
 [modules.brightness]
 label-show = false
