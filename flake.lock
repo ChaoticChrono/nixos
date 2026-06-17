@@ -269,26 +269,6 @@
         "type": "github"
       }
     },
-    "helium-flake": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1781264587,
-        "narHash": "sha256-SoILyWu6VcW2XApd1h3GnaM5iTL3WtF7Llx5OpWYk9g=",
-        "owner": "oxcl",
-        "repo": "nix-flake-helium-browser",
-        "rev": "4da5eba67ece1400e61a2500b85fc02df9497497",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxcl",
-        "repo": "nix-flake-helium-browser",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -519,11 +499,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781705835,
-        "narHash": "sha256-Oy0rpO/U3cf2AAACJGjKwQshtu12iKEZrdmUXzWaJZY=",
+        "lastModified": 1781708037,
+        "narHash": "sha256-hR2VdlgTbVIiaPKW0Fl+snNF/BGGc4M+/oGgQBTAjMM=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "96ba1008a18a2c8ab6b31e9cf9422fced152d271",
+        "rev": "8a08a6e31983b1d828c1ad7257f6337af71daf48",
         "type": "github"
       },
       "original": {
@@ -561,7 +541,6 @@
         "eden": "eden",
         "elyprismlauncher": "elyprismlauncher",
         "flake-utils": "flake-utils",
-        "helium-flake": "helium-flake",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
         "nix-flatpak": "nix-flatpak",
