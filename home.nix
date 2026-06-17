@@ -20,6 +20,11 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       accent-color = "blue";
+      gtk-theme = "Adw-gtk3-dark";
+      icon-theme = "Morewaita";
+      font-name = "Inter 11";
+      document-font-name = "Inter 11";
+      monospace-font-name = "Intel One Mono 11";
     };
   };
    gtk = {
@@ -32,6 +37,9 @@
       package = pkgs.morewaita-icon-theme;
       name = "MoreWaita";
     };
+    font = {
+      name = "Inter";
+      size = 12;
    };
   qt = {
     enable = true;
