@@ -180,7 +180,7 @@
         outer_color = "rgb(53,132,228)";
         inner_color = "rgba(49,50,68,0.60)";
         font_color = "rgb(255,255,255)";
-        placeholder_text = "<span foreground='#bac2de'>Password</span>";
+        placeholder_text = "󰌾 Password";
         dots_center = true;
         dots_size = 0.22;
         dots_spacing = 0.28;
