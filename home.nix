@@ -14,7 +14,7 @@
 
      package = pkgs.vimix-cursors;
      name = "Vimix-cursors";        # or "Vimix-white-cursors"
-     size = 32;
+     size = 48;
   };
    dconf.settings = {
     "org/gnome/desktop/interface" = {

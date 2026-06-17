@@ -71,8 +71,8 @@ local clipboard = "cursor-clip"
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
-hl.env("XCURSOR_SIZE", "32")
-hl.env("HYPRCURSOR_SIZE", "32")
+hl.env("XCURSOR_SIZE", "48")
+hl.env("HYPRCURSOR_SIZE", "48")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("AQ_NO_EXPLICIT_SYNC", "1")
 hl.env("WLR_NO_HARDWARE_CURSORS", "1")
