@@ -238,8 +238,6 @@
   };
   programs.git.enable = true;
   programs.appimage = { enable = true; binfmt = true; };
-  virtualisation.waydroid.enable = true;
-  virtualisation.waydroid.package = pkgs.waydroid-nftables;
 
   # --- 7. CORE PACKAGES MANAGEMENT ---
   environment.systemPackages = with pkgs; [
@@ -296,26 +294,6 @@
     enable = true;
     enableRenice = true;
   };
-  programs.steam = {
-    enable = true;
-    package = pkgs.steam.override {
-    extraEnv = {
-      GAMEMODERUN = "1";
-      VKD3D_CONFIG = "dxr,dxr11";
-      PROTON_LOCAL_SHADER_CACHE = "1";
-      MESA_SHADER_CACHE_MAX_SIZE = "4G";
-      WINE_VK_VULKAN_ONLY = "1";
-      MESA_GLSL_CACHE_MAX_SIZE = "4G";
-      WINEDLLOVERRIDES = "dinput8,dxgi,dsound=n,b";
-    };
-  };
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    extraPackages = with pkgs; [ adwaita-icon-theme ];
-    extraCompatPackages = with pkgs; [ proton-ge-bin proton-cachyos_x86_64_v3 ];
-  };
-  services.switcherooControl.enable = true;
-  services.udev.packages = [ pkgs.switcheroo-control ];
 
   # --- 9. NIX ENGINE POLICIES ---
   nix.settings = {
