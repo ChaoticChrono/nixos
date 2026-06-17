@@ -14,7 +14,7 @@
 
     package = pkgs.adwaita-icon-theme;
     name = "Adwaita";
-    size = 24;
+    size = 32;
   };
    dconf.settings = {
     "org/gnome/desktop/interface" = {
