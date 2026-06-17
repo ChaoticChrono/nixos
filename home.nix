@@ -163,12 +163,12 @@ font-mono = "Intel One Mono"
 tearing-mode = false
 
 [styling]
-scale = 0.80
+scale = 1
 rounding = "sm"
 theme-provider = "gtk"
 
 [bar]
-scale = 0.80
+scale = 1
 height = 24
 
 inset-edge = 0.0
