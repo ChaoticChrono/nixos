@@ -12,9 +12,9 @@
     gtk.enable = true;
     x11.enable = true;
 
-     package = pkgs.vimix-cursors;
-     name = "Vimix-cursors";        # or "Vimix-white-cursors"
-     size = 48;
+     package = pkgs.adwaita-icon-theme;
+     name = "Adwaita";        # or "Vimix-white-cursors"
+     size = 28;
   };
    dconf.settings = {
     "org/gnome/desktop/interface" = {
