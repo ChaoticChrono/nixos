@@ -162,8 +162,12 @@ font-sans = "Inter"
 font-mono = "Intel One Mono"
 tearing-mode = false
 
+[styling]
+scale = 0.80
+rounding = "sm"
+theme-provider = "gtk"
+
 [bar]
-scale = 0.90
 height = 24
 
 inset-edge = 0.0
