@@ -107,9 +107,10 @@
    programs.helium = {
    enable = true;
    flags = [
-     "--disable-gpu"
+     "--enable-features=TouchpadOverscrollHistoryNavigation"
      "--ozone-platform-hint=auto"
-     "--start-maximized"
+     "--enable-smooth-scrolling"
+     "--enable-parallel-downloading"
      ];
    };
    home.packages = with pkgs; [
