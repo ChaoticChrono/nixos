@@ -6,7 +6,7 @@
 
     settings = {
       general = {
-        hide_cursor = true;
+        hide_cursor = false;
         ignore_empty_input = true;
       };
 
