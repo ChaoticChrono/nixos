@@ -53,8 +53,22 @@
   xdg.configFile = {
   "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
   "hypr/hypridle.conf".source = ./hypr/hypridle.conf;
-  "hypr/hyprpaper.conf".source = ./hypr/hyprpaper.conf;
   };
+  services.hyprpaper = {
+  enable = true;
+  settings = {
+    preload = [
+      "/etc/nixos/wallpaper.jxl"
+    ];
+    wallpaper = [
+      {
+        monitor = "";
+        path = "/etc/nixos/wallpaper.jxl"; 
+        splash = false
+      }
+    ];
+  };
+};
   services.mako = {
   enable = true;
 
@@ -120,7 +134,6 @@
    satty
    overskride
    pwvucontrol
-   hyprpaper
    hyprpolkitagent
    morewaita-icon-theme
    adwaita-icon-theme
