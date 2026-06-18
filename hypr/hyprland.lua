@@ -44,7 +44,7 @@ end, { locked = true })
 -- Set programs that you use
 local terminal    = "kitty"
 local emoji =     "wofi-emoji"
-local menu        = "wofi"
+local menu        = "walker"
 local clipboard = "cursor-clip"
 
 -------------------

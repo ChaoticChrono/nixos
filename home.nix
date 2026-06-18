@@ -153,12 +153,9 @@
     end
    '';
    };
-   programs.wofi = {
-   enable = true;
-     settings = {
-     allow_images = true;
-     show = "drun";
-    };
+   programs.walker = {
+    enable = true;
+    runAsService = true;
    };
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
