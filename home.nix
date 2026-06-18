@@ -134,7 +134,6 @@
    satty
    overskride
    pwvucontrol
-   hyprpolkitagent
    morewaita-icon-theme
    adwaita-icon-theme
    playerctl
@@ -184,6 +183,7 @@
     };
   };
    wayland.windowManager.hyprland.systemd.enable = false;
+  services.hyprpolkitagent.enable = true;
   services.wayle = {
     enable = true;
 
