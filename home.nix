@@ -64,7 +64,7 @@
       {
         monitor = "";
         path = "/etc/nixos/wallpaper.jxl"; 
-        splash = false
+        splash = false;
       }
     ];
   };
