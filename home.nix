@@ -100,7 +100,7 @@
   };
    programs.brave = {
     enable = true;
-    package = inputs.brave-origin.packages.${pkgs.system}.default;
+    package = inputs.brave-origin.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     extensions = [
       "ghmbeldphafepmbegfdlkpapadhbakde" # Proton Pass
