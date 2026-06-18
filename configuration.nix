@@ -18,6 +18,8 @@
     "quiet"
     "rd.udev.log_level=3"
     "rd.systemd.show_status=auto"
+    "nvidia_drm.modeset=1"
+    "nvidia_drm.fbdev=1"
   ];
   boot = {
   # Enable "Silent boot"
@@ -136,15 +138,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-    extraConfig.pipewire."98-crackling-fix"."context.properties" = {
-      "default.clock.quantum" = 1024;
-      "default.clock.min-quantum" = 1024;
-      "default.clock.max-quantum" = 8192;
-    };
-    wireplumber.extraConfig."99-crackling-fix" = {
-      "api.alsa.period-size" = 1024;
-      "api.alsa.headroom" = 8192;
-    };
   };
   services.upower.enable = true;
   services.libinput.enable = true;
@@ -169,12 +162,11 @@
     open = true;
     modesetting.enable = true;
     powerManagement.enable = true;
-    powerManagement.finegrained = true;
+    powerManagement.finegrained = false;
     nvidiaSettings = false;
     prime = {
-      offload.enable = true;
-      offload.enableOffloadCmd = true;
-      intelBusId = "PCI:0:2:0";   
+      sync.enable = true;
+      intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
@@ -182,7 +174,7 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [ intel-media-driver nvidia-vaapi-driver
-    libva-utils ];
+    libva-utils intel-compute-runtime vpl-gpu-rt ];
   };
   programs.hyprland = {
   enable = true;

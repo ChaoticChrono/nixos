@@ -74,8 +74,6 @@ local clipboard = "cursor-clip"
 hl.env("XCURSOR_SIZE", "32")
 hl.env("HYPRCURSOR_SIZE", "32")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
-hl.env("AQ_NO_EXPLICIT_SYNC", "1")
-hl.env("WLR_NO_HARDWARE_CURSORS", "1")
 -----------------------
 ----- PERMISSIONS -----
 -----------------------
