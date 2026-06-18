@@ -57,7 +57,6 @@ local clipboard = "cursor-clip"
 -- Or execute your favorite apps at launch like this:
 --
  hl.on("hyprland.start", function ()
-   hl.exec_cmd("systemctl --user start hyprpolkitagent")
    --hl.exec_cmd("systemctl --user start mako")
    hl.exec_cmd("cursor-clip --daemon")
    hl.exec_cmd("hyprlock")
