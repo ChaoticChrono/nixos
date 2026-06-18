@@ -63,10 +63,10 @@
     wallpaper = [
       {
         monitor = "";
-        path = "/etc/nixos/wallpaper.jxl"; 
-        splash = false;
+        path = "/etc/nixos/wallpaper.jxl";
       }
     ];
+      splash = false;
   };
 };
   services.mako = {
