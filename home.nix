@@ -2,6 +2,7 @@
 {
   imports = [
   ./hypr/hyprlock.nix
+  inputs.brave-origin.homeManagerModules.default
   ];
   home.username = "ved";
   home.homeDirectory = "/home/ved";
@@ -96,6 +97,20 @@
          "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
     };
+  };
+   programs.brave = {
+    enable = true;
+    package = inputs.brave-origin.packages.${pkgs.system}.default;
+
+    extensions = [
+      "ghmbeldphafepmbegfdlkpapadhbakde" # Proton Pass
+      "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
+      "mgngbgbhliflggkamjnpdmegbkidiapm" # Remove YouTube Shorts
+    ];
+
+    commandLineArgs = [
+      "--enable-features=ParallelDownloading"
+    ];
   };
    home.packages = with pkgs; [
    kdePackages.qtstyleplugin-kvantum
