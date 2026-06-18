@@ -216,7 +216,7 @@
     isNormalUser = true;
     description = "Vedanta Singh"; 
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "rtkit" "adbusers" "networkmanager" "video" "audio" "gamemode" "input" ];
+    extraGroups = [ "wheel" "rtkit" "adbusers" "networkmanager" "video" "audio" "gamemode" "input" "lpadmin" ];
   };
   
   programs.fish = {
