@@ -3,6 +3,7 @@
   imports = [
   ./hypr/hyprlock.nix
   inputs.brave-origin.homeManagerModules.default
+  inputs.walker.homeManagerModules.default
   ];
   home.username = "ved";
   home.homeDirectory = "/home/ved";

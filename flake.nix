@@ -28,6 +28,11 @@
       url = "github:Daniel-42-z/brave-origin-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    elephant.url = "github:abenz1267/elephant";
+     walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+     };
   };
   outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
