@@ -319,14 +319,7 @@
   };
    programs.brave = {
     enable = true;
-    package = inputs.brave-origin.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
-    extensions = [
-      "ghmbeldphafepmbegfdlkpapadhbakde" # Proton Pass
-      "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
-      "mgngbgbhliflggkamjnpdmegbkidiapm" # Remove YouTube Shorts
-    ];
-
+    package = inputs.brave-origin.packages.${pkgs.stdenv.hostPlatform.system}.default
     commandLineArgs = [
       "--enable-features=ParallelDownloading"
     ];
