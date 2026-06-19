@@ -579,4 +579,29 @@ fontconfig = {
   };
 };
 };
+services.flatpak = {
+    enable = true;
+    packages = [
+      "page.codeberg.M23Snezhok.Vinyl"
+      "org.vinegarhq.Sober"
+      "io.github.giantpinkrobots.varia"
+      "com.usebottles.bottles"
+      "com.discordapp.Discord"
+    ];
+     overrides = {
+      global = {
+      Context.filesystems = [ "/nix/store:ro" ];
+      Context.sockets = [ "wayland" "!x11" ];
+      Environment = {
+        # Fix un-themed cursor in some Wayland apps
+        XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
+      };
+    };
+    "com.discordapp.Discord" = {
+   Context.sockets = [ "wayland" "x11" ];
+   Environment = {
+    };
+  };
+    };
+  };
 }
