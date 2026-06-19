@@ -47,8 +47,18 @@
    };
   qt = {
     enable = true;
-    style = {
-    name = "kvantum";
+    platformTheme = "qtct"; # Sets QT_QPA_PLATFORMTHEME to qt5ct/qt6ct
+    style.name = "kvantum"; # Optional: set your preferred style
+  };
+   qt.qt6ctSettings = {
+    Appearance = {
+      style = "kvantum";
+      icon_theme = "MoreWaita";
+      standard_dialogs = "xdgdesktopportal";
+    };
+    Fonts = {
+      general = "\"Inter,11\""; 
+      fixed = "\"Intel One Mono,11\"";
     };
   };
   services.hypridle = { 
@@ -339,7 +349,6 @@
     ];
   };
    home.packages = with pkgs; [
-   kdePackages.qtstyleplugin-kvantum
    grim 
    slurp
    satty
@@ -369,6 +378,9 @@
    sushi
    loupe
    flatpak
+   kdePackages.qt6ct
+   libsForQt5.qt5ct
+   kdePackages.qtstyleplugin-kvantum
    ];
    programs.fish = { 
    enable = true;
