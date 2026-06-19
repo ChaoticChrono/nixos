@@ -376,14 +376,12 @@
    '';
    };
    programs.walker = {
-   enable = true;
-   runAsService = true;
+  enable = true;
+  runAsService = true;
 
-  config = {
-    theme = "default";
-  };
+  config.theme = "blur";
 
-  themes.default = {
+  themes.blur = {
     style = ''
       window {
         background-color: rgba(30, 30, 46, 0.45);
@@ -391,7 +389,8 @@
 
       #box,
       #search,
-      #list {
+      #list,
+      .card {
         background: transparent;
       }
     '';
