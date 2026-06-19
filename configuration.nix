@@ -181,7 +181,16 @@ in {
     libva-utils intel-compute-runtime vpl-gpu-rt ];
   };
 
-  programs.uwsm.enable = true;
+  programs.hyprland = {
+    enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    xwayland.enable = true;
+    systemd.enable = false;
+    withUWSM = true;
+  };
   programs.dconf.enable = true;
 
   # --- 6. USER ENVIRONMENT & SHELLS ---
