@@ -261,12 +261,9 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
     auto-optimise-store = true;
     substituters = [
     "https://cache.nixos-cuda.org"
-    "https://hyprland.cachix.org"
      ];
-    trusted-substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = [
     "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
-    "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
     max-jobs = 2;
     cores = 6;
