@@ -51,6 +51,7 @@
   };
    qt.qt6ctSettings = {
     Appearance = {
+      style = "Kvantum";
       icon_theme = "MoreWaita";
       standard_dialogs = "xdgdesktopportal";
     };
