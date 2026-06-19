@@ -394,13 +394,6 @@ hl.layer_rule({
     ignore_alpha = 0.2,
 })
 
-hl.layer_rule({
-    match = {
-        namespace = "walker",
-    },
-    blur = true,
-    ignore_alpha = 0.2,
-})
 -- Hyprland-run windowrule
 hl.window_rule({
     name  = "move-hyprland-run",

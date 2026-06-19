@@ -376,26 +376,9 @@
    '';
    };
    programs.walker = {
-  enable = true;
-  runAsService = true;
-
-  config.theme = "blur";
-
-  themes.blur = {
-    style = ''
-      window {
-        background-color: rgba(30, 30, 46, 0.45);
-      }
-
-      #box,
-      #search,
-      #list,
-      .card {
-        background: transparent;
-      }
-    '';
-  };
-};
+    enable = true;
+    runAsService = true;
+   };
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
    programs.kitty = {
