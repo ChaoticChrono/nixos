@@ -126,7 +126,7 @@ hl.config({
         inactive_opacity = 1.0,
 
         shadow = {
-            enabled      = false,
+            enabled      = true,
             range        = 4,
             render_power = 3,
             color        = 0xee1a1a1a,
@@ -137,6 +137,7 @@ hl.config({
             size      = 20,
             passes    = 4,
             vibrancy  = 0.1696,
+            ignore_opacity = true,
         },
     },
 
