@@ -400,6 +400,28 @@
     xwayland.enable = true;
     systemd.enable = false;
   };
+  xdg.portal = {
+  enable = true;
+  extraPortals = with pkgs; [
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
+  ];
+
+  config = {
+    # Fallback for any interface not specified below
+    common = {
+      default = [ "hyprland" "gtk" ];
+    };
+    
+    # Hyprland-specific overrides
+    hyprland = {
+      default = [ "hyprland" "gtk" ];
+      # Explicitly map screenshot/cast to hyprland backend
+      "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
+      "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
+    };
+  };
+};   
   services.hyprpolkitagent.enable = true;
   services.wayle = {
     enable = true;
