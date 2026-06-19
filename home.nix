@@ -301,6 +301,15 @@
     layer = "overlay";
    };
  };
+  services.udiskie = {
+    enable = true;
+    settings = {
+        program_options = {
+            # replace with your favorite file manager
+            file_manager = "${pkgs.nemo-with-extensions}/bin/nemo";
+        };
+    };
+};
   programs.firefox = {
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
@@ -351,7 +360,7 @@
    wofi-emoji
    cursor-clip
    snapshot
-   nautilus
+   nemo-with-extensions
    sushi
    loupe
    ];

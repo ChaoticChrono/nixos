@@ -105,8 +105,9 @@
   };
 
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
-  services.printing.enable = true;
+  services.printing.enable = false;
   services.thermald.enable = true;
+  services.udisks2.enable = true;
   services.power-profiles-daemon.enable = false;
   services.tuned.enable = true;
   services.tuned.settings.daemon = true;
