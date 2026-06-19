@@ -47,8 +47,8 @@
    };
   qt = {
     enable = true;
-    platformTheme = "qtct"; # Sets QT_QPA_PLATFORMTHEME to qt5ct/qt6ct
-    style.name = "kvantum"; # Optional: set your preferred style
+    platformTheme.name = "qtct";
+    style.name = "kvantum";
   };
    qt.qt6ctSettings = {
     Appearance = {
@@ -57,8 +57,8 @@
       standard_dialogs = "xdgdesktopportal";
     };
     Fonts = {
-      general = "\"Inter,11\""; 
-      fixed = "\"Intel One Mono,11\"";
+      general = "\"Inter,12\""; 
+      fixed = "\"Intel One Mono,12\"";
     };
   };
   services.hypridle = { 
