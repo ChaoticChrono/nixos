@@ -50,12 +50,6 @@
     platformTheme.name = "qtct";
     style.name = "kvantum";
   };
-   qt.qt6ctSettings = {
-    Fonts = {
-      general = "\"Inter,12\""; 
-      fixed = "\"Intel One Mono,12\"";
-    };
-  };
   services.hypridle = { 
   enable = true;
   settings = {
