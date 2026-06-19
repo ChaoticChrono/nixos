@@ -378,7 +378,21 @@ hl.window_rule({
 --     no_anim = true,
 -- })
 -- overlayLayerRule:set_enabled(false)
+hl.layer_rule({
+    match = {
+        namespace = "wayle-bar-eDP-1",
+    },
+    blur = true,
+    ignore_alpha = 0.2,
+})
 
+hl.layer_rule({
+    match = {
+        namespace = "wayle-bar-HDMI-A-1",
+    },
+    blur = true,
+    ignore_alpha = 0.2,
+})
 -- Hyprland-run windowrule
 hl.window_rule({
     name  = "move-hyprland-run",
