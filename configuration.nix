@@ -191,6 +191,7 @@ in {
     systemd.enable = false;
     withUWSM = true;
   };
+  services.flatpak.enable = true;
   programs.dconf.enable = true;
 
   # --- 6. USER ENVIRONMENT & SHELLS ---
