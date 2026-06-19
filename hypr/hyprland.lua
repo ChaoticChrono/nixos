@@ -23,6 +23,13 @@ hl.monitor({
 })
 hl.monitor({ output = "eDP-1", mode = "1920x1080", position = "1444x0", scale = 1.33, bitdepth = 10 })
 hl.monitor({ output = "HDMI-A-1", mode = "1920x1080", position = "0x0", scale = 1.33 })
+hl.bind("switch:on:Lid Switch", function()
+	hl.monitor({ output = "eDP-1", disabled = true })
+end, { locked = true })
+
+hl.bind("switch:off:Lid Switch", function()
+	hl.monitor({ output = "eDP-1", disabled = false })
+end, { locked = true })
 -- unscale XWayland
 hl.config({
   xwayland = {
