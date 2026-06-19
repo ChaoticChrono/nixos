@@ -574,36 +574,6 @@
         "type": "github"
       }
     },
-    "hyprland-plugins": {
-      "inputs": {
-        "hyprland": [
-          "hyprland"
-        ],
-        "nixpkgs": [
-          "hyprland-plugins",
-          "hyprland",
-          "nixpkgs"
-        ],
-        "systems": [
-          "hyprland-plugins",
-          "hyprland",
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1781442805,
-        "narHash": "sha256-Kt56e6Bq2sfqN8yq1RHsS6z+8QKCZelmhaeQQRtZyqU=",
-        "owner": "hyprwm",
-        "repo": "hyprland-plugins",
-        "rev": "1f90c674d51a1ef83c725cd6d02280b4c969fdf7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hyprwm",
-        "repo": "hyprland-plugins",
-        "type": "github"
-      }
-    },
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
@@ -1025,11 +995,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781828819,
-        "narHash": "sha256-UiiYjtGWIqwR4eTXrbkOOTlIsidEoj3GHqxDffy+Lpw=",
+        "lastModified": 1781842656,
+        "narHash": "sha256-o3CaTccBKXH9NGJerrnqUC6Y4dLhNxZxA7xF/o9L150=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "e5ac01eebec0c35177f10b568d031a220a41695e",
+        "rev": "f7949f2c9e630ae9f7289444683e2c04fecf7ee2",
         "type": "github"
       },
       "original": {
@@ -1094,7 +1064,6 @@
         "flake-utils": "flake-utils_2",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
-        "hyprland-plugins": "hyprland-plugins",
         "lanzaboote": "lanzaboote",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_5",
