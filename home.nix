@@ -388,7 +388,16 @@
     background_opacity = "0.85";
     };
   };
-   wayland.windowManager.hyprland.systemd.enable = false;
+ wayland.windowManager.hyprland = {
+    enable = true;
+    # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
+    package = null;
+    portalPackage = null;
+    systemd.enable = false;
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
+    ];
+  };
   services.hyprpolkitagent.enable = true;
   services.wayle = {
     enable = true;
