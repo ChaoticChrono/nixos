@@ -72,10 +72,14 @@
 
     listener = [
       {
-        timeout = 300;
+        timeout = 350;
         on-timeout = "hyprctl dispatch 'hl.dsp.dpms({ action = \"disable\" })' ";
         on-resume = "hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\" })' ";
       }
+       {
+        timeout = 300; 
+        on-timeout = "loginctl lock-session";
+       }
     ];
   };
   };
