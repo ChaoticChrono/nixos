@@ -109,6 +109,8 @@
   };
 
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
+  programs.gnome-disks.enable = true;
+  services.gvfs.enable = true;
   services.printing.enable = false;
   services.thermald.enable = true;
   services.udisks2.enable = true;

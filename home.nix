@@ -29,9 +29,7 @@
       monospace-font-name = "Intel One Mono 12";
     };
   };
- 
-  programs.gnome-disks.enable = true;
-  services.gvfs.enable = true;
+
    gtk = {
     enable = true;
     theme = {
