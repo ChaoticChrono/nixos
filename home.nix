@@ -53,7 +53,7 @@
    qt.qt6ctSettings = {
     Appearance = {
       style = "kvantum";
-      icon_theme = "MoreWaita";
+      icon_theme = "breeze-dark";
       standard_dialogs = "xdgdesktopportal";
     };
     Fonts = {
@@ -441,6 +441,7 @@
    kdePackages.qt6ct
    libsForQt5.qt5ct
    kdePackages.qtstyleplugin-kvantum
+   kdePackages.breeze-icons
    ];
    programs.fish = { 
    enable = true;
