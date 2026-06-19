@@ -48,11 +48,9 @@
   qt = {
     enable = true;
     platformTheme.name = "qtct";
-    style.name = "kvantum";
   };
    qt.qt6ctSettings = {
     Appearance = {
-      style = "kvantum";
       icon_theme = "MoreWaita";
       standard_dialogs = "xdgdesktopportal";
     };
