@@ -376,9 +376,27 @@
    '';
    };
    programs.walker = {
-    enable = true;
-    runAsService = true;
-   };
+   enable = true;
+   runAsService = true;
+
+  config = {
+    theme = "default";
+  };
+
+  themes.default = {
+    style = ''
+      window {
+        background-color: rgba(30, 30, 46, 0.45);
+      }
+
+      #box,
+      #search,
+      #list {
+        background: transparent;
+      }
+    '';
+  };
+};
    programs.btop.enable = true;
    programs.fastfetch.enable = true;
    programs.kitty = {
