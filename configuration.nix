@@ -243,7 +243,7 @@ in {
   programs.eden = {
     enable = true;
   };
-environment.pathsToLink = [ '/share/applications' '/share/xdg-desktop-portal' '/share/thumbnailers' ];
+environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/share/thumbnailers" ];
   fonts = {
   packages = with pkgs; [
     inter
