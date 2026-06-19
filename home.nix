@@ -395,7 +395,7 @@
     portalPackage = null;
     systemd.enable = false;
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprglass
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
     ];
   };
   services.hyprpolkitagent.enable = true;
