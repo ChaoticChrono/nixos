@@ -188,10 +188,9 @@ in {
     # make sure to also set the portal package, so that they are in sync
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
-    systemd.enable = false;
     withUWSM = true;
   };
-  services.flatpak.enable = true;
+
   programs.dconf.enable = true;
 
   # --- 6. USER ENVIRONMENT & SHELLS ---

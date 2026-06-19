@@ -365,6 +365,7 @@
    nautilus
    sushi
    loupe
+   flatpak
    ];
    programs.fish = { 
    enable = true;
