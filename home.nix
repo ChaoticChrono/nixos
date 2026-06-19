@@ -3,6 +3,8 @@
   imports = [
   inputs.brave-origin.homeManagerModules.default
   inputs.walker.homeManagerModules.default
+  inputs.nix-flatpak.homeManagerModules.nix-flatpak
+
   ];
   home.username = "ved";
   home.homeDirectory = "/home/ved";
