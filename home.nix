@@ -386,16 +386,24 @@
    font = {
     name = "Intel One Mono";
     size = 12;
+   };
+    settings = {
+     background_opacity = "0.7";
+     };
+   };
+   wayland.windowManager.hyprland = { 
+    systemd.enable = false;
+    enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    xwayland.enable = true;
   };
-   settings = {
-    background_opacity = "0.7";
-    };
-  };
- wayland.windowManager.hyprland.systemd.enable = false;
   xdg.portal = {
   enable = true;
   extraPortals = with pkgs; [
-    xdg-desktop-portal-hyprland
+    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
   ];
 
