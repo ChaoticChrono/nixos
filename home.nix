@@ -438,7 +438,6 @@
    nautilus
    sushi
    loupe
-   flatpak
    kdePackages.qt6ct
    libsForQt5.qt5ct
    kdePackages.qtstyleplugin-kvantum
