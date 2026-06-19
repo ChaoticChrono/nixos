@@ -38,10 +38,10 @@
  
   # --- 2. KERNEL & PERFORMANCE OPTIMIZATIONS ---
   boot.kernelPackages =  pkgs.linuxPackages_cachyos;
-  services.logind = {
-    lidSwitch = "ignore";
-    lidSwitchExternalPower = "ignore";
-    lidSwitchDocked = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandlelidSwitchDocked = "ignore";
   };   
   # System scheduler optimizations via sched-ext
   services.scx = {
