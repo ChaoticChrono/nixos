@@ -82,6 +82,85 @@
   xdg.configFile = {
   "hypr/hyprland.lua".source = ./hypr/hyprland.lua;
   };
+    programs.wleave = {
+    enable = true;
+    
+    settings = {
+      margin = 200;
+      buttons-per-row = "1/1";
+      delay-command-ms = 100;
+      close-on-lost-focus = true;
+      show-keybinds = true;
+      
+      buttons = [
+        {
+          label = "lock";
+          action = "hyprlock";
+          text = "Lock";
+          keybind = "l";
+          icon = "${pkgs.wleave}/share/wleave/icons/lock.svg";
+        }
+        {
+          label = "logout";
+          action = "loginctl terminate-user $USER";
+          text = "Logout";
+          keybind = "e";
+          icon = "${pkgs.wleave}/share/wleave/icons/logout.svg";
+        }
+        {
+          label = "shutdown";
+          action = "systemctl poweroff";
+          text = "Shutdown";
+          keybind = "s";
+          icon = "${pkgs.wleave}/share/wleave/icons/shutdown.svg";
+        }
+        {
+          label = "reboot";
+          action = "systemctl reboot";
+          text = "Reboot";
+          keybind = "r";
+          icon = "${pkgs.wleave}/share/wleave/icons/reboot.svg";
+        }
+        {
+          label = "suspend";
+          action = "systemctl suspend";
+          text = "Suspend";
+          keybind = "u";
+          icon = "${pkgs.wleave}/share/wleave/icons/suspend.svg";
+        }
+        {
+          label = "hibernate";
+          action = "systemctl hibernate";
+          text = "Hibernate";
+          keybind = "h";
+          icon = "${pkgs.wleave}/share/wleave/icons/hibernate.svg";
+        }
+      ];
+    };
+
+    # Optional: Match your Inter font and MoreWaita theme
+    style = ''
+      window {
+        background-color: rgba(20, 20, 20, 0.95);
+        font-family: "Inter";
+      }
+
+      button {
+        background-color: rgba(40, 40, 40, 0.8);
+        color: #ffffff;
+        border: 2px solid #444;
+        border-radius: 15px;
+        margin: 10px;
+        padding: 20px;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: rgba(60, 60, 60, 1.0);
+        border-color: #888;
+      }
+    '';
+  };
    programs.hyprlock = {
     enable = true;
 
