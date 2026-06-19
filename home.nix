@@ -96,21 +96,21 @@
         }
         {
           label = "logout";
-          action = "loginctl terminate-user $USER";
+          action = "hyprshutdown"; 
           text = "Logout";
           keybind = "e";
           icon = "${pkgs.wleave}/share/wleave/icons/logout.svg";
         }
         {
           label = "shutdown";
-          action = "systemctl poweroff";
+          action = "hyprshutdown --post-cmd 'systemctl poweroff'"; 
           text = "Shutdown";
           keybind = "s";
           icon = "${pkgs.wleave}/share/wleave/icons/shutdown.svg";
         }
         {
           label = "reboot";
-          action = "systemctl reboot";
+          action = "hyprshutdown --post-cmd 'systemctl reboot'"; 
           text = "Reboot";
           keybind = "r";
           icon = "${pkgs.wleave}/share/wleave/icons/reboot.svg";
