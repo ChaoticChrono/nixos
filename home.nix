@@ -86,12 +86,6 @@
     enable = true;
     
     settings = {
-      margin = 200;
-      buttons-per-row = "1/1";
-      delay-command-ms = 100;
-      close-on-lost-focus = true;
-      show-keybinds = true;
-      
       buttons = [
         {
           label = "lock";
@@ -141,23 +135,7 @@
     # Optional: Match your Inter font and MoreWaita theme
     style = ''
       window {
-        background-color: rgba(20, 20, 20, 0.95);
         font-family: "Inter";
-      }
-
-      button {
-        background-color: rgba(40, 40, 40, 0.8);
-        color: #ffffff;
-        border: 2px solid #444;
-        border-radius: 15px;
-        margin: 10px;
-        padding: 20px;
-        font-size: 16px;
-      }
-
-      button:hover {
-        background-color: rgba(60, 60, 60, 1.0);
-        border-color: #888;
       }
     '';
   };
