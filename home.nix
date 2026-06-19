@@ -51,11 +51,6 @@
     style.name = "kvantum";
   };
    qt.qt6ctSettings = {
-    Appearance = {
-      style = "kvantum";
-      icon_theme = "breeze-dark";
-      standard_dialogs = "xdgdesktopportal";
-    };
     Fonts = {
       general = "\"Inter,12\""; 
       fixed = "\"Intel One Mono,12\"";
