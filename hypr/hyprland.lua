@@ -29,13 +29,7 @@ hl.config({
     force_zero_scaling = true
   }
 })
-hl.bind("switch:on:Lid Switch", function()
-	hl.monitor({ output = "eDP-1", disabled = true })
-end)
 
-hl.bind("switch:off:Lid Switch", function()
-	hl.monitor({ output = "eDP-1", disabled = false })
-end)
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
