@@ -390,9 +390,12 @@
   };
  wayland.windowManager.hyprland = {
     enable = true;
-    # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
-    package = null;
-    portalPackage = null;
+     # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    withUWSM = true;
+    xwayland.enable = true;
     systemd.enable = false;
   };
   services.hyprpolkitagent.enable = true;
