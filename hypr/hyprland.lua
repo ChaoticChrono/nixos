@@ -30,11 +30,11 @@ hl.config({
   }
 })
 hl.bind("switch:on:Lid Switch", function()
-  hl.exec_cmd("hyprctl eval 'hl.monitor({ output = \"eDP-1\", disabled = true })'")
+	hl.monitor({ output = "eDP-1", disabled = true })
 end, { locked = true })
 
 hl.bind("switch:off:Lid Switch", function()
-  hl.exec_cmd("hyprctl eval 'hl.monitor({ output = \"eDP-1\", disabled = false })'")
+	hl.monitor({ output = "eDP-1", disabled = false })
 end, { locked = true })
 
 ---------------------
