@@ -1,6 +1,6 @@
-{ config, lib, pkgs, inputs, ... }:
-
-{
+{ config, lib, pkgs, inputs, ... }: let
+pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in {
   imports = [ 
     ./hardware-configuration.nix
     inputs.eden.nixosModules.default
@@ -174,13 +174,20 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    package = pkgs-unstable.mesa;
+    package32 = pkgs-unstable.pkgsi686Linux.mesa;
+
     extraPackages = with pkgs; [ intel-media-driver nvidia-vaapi-driver
     libva-utils intel-compute-runtime vpl-gpu-rt ];
   };
   programs.hyprland = {
-  enable = true;
-  withUWSM = true;
-  xwayland.enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
   };
 
   programs.uwsm.enable = true;
