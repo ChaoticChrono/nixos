@@ -387,7 +387,7 @@
     size = 12;
   };
    settings = {
-    background_opacity = "0.85";
+    background_opacity = "0";
     };
   };
  wayland.windowManager.hyprland = {
