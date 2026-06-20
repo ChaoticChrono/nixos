@@ -1,10 +1,8 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
-  inputs.brave-origin.homeManagerModules.default
   inputs.walker.homeManagerModules.default
   inputs.nix-flatpak.homeManagerModules.nix-flatpak
-
   ];
   home.username = "ved";
   home.homeDirectory = "/home/ved";
@@ -391,12 +389,13 @@
       };
     };
   };
-   programs.brave = {
+   programs.chromium = {
     enable = true;
-    package = inputs.brave-origin.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    package = pkgs.brave;
     commandLineArgs = [
       "--enable-features=ParallelDownloading"
     ];
+    
   };
    home.packages = with pkgs; [
    grim 
@@ -459,28 +458,7 @@
    wayland.windowManager.hyprland = { 
     systemd.enable = false;
   };
-  xdg.portal = {
-  enable = true;
-  extraPortals = with pkgs; [
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
-  ];
 
-  config = {
-    # Fallback for any interface not specified below
-    common = {
-      default = [ "hyprland" "gtk" ];
-    };
-    
-    # Hyprland-specific overrides
-    hyprland = {
-      default = [ "hyprland" "gtk" ];
-      # Explicitly map screenshot/cast to hyprland backend
-      "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
-      "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
-    };
-  };
-};   
   services.hyprpolkitagent.enable = true;
   services.wayle = {
     enable = true;
