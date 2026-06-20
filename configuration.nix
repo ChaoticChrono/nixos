@@ -136,6 +136,13 @@
   services.fwupd.enable = true;
   security.polkit.enable = true;
   security.pam.services.hyprlock = {};
+  security.sudo.enable = false;
+  security.doas.enable = true;
+  security.doas.extraRules = [{
+    users = ["ved"];
+    keepEnv = true; 
+    persist = true;
+   }];
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
