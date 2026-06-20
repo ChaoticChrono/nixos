@@ -58,13 +58,6 @@
           home-manager.backupFileExtension = "hm-backup";
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
-       (
-          { pkgs, ... }:
-          {
-            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
-            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-          }
-        )
       ];
     };
   };
