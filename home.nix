@@ -437,7 +437,7 @@
    programs.fish = { 
    enable = true;
    shellAliases = {
-    doas = "sudo";
+    sudo = "doas";
    };
    loginShellInit = ''
     if uwsm check may-start
