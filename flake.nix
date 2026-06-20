@@ -5,6 +5,7 @@
     elyprismlauncher.url = "github:ElyPrismLauncher/Launcher";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.0.0";
@@ -18,7 +19,6 @@
     url = "github:Daaboulex/eden-nix";
     inputs.nixpkgs.follows = "nixpkgs";
   };
-   chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
    flake-utils.url = "github:numtide/flake-utils";
    nur = {
       url = "github:nix-community/NUR";
@@ -34,14 +34,13 @@
       inputs.elephant.follows = "elephant";
      };
   };
-  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, chaotic, nur, ... }: {
+  outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, nur, nix-cachyos-kernel, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       specialArgs = { inherit inputs; };
 
       modules = [
-        chaotic.nixosModules.default
         lanzaboote.nixosModules.lanzaboote
         nix-flatpak.nixosModules.nix-flatpak
         nur.modules.nixos.default

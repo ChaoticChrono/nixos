@@ -37,7 +37,7 @@
   boot.initrd.systemd.enable = true;
  
   # --- 2. KERNEL & PERFORMANCE OPTIMIZATIONS ---
-  boot.kernelPackages =  pkgs.linuxPackages_cachyos;
+  boot.kernelPackages =  pkgs.linux-cachyos-bore-lto-x86_64-v3;
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
     HandleLidSwitchExternalPower = "ignore";
@@ -267,9 +267,11 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
     auto-optimise-store = true;
     substituters = [
     "https://cache.nixos-cuda.org"
+    "https://attic.xuyh0120.win/lantian"
      ];
     trusted-public-keys = [
     "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+    "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
     ];
     max-jobs = 2;
     cores = 6;
@@ -282,7 +284,7 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = true;
 
-  nixpkgs.overlays = [ inputs.eden.overlays.default ];
+  nixpkgs.overlays = [ inputs.eden.overlays.default nix-cachyos-kernel.overlays.pinned ];
   system.stateVersion = "26.05";
   systemd.services."getty@tty1" = {
   overrideStrategy = "asDropin";
