@@ -432,7 +432,6 @@
    kdePackages.qtstyleplugin-kvantum
    kdePackages.breeze-icons
    duf
-   eza
    zoxide
    ];
    programs.fish = { 
@@ -443,11 +442,16 @@
     end
    '';
    };
-   programs.zoxide.enable = true;
-   programs.zoxide.options = [
-    "--cmd cd"
-   ];
-   programs.eza.enable = true;
+   programs.zoxide = { 
+    enable = true;
+    options = [
+     "--cmd cd"
+    ];
+   };
+   programs.eza = {
+    enable = true;
+    icons = true;
+   };
    programs.walker = {
     enable = true;
     runAsService = true;
