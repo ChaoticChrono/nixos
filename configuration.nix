@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     inputs.eden.nixosModules.default
   ];
-
+  nixpkgs.overlays = [ inputs.eden.overlays.default inputs.nix-cachyos-kernel.overlays.pinned ];
   # --- 1. BOOT, SECUREBOOT (LANZABOOTE) & PLYMOUTH ---
   boot.plymouth = { 
   enable = true; 
@@ -34,7 +34,7 @@
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-  boot.kernelPackages = inputs.pkgs.cachyosKernels.linux-cachyos-bore-x86_64-v3;
+  boot.kernelPackages = pkgs.cachyosKernels.linux-cachyos-bore-x86_64-v3;
   boot.initrd.systemd.enable = true;
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
@@ -283,7 +283,6 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = true;
 
-  nixpkgs.overlays = [ inputs.eden.overlays.default inputs.nix-cachyos-kernel.overlays.pinned ];
   system.stateVersion = "26.05";
   systemd.services."getty@tty1" = {
   overrideStrategy = "asDropin";
