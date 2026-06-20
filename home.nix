@@ -414,9 +414,9 @@
    yt-dlp
    aria2
    azahar
-   waydroid-helper
    libreoffice
    celeste
+   ffmpeg-full
    btrfs-assistant
    telegram-desktop
    nur.repos.milahu.spotify-adblock
