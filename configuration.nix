@@ -35,9 +35,6 @@
     pkiBundle = "/var/lib/sbctl";
   };
   boot.initrd.systemd.enable = true;
- 
-  # --- 2. KERNEL & PERFORMANCE OPTIMIZATIONS ---
-  boot.kernelPackages =  pkgs.linux-cachyos-bore-lto-x86_64-v3;
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
     HandleLidSwitchExternalPower = "ignore";
@@ -285,7 +282,7 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = true;
 
-  nixpkgs.overlays = [ inputs.eden.overlays.default inputs.nix-cachyos-kernel.overlays.pinned ];
+  nixpkgs.overlays = [ inputs.eden.overlays.default ];
   system.stateVersion = "26.05";
   systemd.services."getty@tty1" = {
   overrideStrategy = "asDropin";
