@@ -285,7 +285,7 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = true;
 
-  nixpkgs.overlays = [ inputs.eden.overlays.default nix-cachyos-kernel.overlays.pinned ];
+  nixpkgs.overlays = [ inputs.eden.overlays.default inputs.nix-cachyos-kernel.overlays.pinned ];
   system.stateVersion = "26.05";
   systemd.services."getty@tty1" = {
   overrideStrategy = "asDropin";
