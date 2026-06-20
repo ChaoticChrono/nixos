@@ -386,6 +386,7 @@
         "browser.newtabpage.activity-stream.logowordmark.alwaysVisible" = false;
         "browser.newtabpage.activity-stream.nova.enabled" = false;
          "widget.use-xdg-desktop-portal.file-picker" = 1;
+         "toolkit.tabbox.switchByScrolling" = true;
       };
     };
   };
