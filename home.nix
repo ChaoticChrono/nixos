@@ -450,7 +450,7 @@
    };
    programs.eza = {
     enable = true;
-    icons = auto;
+    icons = "auto";
    };
    programs.walker = {
     enable = true;
