@@ -34,7 +34,7 @@
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-  boot.kernelPackages = pkgs.cachyosKernels.linux-cachyos-bore-x86_64-v3;
+  boot.kernelPackages = pkgs.cachyosKernels.linux-cachyos-bore;
   boot.initrd.systemd.enable = true;
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
@@ -223,6 +223,7 @@
     adwaita-icon-theme
     morewaita-icon-theme
     kdePackages.breeze-icons
+    gtk3
   ];
   programs.eden = {
     enable = true;
@@ -240,6 +241,7 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
   environment.sessionVariables = {
     JAVA_HOME = "${pkgs.temurin-bin-25}";
     NIXOS_OZONE_WL = "1"; # System-wide Wayland rendering enforcer
+    GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
   };
   
   # --- 8. SECURITY & UTILITIES ---
