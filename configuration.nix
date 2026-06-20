@@ -34,7 +34,7 @@
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-  boot.kernelPackages = pkgs.cachyosKernels.linux-cachyos-bore-x86_64-v3;
+  boot.kernelPackages = inputs.pkgs.cachyosKernels.linux-cachyos-bore-x86_64-v3;
   boot.initrd.systemd.enable = true;
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
