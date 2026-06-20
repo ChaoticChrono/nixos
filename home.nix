@@ -436,6 +436,9 @@
    ];
    programs.fish = { 
    enable = true;
+   shellAliases = {
+    doas = "sudo";
+   };
    loginShellInit = ''
     if uwsm check may-start
       exec uwsm start hyprland.desktop
