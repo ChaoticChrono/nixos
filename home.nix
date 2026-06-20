@@ -673,11 +673,13 @@ services.flatpak = {
         XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
       };
     };
-    "com.discordapp.Discord" = {
-   Context.sockets = [ "wayland" "x11" ];
-   Environment = {
-    };
-  };
+    "org.vinegarhq.Sober" = {
+        Environment = {
+          __NV_PRIME_RENDER_OFFLOAD = "1";
+          __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+          __GLVND_DISALLOW_PATCHING = "1";
+        };
+      };
     };
   };
 }
