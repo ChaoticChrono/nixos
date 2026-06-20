@@ -6,7 +6,8 @@
     inputs.eden.nixosModules.default
   ];
   nixpkgs.overlays = [ inputs.eden.overlays.default inputs.nix-cachyos-kernel.overlays.pinned ];
-  # --- 1. BOOT, SECUREBOOT (LANZABOOTE) & PLYMOUTH ---
+ 
+  boot.kernelPackages = inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-bore-x86_64-v3;
   boot.plymouth = { 
   enable = true; 
   theme = "nixos-bgrt";
@@ -34,7 +35,6 @@
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.cachyosKernels.linux-cachyos-bore-x86_64-v3;
   boot.initrd.systemd.enable = true;
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
