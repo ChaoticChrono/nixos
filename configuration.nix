@@ -276,11 +276,12 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
     max-jobs = 2;
     cores = 6;
   };
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d";
-  };
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/etc/nixos";
+   };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = true;
 
