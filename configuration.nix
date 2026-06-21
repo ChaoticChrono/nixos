@@ -289,6 +289,7 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/etc/nixos";
+    useNixOutputMonitor = false;
    };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.cudaSupport = true;
