@@ -433,7 +433,6 @@
    kdePackages.breeze-icons
    duf
    zoxide
-   joystick
    usbutils
    ];
    programs.fish = { 
