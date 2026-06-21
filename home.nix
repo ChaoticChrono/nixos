@@ -439,7 +439,6 @@
    enable = true;
    shellAliases = {
     sudo = "doas";
-    nh = "nh --no-nom";
    };
    loginShellInit = ''
     if uwsm check may-start
