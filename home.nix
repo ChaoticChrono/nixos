@@ -657,6 +657,8 @@ fontconfig = {
 };
 services.flatpak = {
     enable = true;
+    update.onActivation = true;
+    uninstallUnmanaged = true;
     packages = [
       "page.codeberg.M23Snezhok.Vinyl"
       "org.vinegarhq.Sober"
