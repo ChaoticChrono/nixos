@@ -56,7 +56,7 @@
    ryubing
    eden
    unrar
-   ventoy-full-qt
+   ventoy-full-gtk
    ];
    programs.fish = { 
    enable = true;
