@@ -106,8 +106,6 @@
   };
 
   # --- 4. HARDWARE, AUDIO & GRAPHICS ---
-  programs.gnome-disks.enable = true;
-  services.gvfs.enable = true;
   services.printing.enable = false;
   services.thermald.enable = true;
   services.udisks2.enable = true;
@@ -134,7 +132,6 @@
   powerManagement.enable = true;
   services.fwupd.enable = true;
   security.polkit.enable = true;
-  security.pam.services.hyprlock = {};
   security.sudo.enable = false;
   security.doas.enable = true;
   security.doas.extraRules = [{
@@ -150,8 +147,6 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  services.upower.enable = true;
-  services.libinput.enable = true;
   # Enable Bluetooth
   hardware.bluetooth = {
     enable = true;
@@ -189,11 +184,6 @@
     libva-utils intel-compute-runtime vpl-gpu-rt ];
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    withUWSM = true;
-  };
   services.flatpak.enable = true;
   programs.dconf.enable = true;
 
@@ -215,8 +205,17 @@
     settings.aws.disabled = true;
   };
   programs.git.enable = true;
-  programs.appimage = { enable = true; binfmt = true; };
-
+  programs.appimage = { 
+   enable = true; 
+   binfmt = true; 
+  };
+  # Gnome
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = with pkgs; [
+    yelp
+    gnome-tour
+  ];
   # --- 7. CORE PACKAGES MANAGEMENT ---
   environment.systemPackages = with pkgs; [
     # System Essentials
@@ -229,8 +228,6 @@
     adw-gtk3
     adwaita-icon-theme
     morewaita-icon-theme
-    kdePackages.breeze-icons
-    gtk3
   ];
 
 environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/share/thumbnailers" "/share/icons" "/share/themes" ];
@@ -246,7 +243,6 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
   environment.sessionVariables = {
     JAVA_HOME = "${pkgs.temurin-bin-25}";
     NIXOS_OZONE_WL = "1"; # System-wide Wayland rendering enforcer
-    GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
   };
   
   # --- 8. SECURITY & UTILITIES ---
@@ -291,8 +287,4 @@ environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/
   nixpkgs.config.cudaSupport = true;
 
   system.stateVersion = "26.05";
-  systemd.services."getty@tty1" = {
-  overrideStrategy = "asDropin";
-  serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin ved --noclear --keep-baud %I 115200,38400,9600 $TERM"];
-  };
 }
