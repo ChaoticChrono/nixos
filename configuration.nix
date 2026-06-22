@@ -35,11 +35,6 @@
     pkiBundle = "/var/lib/sbctl";
   };
   boot.initrd.systemd.enable = true;
-  services.logind.settings.Login = {
-    HandleLidSwitch = "ignore";
-    HandleLidSwitchExternalPower = "ignore";
-    HandlelidSwitchDocked = "ignore";
-  };   
   # System scheduler optimizations via sched-ext
   services.scx = {
     enable = true;
@@ -209,25 +204,32 @@
    enable = true; 
    binfmt = true; 
   };
-  # Gnome
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = with pkgs; [
-    yelp
-    gnome-tour
-  ];
+  # Kde 
+  desktopManager.plasma6.enable = true;
+  displayManager.plasma-login-manager.enable = true;
+  xserver.enable = false;
+  boot.initrd.systemd.enable = true;
+  systemd.services.plasmalogin.serviceConfig.KeyringMode = "inherit";
+  security.pam.services.plasmalogin-autologin.rules.auth = {
+    systemd_loadkey = {
+      order = 0;
+      control = "optional";
+      modulePath = "${pkgs.systemd}/lib/security/pam_systemd_loadkey.so";
+    };
+    plasmalogin = {
+      order = 1;
+      control = "include";
+      modulePath = "plasmalogin";
+     };
+   };
   # --- 7. CORE PACKAGES MANAGEMENT ---
   environment.systemPackages = with pkgs; [
     # System Essentials
     sbctl
-    adw-gtk3
     temurin-bin-25
     tpm2-tss
     android-tools
     ffmpegthumbnailer
-    adw-gtk3
-    adwaita-icon-theme
-    morewaita-icon-theme
   ];
 
 environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/share/thumbnailers" "/share/icons" "/share/themes" ];

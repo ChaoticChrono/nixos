@@ -20,11 +20,6 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    elephant.url = "github:abenz1267/elephant";
-     walker = {
-      url = "github:abenz1267/walker";
-      inputs.elephant.follows = "elephant";
-     };
   };
   outputs = inputs@{ self, nixpkgs, lanzaboote, nix-flatpak, home-manager, nur, nix-cachyos-kernel, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
