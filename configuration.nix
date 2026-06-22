@@ -27,13 +27,8 @@
   initrd.verbose = false;
   };
   boot.loader.timeout = 0;
-  # Lanzaboote handles systemd-boot overrides nativly
-  boot.loader.systemd-boot.enable = lib.mkForce false;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/var/lib/sbctl";
-  };
+  boot.loader.limine.enable = true;
+  boot.loader.limine.secureBoot.enable = true;
   boot.initrd.systemd.enable = true;
   # System scheduler optimizations via sched-ext
   services.scx = {
