@@ -208,7 +208,6 @@
   desktopManager.plasma6.enable = true;
   displayManager.plasma-login-manager.enable = true;
   xserver.enable = false;
-  boot.initrd.systemd.enable = true;
   systemd.services.plasmalogin.serviceConfig.KeyringMode = "inherit";
   security.pam.services.plasmalogin-autologin.rules.auth = {
     systemd_loadkey = {
