@@ -12,7 +12,7 @@
    programs.firefox = {
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
-    nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
+    nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
 
     profiles.ved = { # Creates a Firefox profile named 'ved'
       name = "ved";
