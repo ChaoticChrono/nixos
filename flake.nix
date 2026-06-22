@@ -15,10 +15,6 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  eden = {
-    url = "github:Daaboulex/eden-nix";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
    flake-utils.url = "github:numtide/flake-utils";
    nur = {
       url = "github:nix-community/NUR";

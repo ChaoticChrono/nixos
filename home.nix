@@ -435,6 +435,8 @@
    zoxide
    usbutils
    file-roller
+   ryubing
+   eden
    ];
    programs.fish = { 
    enable = true;

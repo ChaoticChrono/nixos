@@ -3,9 +3,8 @@
  {
   imports = [ 
     ./hardware-configuration.nix
-    inputs.eden.nixosModules.default
   ];
-  nixpkgs.overlays = [ inputs.eden.overlays.default inputs.nix-cachyos-kernel.overlays.pinned ];
+  nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ];
  
   boot.kernelPackages = inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-bore-x86_64-v3;
   boot.plymouth = { 
@@ -233,9 +232,7 @@
     kdePackages.breeze-icons
     gtk3
   ];
-  programs.eden = {
-    enable = true;
-  };
+
 environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/share/thumbnailers" "/share/icons" "/share/themes" ];
   fonts = {
   packages = with pkgs; [
