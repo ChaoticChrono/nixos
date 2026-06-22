@@ -7,10 +7,13 @@
   home.homeDirectory = "/home/ved";
   home.stateVersion = "26.05";
   home.sessionVariables = {
+   MOZ_USE_XINPUT2 = "1";
    };
    programs.firefox = {
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
+    nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
+
     profiles.ved = { # Creates a Firefox profile named 'ved'
       name = "ved";
       isDefault = true;
