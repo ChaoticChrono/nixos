@@ -204,10 +204,12 @@
    enable = true; 
    binfmt = true; 
   };
-  # Kde 
+  # Kde
+  services = { 
   desktopManager.plasma6.enable = true;
   displayManager.plasma-login-manager.enable = true;
   xserver.enable = false;
+  };
   systemd.services.plasmalogin.serviceConfig.KeyringMode = "inherit";
   security.pam.services.plasmalogin-autologin.rules.auth = {
     systemd_loadkey = {
