@@ -1,7 +1,6 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
-  inputs.walker.homeManagerModules.default
   inputs.nix-flatpak.homeManagerModules.nix-flatpak
   ];
   home.username = "ved";
@@ -9,43 +8,6 @@
   home.stateVersion = "26.05";
   home.sessionVariables = {
    };
-   home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-
-     package = pkgs.adwaita-icon-theme;
-     name = "Adwaita";
-     size = 24;
-  };
-   dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      accent-color = "blue";
-      gtk-theme = "adw-gtk3-dark";
-      font-name = "Inter 12";
-      document-font-name = "Inter 12";
-      monospace-font-name = "Intel One Mono 12";
-    };
-  };
-
-   gtk = {
-    enable = true;
-    theme = {
-      package = pkgs.adw-gtk3;
-      name = "adw-gtk3-dark";
-    };
-    iconTheme = {
-      package = pkgs.morewaita-icon-theme;
-      name = "MoreWaita";
-    };
-    font = {
-      name = "Inter";
-      size = 12;
-     };
-   };
-  qt = {
-    enable = true;
-  };
    programs.firefox = {
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
