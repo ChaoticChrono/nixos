@@ -388,7 +388,6 @@ hl.layer_rule({
         namespace = "wayle-bar-eDP-1",
     },
     blur = true,
-    ignore_alpha = 0.2,
 })
 
 hl.layer_rule({
@@ -396,7 +395,6 @@ hl.layer_rule({
         namespace = "wayle-bar-HDMI-A-1",
     },
     blur = true,
-    ignore_alpha = 0.2,
 })
 
 -- Hyprland-run windowrule

@@ -434,6 +434,7 @@
    duf
    zoxide
    usbutils
+   peazip
    ];
    programs.fish = { 
    enable = true;
