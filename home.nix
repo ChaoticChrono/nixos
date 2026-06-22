@@ -52,9 +52,7 @@
    usbutils
    ryubing
    eden
-   rar
    unrar
-   7zip
    ];
    programs.fish = { 
    enable = true;
