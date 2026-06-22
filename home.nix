@@ -74,7 +74,10 @@
     icons = "auto";
    };
  
-   programs.btop.enable = true;
+   programs.btop = { 
+   enable = true; 
+   package = pkgs.btop-cuda;
+   };
    programs.fastfetch.enable = true;
    programs.git = {
      enable = true;
